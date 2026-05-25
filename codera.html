@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="CodeRa — Chrome extension. Extract code from YouTube, Udemy, Coursera in one click. No retyping. Powered by Claude Vision AI.">
   <title>CodeRa — Stop retyping code from tutorials</title>
-  <link rel="icon" href="./icon48.png" type="image/png">
+  <link rel="icon" href="icons/icon48.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
@@ -620,7 +620,7 @@
 <!-- NAV -->
 <nav>
   <a href="#" class="logo">
-    <img src="./icon48.png" alt="CodeRa">
+    <img src="icons/icon48.png" alt="CodeRa">
     CodeRa
   </a>
   <a href="#install" class="nav-install">Add to Chrome — Free</a>
@@ -817,7 +817,7 @@
       <!-- Right: extension popup -->
       <div class="popup-side">
         <div class="popup-side-head">
-          <img src="./icon48.png" alt="">
+          <img src="icons/icon48.png" alt="">
           <div><strong>CodeRa</strong><div style="font-size:10px;color:var(--muted)">Extract as code</div></div>
         </div>
         <div class="popup-btns">
@@ -1101,7 +1101,7 @@
 
 <footer>
   <a href="#" class="logo" style="font-size:14px;">
-    <img src="./icon48.png" alt="" style="width:22px;height:22px;">
+    <img src="icons/icon48.png" alt="" style="width:22px;height:22px;">
     CodeRa
   </a>
   <div class="footer-links">
@@ -1113,31 +1113,49 @@
 </footer>
 
 <script>
+// Web3Forms — надёжная замена formsubmit.co
+// Получите бесплатный ключ на https://web3forms.com → введите email → скопируйте Access Key
+// Вставьте его ниже вместо 'YOUR_ACCESS_KEY'
+const W3F_KEY = '23279f80-d28b-4519-8031-b0459aefd649';
+
 document.getElementById('wf').addEventListener('submit', async (e) => {
   e.preventDefault();
   const email = document.getElementById('we').value.trim();
   const btn = document.getElementById('wb');
   const msg = document.getElementById('wm');
   if (!email) return;
-  btn.disabled = true; btn.textContent = 'Sending...';
-  msg.className = 'waitlist-msg'; msg.textContent = '';
+
+  btn.disabled = true;
+  btn.textContent = 'Sending...';
+  msg.className = 'waitlist-msg';
+  msg.textContent = '';
+
   try {
-    const res = await fetch('https://formsubmit.co/ajax/anton.zaharenko@gmail.com', {
+    const res = await fetch('https://api.web3forms.com/submit', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-      body: JSON.stringify({ email, _subject: 'CodeRa waitlist', message: 'New signup' })
+      body: JSON.stringify({
+        access_key: W3F_KEY,
+        email: email,
+        subject: 'CodeRa waitlist — new signup',
+        message: 'New signup: ' + email,
+        from_name: 'CodeRa Waitlist'
+      })
     });
     const data = await res.json();
-    if (res.ok && data.success) {
+    if (data.success) {
       msg.className = 'waitlist-msg ok';
-      msg.textContent = "You're in! We'll email you with updates.";
+      msg.textContent = "✓ You're in! We'll email you with updates.";
       e.target.reset();
-    } else throw new Error();
-  } catch {
+    } else {
+      throw new Error(data.message || 'error');
+    }
+  } catch (err) {
     msg.className = 'waitlist-msg err';
-    msg.textContent = 'Something went wrong — email anton.zaharenko@gmail.com directly.';
+    msg.textContent = 'Something went wrong. Email: anton.zaharenko@gmail.com';
   } finally {
-    btn.disabled = false; btn.textContent = 'Join waitlist';
+    btn.disabled = false;
+    btn.textContent = 'Join waitlist';
   }
 });
 </script>
