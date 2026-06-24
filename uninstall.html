@@ -4,782 +4,375 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CodeRa, You've uninstalled</title>
+  <title>CodeRa — You uninstalled</title>
+  <link rel="icon" href="https://zaharenko.github.io/Codera/icon48.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
   <style>
-    *,
-    *::before,
-    *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
     :root {
-      --bg: #0a0a0f;
-      --bg2: #111118;
-      --bg3: #16161f;
-      --border: rgba(255, 255, 255, 0.07);
-      --text: #e8e8f0;
-      --muted: #6b6b85;
-      --accent: #7c6dfa;
-      --accent2: #a78bfa;
+      --cyan: #22d3ee;
+      --cyan-dim: rgba(34, 211, 238, 0.10);
+      --cyan-border: rgba(34, 211, 238, 0.25);
+      --bg: #0b0f14;
+      --surface: #141b24;
+      --border: rgba(255, 255, 255, 0.08);
+      --text: #f1f5f9;
+      --muted: #94a3b8;
       --green: #34d399;
       --red: #f87171;
-      --mono: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
-      --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     }
 
-    html {
-      scroll-behavior: smooth;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
     body {
       background: var(--bg);
       color: var(--text);
-      font-family: var(--sans);
-      font-size: 16px;
-      line-height: 1.6;
+      font-family: 'Space Grotesk', sans-serif;
       min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
       -webkit-font-smoothing: antialiased;
     }
 
-    /* NAV */
-    nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 20px 40px;
-      border-bottom: 1px solid var(--border);
-      position: sticky;
-      top: 0;
-      background: rgba(10, 10, 15, 0.92);
-      backdrop-filter: blur(12px);
-      z-index: 100;
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(34, 211, 238, 0.06), transparent);
+      pointer-events: none;
     }
 
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-family: var(--mono);
-      font-size: 15px;
-      color: var(--text);
-      text-decoration: none;
-      font-weight: 600;
-    }
-
-    .nav-logo img {
-      width: 28px;
-      height: 28px;
-      border-radius: 6px;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 24px;
-    }
-
-    .nav-links a {
-      color: var(--muted);
-      text-decoration: none;
-      font-size: 14px;
-      font-family: var(--mono);
-      transition: color 0.2s;
-    }
-
-    .nav-links a:hover {
-      color: var(--text);
-    }
-
-    /* HERO */
-    .hero {
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 80px 40px 60px;
+    .card {
+      position: relative;
+      width: 100%;
+      max-width: 480px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 40px;
       text-align: center;
     }
 
-    .tag {
+    .badge {
       display: inline-block;
-      font-family: var(--mono);
-      font-size: 12px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
       color: var(--muted);
       border: 1px solid var(--border);
-      border-radius: 999px;
-      padding: 4px 14px;
-      margin-bottom: 32px;
-      letter-spacing: 0.04em;
+      border-radius: 99px;
+      padding: 4px 13px;
+      margin-bottom: 28px;
     }
 
-    .section-label {
-      font-family: var(--mono);
-      font-size: 12px;
-      color: var(--muted);
-      letter-spacing: 0.06em;
+    h1 {
+      font-size: clamp(24px, 5vw, 32px);
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -1px;
       margin-bottom: 12px;
     }
 
-    .section-label span {
-      color: var(--accent2);
-    }
-
-    .hero h1 {
-      font-size: clamp(32px, 5vw, 52px);
-      font-weight: 700;
-      line-height: 1.15;
-      letter-spacing: -0.02em;
-      margin-bottom: 20px;
-      color: #fff;
-    }
-
-    .hero h1 em {
+    h1 em {
       font-style: normal;
-      color: var(--accent2);
+      color: var(--cyan);
     }
 
-    .hero p {
-      font-size: 18px;
-      color: var(--muted);
-      max-width: 480px;
-      margin: 0 auto 40px;
-      line-height: 1.7;
-    }
-
-    .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--accent);
-      color: #fff;
-      text-decoration: none;
-      font-family: var(--mono);
-      font-size: 14px;
-      font-weight: 600;
-      padding: 14px 28px;
+    /* HOOK — the thing they feel */
+    .hook {
+      background: rgba(248, 113, 113, 0.06);
+      border: 1px solid rgba(248, 113, 113, 0.15);
       border-radius: 10px;
-      border: none;
-      cursor: pointer;
-      transition: background 0.2s, transform 0.15s;
+      padding: 14px 16px;
+      margin-bottom: 24px;
+      text-align: left;
     }
 
-    .btn-primary:hover {
-      background: #6a5cf0;
-      transform: translateY(-1px);
-    }
-
-    .btn-ghost {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: transparent;
-      color: var(--muted);
-      text-decoration: none;
-      font-family: var(--mono);
-      font-size: 13px;
-      padding: 14px 24px;
-      border-radius: 10px;
-      border: 1px solid var(--border);
-      cursor: pointer;
-      transition: color 0.2s, border-color 0.2s;
-    }
-
-    .btn-ghost:hover {
-      color: var(--text);
-      border-color: rgba(255, 255, 255, 0.18);
-    }
-
-    .hero-actions {
-      display: flex;
-      gap: 12px;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-bottom: 16px;
-    }
-
-    .hero-note {
-      font-family: var(--mono);
-      font-size: 12px;
-      color: var(--muted);
-    }
-
-    /* DIVIDER */
-    .divider {
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 0 40px;
-      border-top: 1px solid var(--border);
-    }
-
-    /* WHAT YOU LOSE */
-    .section {
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 64px 40px;
-    }
-
-    .loss-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-top: 32px;
-    }
-
-    @media (max-width: 560px) {
-      .loss-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .loss-card {
-      background: var(--bg2);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 20px 22px;
-      display: flex;
-      gap: 14px;
-      align-items: flex-start;
-    }
-
-    .loss-icon {
-      font-size: 22px;
-      flex-shrink: 0;
-      margin-top: 2px;
-    }
-
-    .loss-card h3 {
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--text);
-      margin-bottom: 4px;
-      font-family: var(--mono);
-    }
-
-    .loss-card p {
-      font-size: 13px;
-      color: var(--muted);
-      line-height: 1.5;
-    }
-
-    /* BEFORE / AFTER */
-    .compare {
-      background: var(--bg2);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      overflow: hidden;
-      margin-top: 32px;
-    }
-
-    .compare-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-    }
-
-    .compare-col {
-      padding: 28px 28px;
-    }
-
-    .compare-col:first-child {
-      border-right: 1px solid var(--border);
-    }
-
-    .compare-col-label {
-      font-family: var(--mono);
-      font-size: 11px;
-      letter-spacing: 0.08em;
-      margin-bottom: 16px;
-      font-weight: 600;
-    }
-
-    .without .compare-col-label {
-      color: var(--red);
-    }
-
-    .with .compare-col-label {
-      color: var(--green);
-    }
-
-    .step-list {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .step-item {
+    .hook-row {
       display: flex;
       align-items: center;
       gap: 10px;
-      font-family: var(--mono);
-      font-size: 13px;
-    }
-
-    .without .step-item {
-      color: #f87171aa;
-    }
-
-    .with .step-item {
-      color: var(--green);
-    }
-
-    .step-num {
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 11px;
-      font-weight: 700;
-      flex-shrink: 0;
-    }
-
-    .without .step-num {
-      background: rgba(248, 113, 113, 0.12);
-      color: var(--red);
-    }
-
-    .with .step-num {
-      background: rgba(52, 211, 153, 0.12);
-      color: var(--green);
-    }
-
-    /* FEEDBACK FORM */
-    .feedback-box {
-      background: var(--bg2);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 36px 36px;
-      margin-top: 32px;
-    }
-
-    .feedback-box h3 {
-      font-size: 18px;
-      font-weight: 600;
-      color: #fff;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: #f87171;
       margin-bottom: 6px;
     }
 
-    .feedback-box p {
-      font-size: 14px;
+    .hook-row:last-child {
+      margin-bottom: 0;
       color: var(--muted);
-      margin-bottom: 24px;
     }
 
-    .reason-grid {
+    .hook-row span.x {
+      color: #f87171;
+    }
+
+    .hook-row span.ok {
+      color: var(--green);
+    }
+
+    .sub {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 28px;
+    }
+
+    .btn-main {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: var(--cyan);
+      color: #0b0f14;
+      padding: 14px 28px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 15px;
+      box-shadow: 0 0 28px rgba(34, 211, 238, 0.25);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .btn-main:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 0 40px rgba(34, 211, 238, 0.38);
+    }
+
+    .note {
+      margin-top: 10px;
+      font-size: 12px;
+      color: #475569;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 28px 0;
+    }
+
+    .fb-title {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 12px;
+      text-align: left;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .reasons {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 8px;
-      margin-bottom: 20px;
+      gap: 7px;
+      margin-bottom: 12px;
     }
 
-    @media (max-width: 480px) {
-      .reason-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .reason-btn {
-      background: var(--bg3);
+    .rb {
+      background: transparent;
       border: 1px solid var(--border);
       border-radius: 8px;
-      padding: 12px 16px;
+      padding: 9px 12px;
       color: var(--muted);
-      font-family: var(--mono);
-      font-size: 13px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
       cursor: pointer;
       text-align: left;
       transition: all 0.15s;
-      display: flex;
-      align-items: center;
-      gap: 8px;
     }
 
-    .reason-btn:hover,
-    .reason-btn.active {
-      border-color: var(--accent);
+    .rb:hover,
+    .rb.on {
+      border-color: var(--cyan-border);
       color: var(--text);
-      background: rgba(124, 109, 250, 0.08);
+      background: var(--cyan-dim);
     }
 
     textarea {
       width: 100%;
-      background: var(--bg3);
+      background: transparent;
       border: 1px solid var(--border);
       border-radius: 8px;
       color: var(--text);
-      font-family: var(--sans);
-      font-size: 14px;
-      padding: 14px 16px;
-      resize: vertical;
-      min-height: 90px;
-      margin-bottom: 14px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 13px;
+      padding: 11px 13px;
+      resize: none;
+      height: 68px;
       outline: none;
       transition: border-color 0.2s;
+      margin-bottom: 8px;
+      display: block;
     }
 
     textarea::placeholder {
-      color: var(--muted);
+      color: #475569;
     }
 
     textarea:focus {
-      border-color: var(--accent);
-    }
-
-    .send-btn {
-      background: var(--accent);
-      border: none;
-      border-radius: 8px;
-      color: #fff;
-      font-family: var(--mono);
-      font-size: 13px;
-      font-weight: 600;
-      padding: 12px 24px;
-      cursor: pointer;
-      transition: all 0.15s;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .send-btn:hover {
-      background: #6a5cf0;
-      transform: translateY(-1px);
-    }
-
-    .send-btn:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-      transform: none;
-    }
-
-    .email-row {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 14px;
-      align-items: center;
+      border-color: var(--cyan-border);
     }
 
     .email-input {
-      flex: 1;
-      background: var(--bg3);
+      width: 100%;
+      background: transparent;
       border: 1px solid var(--border);
       border-radius: 8px;
       color: var(--text);
-      font-family: var(--sans);
-      font-size: 14px;
-      padding: 12px 14px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 13px;
+      padding: 11px 13px;
       outline: none;
       transition: border-color 0.2s;
+      margin-bottom: 12px;
+      display: block;
     }
 
     .email-input::placeholder {
-      color: var(--muted);
+      color: #475569;
     }
 
     .email-input:focus {
-      border-color: var(--accent);
+      border-color: var(--cyan-border);
     }
 
-    .status-msg {
-      display: none;
-      font-family: var(--mono);
-      font-size: 13px;
-      margin-top: 12px;
-      padding: 10px 14px;
+    .send {
+      background: transparent;
+      border: 1px solid var(--border);
       border-radius: 8px;
-    }
-
-    .status-msg.success {
-      color: var(--green);
-      background: rgba(52, 211, 153, 0.08);
-      border: 1px solid rgba(52, 211, 153, 0.2);
-    }
-
-    .status-msg.error {
-      color: var(--red);
-      background: rgba(248, 113, 113, 0.08);
-      border: 1px solid rgba(248, 113, 113, 0.2);
-    }
-
-    /* FOOTER */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 32px 40px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      max-width: 720px;
-      margin: 0 auto;
-    }
-
-    .footer-logo {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-family: var(--mono);
-      font-size: 13px;
       color: var(--muted);
-      text-decoration: none;
-    }
-
-    .footer-logo img {
-      width: 20px;
-      height: 20px;
-      border-radius: 4px;
-    }
-
-    .footer-copy {
-      font-family: var(--mono);
+      font-family: 'JetBrains Mono', monospace;
       font-size: 12px;
-      color: var(--muted);
+      padding: 9px 18px;
+      cursor: pointer;
+      transition: all 0.15s;
+      float: right;
+    }
+
+    .send:hover {
+      border-color: var(--cyan-border);
+      color: var(--text);
+    }
+
+    .send:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    .msg {
+      clear: both;
+      margin-top: 10px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      display: none;
+      padding: 8px 12px;
+      border-radius: 6px;
+      text-align: left;
+    }
+
+    .msg.ok {
+      color: var(--green);
+      background: rgba(52, 211, 153, 0.07);
+      border: 1px solid rgba(52, 211, 153, 0.15);
+    }
+
+    .msg.err {
+      color: var(--red);
+      background: rgba(248, 113, 113, 0.07);
+      border: 1px solid rgba(248, 113, 113, 0.15);
     }
   </style>
 </head>
 
 <body>
+  <div class="card">
+    <div class="badge">// uninstalled</div>
 
-  <nav>
-    <a class="nav-logo" href="https://codera.click">
-      <img src="https://zaharenko.github.io/Codera/icon48.png" alt="CodeRa">
-      CodeRa
+    <h1>Back to retyping code<br>from tutorials <em>by hand.</em></h1>
+
+    <!-- HOOK -->
+    <div class="hook">
+      <div class="hook-row"><span class="x">✗</span> Pause video → squint → type → typo → rewind → repeat</div>
+      <div class="hook-row"><span class="ok">✓</span> With CodeRa: click → 3 sec → Ctrl+V. Video never stops.</div>
+    </div>
+
+    <a href="https://chromewebstore.google.com/detail/codera/achdkjdakdpnihgjhdgmodgamefkffid" class="btn-main">
+      ↩ Reinstall CodeRa — Free
     </a>
-    <div class="nav-links">
-      <a href="privacy.html">Privacy</a>
+    <p class="note">10 sec · no account · video keeps playing</p>
+
+    <hr class="divider">
+    <p style="text-align:left;color:var(--muted);font-size:14px;margin-bottom:12px;">I really want you to find CodeRa
+      useful. If the interface seems confusing, check out our website. There's a detailed guide there that will answer
+      all your questions. We're always happy to see you back!</p>
+    <a href="https://codera.click" class="btn-main">Visit Website</a>
+    <hr class="divider">
+
+
+    <div class="fb-title">// why did you leave? (helps us fix it)</div>
+    <div class="reasons">
+      <button class="rb" onclick="pick(this)">🐛 Didn't work</button>
+      <button class="rb" onclick="pick(this)">🐢 Too slow</button>
+      <button class="rb" onclick="pick(this)">💡 Missing feature</button>
+      <button class="rb" onclick="pick(this)">🔒 Privacy</button>
+      <button class="rb" onclick="pick(this)">🤷 Don't need it</button>
+      <button class="rb" onclick="pick(this)">🔄 Just testing</button>
     </div>
-  </nav>
-
-  <!-- HERO -->
-  <section class="hero">
-    <div class="tag">// uninstalled</div>
-    <p class="section-label"><span>//</span> that's okay</p>
-    <h1>Sorry to see you go.<br><em>Can we fix it?</em></h1>
-    <p>CodeRa is early access. If something didn't work, tell us and we'll fix it. Or reinstall and give it one more
-      try.</p>
-    <div class="hero-actions">
-      <a class="btn-primary" href="https://chromewebstore.google.com/detail/codera/achdkjdakdpnihgjhdgmodgamefkffid">
-        ↩ Reinstall CodeRa, Free
-      </a>
-      <a class="btn-ghost" href="#feedback">Leave feedback</a>
-    </div>
-    <div class="hero-note">No account needed · Works instantly · Free</div>
-  </section>
-
-  <div class="divider"></div>
-
-  <!-- WHAT YOU LOSE -->
-  <section class="section">
-    <p class="section-label"><span>//</span> what changes now</p>
-    <h2 style="font-size:26px;font-weight:700;color:#fff;margin-bottom:6px;">Back to the old way</h2>
-    <p style="color:var(--muted);font-size:15px;">These are the things that go away when CodeRa is gone.</p>
-
-    <div class="loss-grid">
-      <div class="loss-card">
-        <div class="loss-icon">⏸</div>
-        <div>
-          <h3>Pausing tutorials</h3>
-          <p>You'll pause the video every time code appears on screen.</p>
-        </div>
-      </div>
-      <div class="loss-card">
-        <div class="loss-icon">⌨️</div>
-        <div>
-          <h3>Retyping code</h3>
-          <p>Back to typing every line by hand, with typos.</p>
-        </div>
-      </div>
-      <div class="loss-card">
-        <div class="loss-icon">🐛</div>
-        <div>
-          <h3>Debugging typos</h3>
-          <p>Spending 10 min chasing a bug that was just a missed semicolon.</p>
-        </div>
-      </div>
-      <div class="loss-card">
-        <div class="loss-icon">🧠</div>
-        <div>
-          <h3>No AI explanations</h3>
-          <p>No more "Understand code", back to googling what each line does.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <div class="divider"></div>
-
-  <!-- BEFORE / AFTER -->
-  <section class="section">
-    <p class="section-label"><span>//</span> the difference</p>
-    <h2 style="font-size:26px;font-weight:700;color:#fff;margin-bottom:6px;">Every time code appears on screen</h2>
-
-    <div class="compare">
-      <div class="compare-row">
-        <div class="compare-col without">
-          <div class="compare-col-label">// WITHOUT CODERA</div>
-          <div class="step-list">
-            <div class="step-item">
-              <div class="step-num">1</div>Pause the video
-            </div>
-            <div class="step-item">
-              <div class="step-num">2</div>Squint at the code
-            </div>
-            <div class="step-item">
-              <div class="step-num">3</div>Type it slowly
-            </div>
-            <div class="step-item">
-              <div class="step-num">4</div>Make a typo
-            </div>
-            <div class="step-item">
-              <div class="step-num">5</div>Rewind & fix
-            </div>
-            <div class="step-item">
-              <div class="step-num">6</div>Repeat every snippet
-            </div>
-          </div>
-        </div>
-        <div class="compare-col with">
-          <div class="compare-col-label">// WITH CODERA</div>
-          <div class="step-list">
-            <div class="step-item">
-              <div class="step-num">1</div>Click CodeRa
-            </div>
-            <div class="step-item">
-              <div class="step-num">2</div>Wait 3 seconds
-            </div>
-            <div class="step-item">
-              <div class="step-num">3</div>Ctrl+V, done ✓
-            </div>
-            <div class="step-item" style="color:var(--muted);font-size:12px;margin-top:4px;">
-              <div class="step-num" style="opacity:0"></div>Video never stopped
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <div class="divider"></div>
-
-  <!-- FEEDBACK -->
-  <section class="section" id="feedback">
-    <p class="section-label"><span>//</span> help us improve</p>
-    <h2 style="font-size:26px;font-weight:700;color:#fff;margin-bottom:6px;">Why did you uninstall?</h2>
-
-    <div class="feedback-box">
-      <h3>One quick question</h3>
-      <p>Your answer goes straight to the developer. Takes 30 seconds.</p>
-
-      <div class="reason-grid" id="reasons">
-        <button type="button" class="reason-btn" onclick="selectReason(this)">🐛 It didn't work correctly</button>
-        <button type="button" class="reason-btn" onclick="selectReason(this)">🐢 Too slow / laggy</button>
-        <button type="button" class="reason-btn" onclick="selectReason(this)">🤷 I don't need it anymore</button>
-        <button type="button" class="reason-btn" onclick="selectReason(this)">💸 I wanted a different feature</button>
-        <button type="button" class="reason-btn" onclick="selectReason(this)">🔒 Privacy concerns</button>
-        <button type="button" class="reason-btn" onclick="selectReason(this)">🔄 Just testing extensions</button>
-      </div>
-
-      <textarea id="comment"
-        placeholder="Any details? (optional), what broke, what you expected, what would bring you back..."></textarea>
-
-      <div class="email-row">
-        <input class="email-input" type="email" id="user-email"
-          placeholder="Your email (optional, if you want a reply)">
-      </div>
-
-      <button class="send-btn" id="send-btn" onclick="sendFeedback()">
-        Send feedback →
-      </button>
-      <div class="status-msg" id="status-msg"></div>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="section" style="text-align:center;padding-top:0;">
-    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:48px 36px;">
-      <p class="section-label" style="text-align:center;"><span>//</span> one more chance</p>
-      <h2 style="font-size:28px;font-weight:700;color:#fff;margin-bottom:12px;">Give CodeRa another try</h2>
-      <p style="color:var(--muted);font-size:15px;max-width:380px;margin:0 auto 28px;">
-        It's free, takes 10 seconds to install, and might save you hours of retyping.
-      </p>
-      <a class="btn-primary" href="https://chromewebstore.google.com/detail/codera/achdkjdakdpnihgjhdgmodgamefkffid">
-        ↩ Reinstall CodeRa, Free
-      </a>
-      <div style="margin-top:14px;font-family:var(--mono);font-size:12px;color:var(--muted);">
-        Chrome 88+ · No account · No data stored
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <a class="footer-logo" href="https://zaharenko.github.io/Codera/codera.html">
-      <img src="https://zaharenko.github.io/Codera/icon48.png" alt="CodeRa">
-      CodeRa
-    </a>
-    <div class="footer-copy">© 2026 CodeRa · Uses Claude Vision AI</div>
-  </footer>
+    <textarea id="comment" placeholder="Any details... (optional)"></textarea>
+    <input class="email-input" type="email" id="email" placeholder="Your email — if you want a reply (optional)">
+    <button class="send" id="send" onclick="sendFb()">Send →</button>
+    <div class="msg" id="msg"></div>
+  </div>
 
   <script>
-    const FORM_ENDPOINT = 'https://formsubmit.co/ajax/anton.zaharenko@gmail.com';
-    let selectedReason = null;
-
-    function selectReason(btn) {
-      document.querySelectorAll('.reason-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      selectedReason = btn.textContent.trim();
+    let reason = null;
+    function pick(btn) {
+      document.querySelectorAll('.rb').forEach(b => b.classList.remove('on'));
+      btn.classList.add('on');
+      reason = btn.textContent.trim();
     }
-
-    async function sendFeedback() {
+    async function sendFb() {
       const comment = document.getElementById('comment').value.trim();
-      const email = document.getElementById('user-email').value.trim();
-      const btn = document.getElementById('send-btn');
-      const status = document.getElementById('status-msg');
-
-      if (!selectedReason && !comment) {
-        status.className = 'status-msg error';
-        status.style.display = 'block';
-        status.textContent = '// please select a reason or write a comment';
-        return;
+      const email = document.getElementById('email').value.trim();
+      const btn = document.getElementById('send');
+      const msg = document.getElementById('msg');
+      if (!reason && !comment) {
+        msg.className = 'msg err'; msg.style.display = 'block';
+        msg.textContent = '// pick a reason or write something'; return;
       }
-
-      btn.disabled = true;
-      btn.textContent = '// sending...';
-      status.style.display = 'none';
-
+      btn.disabled = true; btn.textContent = '...';
       try {
-        const res = await fetch(FORM_ENDPOINT, {
+        const res = await fetch('https://formsubmit.co/ajax/anton.zaharenko@gmail.com', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
           body: JSON.stringify({
             email: email || 'noreply@codera.click',
             _subject: 'CodeRa Uninstall Feedback',
-            _template: 'table',
-            reason: selectedReason || '(not selected)',
-            comment: comment || '(no comment)',
-            user_email: email || '(not provided)'
+            reason: reason || '—',
+            comment: comment || '—',
+            user_email: email || '—'
           })
         });
         const data = await res.json();
-
         if (res.ok && data.success) {
+          msg.className = 'msg ok'; msg.style.display = 'block';
+          msg.textContent = '// sent — thank you ✓';
           btn.style.display = 'none';
-          status.className = 'status-msg success';
-          status.style.display = 'block';
-          status.textContent = '// thank you, feedback sent. this helps a lot ✓';
-          document.getElementById('comment').value = '';
-          document.getElementById('user-email').value = '';
-          document.querySelectorAll('.reason-btn').forEach(b => b.classList.remove('active'));
-          selectedReason = null;
-        } else {
-          throw new Error(data.message || 'Unknown error');
-        }
-      } catch (err) {
-        btn.disabled = false;
-        btn.textContent = 'Send feedback →';
-        status.className = 'status-msg error';
-        status.style.display = 'block';
-        status.textContent = '// failed to send, please try again';
+        } else throw new Error();
+      } catch {
+        btn.disabled = false; btn.textContent = 'Send →';
+        msg.className = 'msg err'; msg.style.display = 'block';
+        msg.textContent = '// failed, try again';
       }
     }
   </script>
-
 </body>
 
 </html>
