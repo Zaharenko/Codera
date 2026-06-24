@@ -5,8 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description"
-    content="CodeRa — Chrome extension. Extract code from YouTube, Udemy, Coursera in one click. No retyping. Powered by Claude Vision AI.">
-  <title>CodeRa — Stop retyping code from tutorials</title>
+    content="CodeRa, Chrome extension. Extract code from YouTube, Udemy, Coursera in one click. No retyping. Powered by Claude Vision AI.">
+  <title>CodeRa, Stop retyping code from tutorials</title>
   <link rel="icon" href="./icon48.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link
@@ -422,7 +422,7 @@
       align-items: center;
       flex-wrap: wrap;
       gap: 0;
-      max-width: 800px;
+      max-width: 875px;
       margin: 0 auto;
     }
 
@@ -942,7 +942,7 @@
       CodeRa
     </a>
     <a href="https://chromewebstore.google.com/detail/codera/achdkjdakdpnihgjhdgmodgamefkffid" class="nav-install">Add
-      to Chrome — Free</a>
+      to Chrome, Free</a>
   </nav>
 
   <!-- ═══════ HERO ═══════ -->
@@ -966,7 +966,7 @@
           <circle cx="12" cy="12" r="10" />
           <circle cx="12" cy="12" r="4" />
         </svg>
-        Add to Chrome — Free
+        Add to Chrome, Free
       </a>
       <a href="#how" class="btn-ghost">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -1025,7 +1025,7 @@
         overflow: hidden;
       }
 
-      /* play indicator — video is RUNNING */
+      /* play indicator, video is RUNNING */
       .vid-playing {
         position: absolute;
         top: 12px;
@@ -1055,7 +1055,7 @@
         right: 12px;
       }
 
-      /* selection box — appears in step 2 */
+      /* selection box, appears in step 2 */
       .anim-sel {
         position: absolute;
         top: 52px;
@@ -1122,7 +1122,7 @@
         animation: spin .7s linear infinite;
       }
 
-      /* right panel — popup */
+      /* right panel, popup */
       .popup-side {
         background: #161d28;
         border-left: 1px solid var(--border);
@@ -1348,7 +1348,7 @@
               <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                 <polyline points="20 6 9 17 4 12" />
               </svg>
-              Copied to clipboard — Ctrl+V to paste
+              Copied to clipboard, Ctrl+V to paste
             </div>
           </div>
           <div class="step-label" id="stepLabel">step 1 of 3</div>
@@ -1418,7 +1418,7 @@
           if (el) el.textContent = min + ':' + String(sec).padStart(2, '0') + ' / 18:42';
         }, 1000);
 
-        // Animation sequence — loops every 8s
+        // Animation sequence, loops every 8s
         function runSequence() {
           const sel = document.getElementById('animSel');
           const toast = document.getElementById('animToast');
@@ -1442,13 +1442,13 @@
             document.getElementById('videoIconSvg').setAttribute('stroke', '#22d3ee');
           }, 800);
 
-          // Step 2: selection box appears (2.5s) — video still playing
+          // Step 2: selection box appears (2.5s), video still playing
           setTimeout(() => {
-            stepLabel.textContent = '② capturing frame — video keeps playing ▶';
+            stepLabel.textContent = '② capturing frame, video keeps playing ▶';
             sel.classList.add('show');
           }, 2500);
 
-          // Step 3: toast — processing (3.5s)
+          // Step 3: toast, processing (3.5s)
           setTimeout(() => {
             stepLabel.textContent = '③ CodeRa is reading...';
             toast.classList.add('show');
@@ -1480,7 +1480,7 @@
 
   <!-- ═══════ PAIN STRIP ═══════ -->
   <div class="pain-strip">
-    <h2>// the old way — every snippet, every tutorial</h2>
+    <h2>// the old way, every snippet, every tutorial</h2>
     <div class="pain-steps">
       <div class="pain-step"><span class="bad">⏸ Pause video</span></div>
       <div class="pain-arrow">→</div>
@@ -1502,7 +1502,7 @@
   <!-- STATS -->
   <div class="stats">
     <div class="stat">
-      <div class="stat-n">3–5s</div>
+      <div class="stat-n">3 to 5s</div>
       <div class="stat-l">Extraction time</div>
     </div>
     <div class="stat">
@@ -1527,7 +1527,7 @@
       <div class="step">
         <div class="step-num">1</div>
         <h3>Click CodeRa</h3>
-        <p>Open the extension on any page. Pick your mode — text, code, or understand.</p>
+        <p>Open the extension on any page. Pick your mode, text, code, or understand.</p>
       </div>
       <div class="step">
         <div class="step-num">2</div>
@@ -1552,14 +1552,14 @@
         <span class="mode-emoji">📄</span>
         <div class="mode-label">Default mode</div>
         <h3>Plain text</h3>
-        <p>Extracts everything visible — subtitles, slide text, captions, UI labels. Exactly as shown, nothing
+        <p>Extracts everything visible, subtitles, slide text, captions, UI labels. Exactly as shown, nothing
           rewritten.</p>
       </div>
       <div class="mode-card featured">
         <span class="mode-emoji">💻</span>
         <div class="mode-label">Extract as code</div>
         <h3>Code extraction</h3>
-        <p>CodeRa finds the code, preserves indentation, brackets, and comments. Open your editor and run it — no
+        <p>CodeRa finds the code, preserves indentation, brackets, and comments. Open your editor and run it, no
           cleanup.</p>
       </div>
       <div class="mode-card">
@@ -1580,17 +1580,17 @@
         <div class="quote">
           <p>"I was retyping code from Udemy for years. <strong>One click and I'm done.</strong> Wish I had this
             sooner."</p>
-          <div class="quote-author">— Frontend dev, Udemy learner</div>
+          <div class="quote-author">Frontend dev, Udemy learner</div>
         </div>
         <div class="quote">
-          <p>"The code extraction is surprisingly accurate — <strong>even preserves my tabs.</strong> Finally something
+          <p>"The code extraction is surprisingly accurate, <strong>even preserves my tabs.</strong> Finally something
             that actually works."</p>
-          <div class="quote-author">— Backend engineer, Python learner</div>
+          <div class="quote-author">Backend engineer, Python learner</div>
         </div>
         <div class="quote">
-          <p>"The Understand mode is what sold me. <strong>I don't just copy anymore</strong> — I get what the snippet
+          <p>"The Understand mode is what sold me. <strong>I don't just copy anymore</strong>, I get what the snippet
             does before I paste it."</p>
-          <div class="quote-author">— CS student, self-taught dev</div>
+          <div class="quote-author">CS student, self-taught dev</div>
         </div>
       </div>
     </div>
@@ -1612,7 +1612,7 @@
         <tr>
           <td class="tool">Apple Live Text / Google Lens</td>
           <td class="bad">Destroys indentation, confuses { } => ;</td>
-          <td class="good">Understands syntax — preserves formatting</td>
+          <td class="good">Understands syntax, preserves formatting</td>
         </tr>
         <tr>
           <td class="tool">ChatGPT / Claude.ai</td>
@@ -1635,29 +1635,29 @@
     <div class="faq-list">
       <details class="faq">
         <summary>Is it really free?</summary>
-        <div class="faq-body">Yes — completely free during early access. All features unlocked. No account, no credit
+        <div class="faq-body">Yes, completely free during early access. All features unlocked. No account, no credit
           card.</div>
       </details>
       <details class="faq">
         <summary>Is it safe to use at work?</summary>
-        <div class="faq-body">Yes. Screenshots are processed and immediately discarded — nothing stored on any server.
+        <div class="faq-body">Yes. Screenshots are processed and immediately discarded, nothing stored on any server.
           Same privacy as typing into Claude directly. Safe for proprietary code.</div>
       </details>
       <details class="faq">
         <summary>Does it work on YouTube and Udemy?</summary>
-        <div class="faq-body">Yes. Click Capture Video Frame on any course site — grabs the current frame while the
+        <div class="faq-body">Yes. Click Capture Video Frame on any course site, grabs the current frame while the
           video keeps playing. Works on YouTube, Udemy, Coursera, Skillshare, and any embedded player.</div>
       </details>
       <details class="faq">
         <summary>What's the difference between the three modes?</summary>
-        <div class="faq-body">Plain text — extracts everything as-is (subtitles, slides). Extract as code — IDE-ready
-          formatted source. Understand code — CodeRa explains the logic and shows expected output, built for learning.
+        <div class="faq-body">Plain text, extracts everything as-is (subtitles, slides). Extract as code, IDE-ready
+          formatted source. Understand code, CodeRa explains the logic and shows expected output, built for learning.
         </div>
       </details>
       <details class="faq">
         <summary>Who built CodeRa?</summary>
         <div class="faq-body">Built by <a href="https://www.linkedin.com/in/anton-zaharenko/" target="_blank"
-            rel="noopener" style="color:var(--cyan);">Anton Zakharenka</a> — a developer who got tired of retyping code
+            rel="noopener" style="color:var(--cyan);">Anton Zakharenka</a>, a developer who got tired of retyping code
           from tutorials. Not developed by Anthropic.</div>
       </details>
     </div>
@@ -1666,7 +1666,7 @@
   <!-- ═══════ WAITLIST ═══════ -->
   <div class="waitlist-section" id="early-access">
     <h2>Stay in the loop</h2>
-    <p class="waitlist-sub">Early access updates — no spam, one email.</p>
+    <p class="waitlist-sub">Be first to know when paid plans launch, early members get special pricing.</p>
     <form class="waitlist-form" id="wf">
       <input type="email" id="we" placeholder="your@email.com" required autocomplete="email">
       <input type="text" name="_honey" style="display:none" tabindex="-1">
@@ -1679,8 +1679,9 @@
   <div class="final-cta" id="install">
     <h2>Stop retyping.<br><span style="color:var(--cyan)">Start extracting.</span></h2>
     <p>Every developer rewatches tutorials to retype code. You don't have to.</p>
-    <a href="#" class="btn-main" style="font-size:16px;padding:16px 32px;">
-      Add to Chrome — It's Free
+    <a href="https://chromewebstore.google.com/detail/codera/achdkjdakdpnihgjhdgmodgamefkffid" class="btn-main"
+      style="font-size:16px;padding:16px 32px;">
+      Add to Chrome, It's Free
     </a>
     <p class="final-note">Load unpacked from the files/ folder · Chrome 88+ · No account needed</p>
   </div>
@@ -1696,8 +1697,12 @@
       <a href="#modes">Modes</a>
       <a href="https://www.linkedin.com/in/anton-zaharenko/" target="_blank" rel="noopener">Anton Zakharenka</a>
     </div>
-    <span>© ${new Date().getFullYear()} CodeRa</span>
+    <span>© <span id="year"></span> CodeRa</span>
   </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 
   <script>
     const FORM_ENDPOINT = 'https://formsubmit.co/ajax/anton.zaharenko@gmail.com';
@@ -1720,7 +1725,7 @@
           headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
           body: JSON.stringify({
             email,
-            _subject: 'CodeRa waitlist — new signup',
+            _subject: 'CodeRa waitlist, new signup',
             _template: 'table',
             message: 'New signup: ' + email
           })
