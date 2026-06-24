@@ -1,28 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="CodeRa — Chrome extension. Extract code from YouTube, Udemy, Coursera in one click. No retyping. Powered by Claude Vision AI.">
+  <meta name="description"
+    content="CodeRa — Chrome extension. Extract code from YouTube, Udemy, Coursera in one click. No retyping. Powered by Claude Vision AI.">
   <title>CodeRa — Stop retyping code from tutorials</title>
   <link rel="icon" href="./icon48.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
   <style>
     :root {
       --cyan: #22d3ee;
-      --cyan-dim: rgba(34,211,238,0.12);
-      --cyan-border: rgba(34,211,238,0.28);
+      --cyan-dim: rgba(34, 211, 238, 0.12);
+      --cyan-border: rgba(34, 211, 238, 0.28);
       --bg: #0b0f14;
       --surface: #141b24;
-      --border: rgba(255,255,255,0.08);
+      --border: rgba(255, 255, 255, 0.08);
       --text: #f1f5f9;
       --muted: #94a3b8;
       --green: #34d399;
     }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       background: var(--bg);
@@ -33,21 +44,35 @@
 
     /* NAV */
     nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; align-items: center; justify-content: space-between;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       padding: 14px 32px;
-      background: rgba(11,15,20,0.85);
+      background: rgba(11, 15, 20, 0.85);
       backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--border);
     }
 
     .logo {
-      display: flex; align-items: center; gap: 8px;
-      font-weight: 700; font-size: 17px;
-      text-decoration: none; color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
+      font-size: 17px;
+      text-decoration: none;
+      color: var(--text);
     }
 
-    .logo img { width: 28px; height: 28px; border-radius: 6px; }
+    .logo img {
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+    }
 
     .nav-install {
       background: var(--cyan);
@@ -59,13 +84,18 @@
       font-size: 14px;
       transition: opacity 0.2s;
     }
-    .nav-install:hover { opacity: 0.88; }
+
+    .nav-install:hover {
+      opacity: 0.88;
+    }
 
     /* HERO */
     .hero {
       min-height: 100vh;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       text-align: center;
       padding: 100px 24px 60px;
       position: relative;
@@ -73,15 +103,18 @@
 
     .hero::before {
       content: '';
-      position: fixed; inset: 0;
+      position: fixed;
+      inset: 0;
       background:
-        radial-gradient(ellipse 70% 50% at 50% 0%, rgba(34,211,238,0.07), transparent),
-        radial-gradient(ellipse 40% 30% at 90% 70%, rgba(99,102,241,0.04), transparent);
+        radial-gradient(ellipse 70% 50% at 50% 0%, rgba(34, 211, 238, 0.07), transparent),
+        radial-gradient(ellipse 40% 30% at 90% 70%, rgba(99, 102, 241, 0.04), transparent);
       pointer-events: none;
     }
 
     .badge {
-      display: inline-flex; align-items: center; gap: 7px;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
       background: var(--cyan-dim);
       border: 1px solid var(--cyan-border);
       color: var(--cyan);
@@ -93,12 +126,24 @@
     }
 
     .badge-dot {
-      width: 6px; height: 6px; border-radius: 50%;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
       background: var(--cyan);
       animation: pulse 2s infinite;
     }
 
-    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.3} }
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 1
+      }
+
+      50% {
+        opacity: .3
+      }
+    }
 
     h1 {
       font-size: clamp(36px, 6vw, 64px);
@@ -124,17 +169,23 @@
       position: relative;
     }
 
-    .sub strong { color: var(--text); }
+    .sub strong {
+      color: var(--text);
+    }
 
     .cta-row {
-      display: flex; gap: 12px; flex-wrap: wrap;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
       justify-content: center;
       margin-bottom: 20px;
       position: relative;
     }
 
     .btn-main {
-      display: inline-flex; align-items: center; gap: 8px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
       background: var(--cyan);
       color: #0b0f14;
       padding: 14px 26px;
@@ -142,13 +193,19 @@
       text-decoration: none;
       font-weight: 700;
       font-size: 15px;
-      box-shadow: 0 0 28px rgba(34,211,238,0.3);
+      box-shadow: 0 0 28px rgba(34, 211, 238, 0.3);
       transition: transform 0.2s, box-shadow 0.2s;
     }
-    .btn-main:hover { transform: translateY(-1px); box-shadow: 0 0 40px rgba(34,211,238,0.4); }
+
+    .btn-main:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 0 40px rgba(34, 211, 238, 0.4);
+    }
 
     .btn-ghost {
-      display: inline-flex; align-items: center; gap: 8px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
       border: 1px solid var(--border);
       color: var(--text);
       padding: 14px 24px;
@@ -158,7 +215,10 @@
       font-size: 15px;
       transition: background 0.2s;
     }
-    .btn-ghost:hover { background: rgba(255,255,255,0.04); }
+
+    .btn-ghost:hover {
+      background: rgba(255, 255, 255, 0.04);
+    }
 
     .hero-note {
       font-size: 13px;
@@ -174,23 +234,42 @@
       border-radius: 16px;
       overflow: hidden;
       border: 1px solid var(--border);
-      box-shadow: 0 32px 80px rgba(0,0,0,0.5);
+      box-shadow: 0 32px 80px rgba(0, 0, 0, 0.5);
     }
 
     .demo-bar {
-      display: flex; align-items: center; gap: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
       padding: 10px 14px;
       background: #1a2330;
       border-bottom: 1px solid var(--border);
     }
 
-    .dot { width: 10px; height: 10px; border-radius: 50%; }
-    .dr { background: #ef4444; } .dy { background: #f59e0b; } .dg { background: #22c55e; }
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+
+    .dr {
+      background: #ef4444;
+    }
+
+    .dy {
+      background: #f59e0b;
+    }
+
+    .dg {
+      background: #22c55e;
+    }
 
     .demo-url {
-      flex: 1; text-align: center;
+      flex: 1;
+      text-align: center;
       font-family: 'JetBrains Mono', monospace;
-      font-size: 11px; color: var(--muted);
+      font-size: 11px;
+      color: var(--muted);
     }
 
     .demo-body {
@@ -204,19 +283,35 @@
       min-height: 260px;
     }
 
-    .kw { color: #ff7b72; }
-    .fn { color: #79c0ff; }
-    .st { color: #a5d6ff; }
-    .cm { color: #8b949e; }
-    .num { color: #f0883e; }
+    .kw {
+      color: #ff7b72;
+    }
+
+    .fn {
+      color: #79c0ff;
+    }
+
+    .st {
+      color: #a5d6ff;
+    }
+
+    .cm {
+      color: #8b949e;
+    }
+
+    .num {
+      color: #f0883e;
+    }
 
     /* selection highlight */
     .sel-box {
       position: absolute;
-      top: 20px; left: 24px;
-      right: 24px; bottom: 80px;
+      top: 20px;
+      left: 24px;
+      right: 24px;
+      bottom: 80px;
       border: 2px solid var(--cyan);
-      background: rgba(34,211,238,0.06);
+      background: rgba(34, 211, 238, 0.06);
       border-radius: 6px;
       pointer-events: none;
     }
@@ -224,49 +319,65 @@
     /* processing */
     .toast {
       position: absolute;
-      top: 16px; right: 16px;
-      display: flex; align-items: center; gap: 10px;
+      top: 16px;
+      right: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
       background: #1a2330;
       border: 1px solid var(--border);
       border-radius: 10px;
       padding: 10px 14px;
-      font-size: 12px; font-weight: 500;
+      font-size: 12px;
+      font-weight: 500;
     }
 
     .spinner {
-      width: 14px; height: 14px;
-      border: 2px solid rgba(34,211,238,0.2);
+      width: 14px;
+      height: 14px;
+      border: 2px solid rgba(34, 211, 238, 0.2);
       border-top-color: var(--cyan);
       border-radius: 50%;
       animation: spin .7s linear infinite;
     }
-    @keyframes spin { to { transform: rotate(360deg); } }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
 
     /* result panel */
     .result {
       position: absolute;
-      bottom: 16px; right: 16px;
+      bottom: 16px;
+      right: 16px;
       width: 320px;
       background: #161b27;
-      border: 1px solid rgba(34,211,238,0.2);
+      border: 1px solid rgba(34, 211, 238, 0.2);
       border-radius: 12px;
       overflow: hidden;
-      box-shadow: 0 16px 48px rgba(0,0,0,0.5);
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5);
     }
 
     .result-head {
-      display: flex; align-items: center; justify-content: space-between;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       padding: 9px 12px;
       background: #1e2a3a;
       border-bottom: 1px solid var(--border);
-      font-size: 11px; font-weight: 600;
+      font-size: 11px;
+      font-weight: 600;
     }
 
     .result-tag {
-      font-size: 10px; color: var(--cyan);
+      font-size: 10px;
+      color: var(--cyan);
       background: var(--cyan-dim);
       border: 1px solid var(--cyan-border);
-      padding: 1px 7px; border-radius: 99px;
+      padding: 1px 7px;
+      border-radius: 99px;
       margin-left: 5px;
     }
 
@@ -280,8 +391,11 @@
     .result-foot {
       padding: 8px 12px;
       border-top: 1px solid var(--border);
-      font-size: 10px; color: var(--green);
-      display: flex; align-items: center; gap: 5px;
+      font-size: 10px;
+      color: var(--green);
+      display: flex;
+      align-items: center;
+      gap: 5px;
     }
 
     /* PAIN STRIP */
@@ -313,20 +427,30 @@
     }
 
     .pain-step {
-      display: flex; align-items: center;
+      display: flex;
+      align-items: center;
       font-size: 14px;
       color: var(--muted);
     }
 
     .pain-step span {
-      background: rgba(255,255,255,0.04);
+      background: rgba(255, 255, 255, 0.04);
       border: 1px solid var(--border);
       padding: 8px 14px;
       border-radius: 8px;
     }
 
-    .pain-step span.bad { color: #f87171; border-color: rgba(248,113,113,0.2); background: rgba(248,113,113,0.04); }
-    .pain-arrow { color: #334155; padding: 0 8px; font-size: 18px; }
+    .pain-step span.bad {
+      color: #f87171;
+      border-color: rgba(248, 113, 113, 0.2);
+      background: rgba(248, 113, 113, 0.04);
+    }
+
+    .pain-arrow {
+      color: #334155;
+      padding: 0 8px;
+      font-size: 18px;
+    }
 
     .pain-fix {
       margin-top: 24px;
@@ -334,7 +458,9 @@
       font-weight: 600;
     }
 
-    .pain-fix .good { color: var(--cyan); }
+    .pain-fix .good {
+      color: var(--cyan);
+    }
 
     /* HOW */
     .how-section {
@@ -346,12 +472,19 @@
 
     .section-tag {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 11px; color: var(--cyan);
-      text-transform: uppercase; letter-spacing: 1px;
+      font-size: 11px;
+      color: var(--cyan);
+      text-transform: uppercase;
+      letter-spacing: 1px;
       margin-bottom: 12px;
     }
 
-    h2 { font-size: clamp(26px, 4vw, 38px); font-weight: 700; letter-spacing: -1px; margin-bottom: 48px; }
+    h2 {
+      font-size: clamp(26px, 4vw, 38px);
+      font-weight: 700;
+      letter-spacing: -1px;
+      margin-bottom: 48px;
+    }
 
     .steps {
       display: grid;
@@ -363,28 +496,46 @@
     .steps::before {
       content: '';
       position: absolute;
-      top: 28px; left: calc(100%/6);
+      top: 28px;
+      left: calc(100%/6);
       right: calc(100%/6);
       height: 1px;
       background: linear-gradient(90deg, var(--cyan), #6366f1);
     }
 
-    .step { padding: 0 20px; position: relative; }
+    .step {
+      padding: 0 20px;
+      position: relative;
+    }
 
     .step-num {
-      width: 56px; height: 56px;
+      width: 56px;
+      height: 56px;
       border-radius: 50%;
       background: var(--surface);
       border: 2px solid var(--cyan);
       color: var(--cyan);
-      font-size: 20px; font-weight: 700;
-      display: flex; align-items: center; justify-content: center;
+      font-size: 20px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       margin: 0 auto 20px;
-      position: relative; z-index: 1;
+      position: relative;
+      z-index: 1;
     }
 
-    .step h3 { font-size: 15px; font-weight: 600; margin-bottom: 8px; }
-    .step p { font-size: 13px; color: var(--muted); line-height: 1.55; }
+    .step h3 {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .step p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.55;
+    }
 
     /* MODES */
     .modes-section {
@@ -409,13 +560,40 @@
       transition: border-color 0.2s;
     }
 
-    .mode-card:hover { border-color: rgba(34,211,238,0.25); }
-    .mode-card.featured { border-color: var(--cyan-border); }
+    .mode-card:hover {
+      border-color: rgba(34, 211, 238, 0.25);
+    }
 
-    .mode-emoji { font-size: 28px; margin-bottom: 12px; display: block; }
-    .mode-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--cyan); text-transform: uppercase; letter-spacing: .5px; margin-bottom: 8px; }
-    .mode-card h3 { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
-    .mode-card p { font-size: 13px; color: var(--muted); line-height: 1.55; }
+    .mode-card.featured {
+      border-color: var(--cyan-border);
+    }
+
+    .mode-emoji {
+      font-size: 28px;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .mode-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      color: var(--cyan);
+      text-transform: uppercase;
+      letter-spacing: .5px;
+      margin-bottom: 8px;
+    }
+
+    .mode-card h3 {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .mode-card p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.55;
+    }
 
     /* SOCIAL PROOF */
     .proof-section {
@@ -426,11 +604,14 @@
     }
 
     .proof-inner {
-      max-width: 900px; margin: 0 auto;
+      max-width: 900px;
+      margin: 0 auto;
       text-align: center;
     }
 
-    .proof-inner .section-tag { margin-bottom: 32px; }
+    .proof-inner .section-tag {
+      margin-bottom: 32px;
+    }
 
     .quotes {
       display: grid;
@@ -447,28 +628,49 @@
     }
 
     .quote p {
-      font-size: 14px; color: var(--muted);
-      line-height: 1.55; font-style: italic;
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.55;
+      font-style: italic;
       margin-bottom: 14px;
     }
 
-    .quote p strong { color: var(--text); font-style: normal; }
+    .quote p strong {
+      color: var(--text);
+      font-style: normal;
+    }
 
     .quote-author {
-      font-size: 12px; color: #475569;
+      font-size: 12px;
+      color: #475569;
       font-family: 'JetBrains Mono', monospace;
     }
 
     /* STATS */
     .stats {
-      display: flex; justify-content: center; flex-wrap: wrap;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
       gap: 40px 64px;
       padding: 52px 24px;
     }
 
-    .stat { text-align: center; }
-    .stat-n { font-size: 34px; font-weight: 700; color: var(--cyan); letter-spacing: -1px; }
-    .stat-l { font-size: 13px; color: var(--muted); margin-top: 4px; }
+    .stat {
+      text-align: center;
+    }
+
+    .stat-n {
+      font-size: 34px;
+      font-weight: 700;
+      color: var(--cyan);
+      letter-spacing: -1px;
+    }
+
+    .stat-l {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 4px;
+    }
 
     /* COMPARE */
     .compare-section {
@@ -478,24 +680,46 @@
     }
 
     .compare-table {
-      width: 100%; border-collapse: collapse;
+      width: 100%;
+      border-collapse: collapse;
       font-size: 13px;
       border: 1px solid var(--border);
       border-radius: 12px;
       overflow: hidden;
     }
 
-    .compare-table th, .compare-table td {
+    .compare-table th,
+    .compare-table td {
       padding: 13px 16px;
       text-align: left;
       border-bottom: 1px solid var(--border);
     }
 
-    .compare-table th { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .5px; background: var(--surface); font-weight: 600; }
-    .compare-table tr:last-child td { border-bottom: none; }
-    .compare-table .tool { font-weight: 600; }
-    .compare-table .bad { color: #f87171; }
-    .compare-table .good { color: var(--cyan); font-weight: 500; }
+    .compare-table th {
+      font-size: 11px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .5px;
+      background: var(--surface);
+      font-weight: 600;
+    }
+
+    .compare-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .compare-table .tool {
+      font-weight: 600;
+    }
+
+    .compare-table .bad {
+      color: #f87171;
+    }
+
+    .compare-table .good {
+      color: var(--cyan);
+      font-weight: 500;
+    }
 
     /* FAQ */
     .faq-section {
@@ -504,7 +728,11 @@
       margin: 0 auto;
     }
 
-    .faq-list { display: flex; flex-direction: column; gap: 10px; }
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
 
     .faq {
       background: var(--surface);
@@ -515,25 +743,36 @@
 
     .faq summary {
       padding: 18px 20px;
-      font-size: 15px; font-weight: 600;
+      font-size: 15px;
+      font-weight: 600;
       cursor: pointer;
       list-style: none;
-      display: flex; align-items: center; justify-content: space-between;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
 
-    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::-webkit-details-marker {
+      display: none;
+    }
 
     .faq summary::after {
       content: '+';
-      font-size: 20px; color: var(--cyan);
-      flex-shrink: 0; margin-left: 12px;
+      font-size: 20px;
+      color: var(--cyan);
+      flex-shrink: 0;
+      margin-left: 12px;
     }
 
-    .faq[open] summary::after { content: '−'; }
+    .faq[open] summary::after {
+      content: '−';
+    }
 
     .faq-body {
       padding: 0 20px 18px;
-      font-size: 14px; color: var(--muted); line-height: 1.6;
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.6;
       border-top: 1px solid var(--border);
       padding-top: 14px;
     }
@@ -542,47 +781,82 @@
     .waitlist-section {
       text-align: center;
       padding: 80px 24px;
-      background: rgba(34,211,238,0.03);
+      background: rgba(34, 211, 238, 0.03);
       border-top: 1px solid var(--border);
     }
 
-    .waitlist-section h2 { margin-bottom: 10px; }
-    .waitlist-sub { color: var(--muted); font-size: 16px; margin-bottom: 32px; }
+    .waitlist-section h2 {
+      margin-bottom: 10px;
+    }
+
+    .waitlist-sub {
+      color: var(--muted);
+      font-size: 16px;
+      margin-bottom: 32px;
+    }
 
     .waitlist-form {
-      display: flex; gap: 10px;
-      max-width: 440px; margin: 0 auto;
-      flex-wrap: wrap; justify-content: center;
+      display: flex;
+      gap: 10px;
+      max-width: 440px;
+      margin: 0 auto;
+      flex-wrap: wrap;
+      justify-content: center;
     }
 
     .waitlist-form input {
-      flex: 1; min-width: 200px;
+      flex: 1;
+      min-width: 200px;
       padding: 13px 16px;
       border-radius: 10px;
       border: 1px solid var(--border);
       background: var(--surface);
       color: var(--text);
-      font-family: inherit; font-size: 15px;
+      font-family: inherit;
+      font-size: 15px;
       outline: none;
       transition: border-color 0.2s;
     }
 
-    .waitlist-form input:focus { border-color: var(--cyan-border); }
+    .waitlist-form input:focus {
+      border-color: var(--cyan-border);
+    }
 
     .waitlist-form button {
       padding: 13px 22px;
-      border-radius: 10px; border: none;
-      background: var(--cyan); color: #0b0f14;
-      font-family: inherit; font-size: 15px; font-weight: 600;
-      cursor: pointer; transition: opacity 0.2s;
+      border-radius: 10px;
+      border: none;
+      background: var(--cyan);
+      color: #0b0f14;
+      font-family: inherit;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: opacity 0.2s;
     }
 
-    .waitlist-form button:hover { opacity: 0.9; }
-    .waitlist-form button:disabled { opacity: 0.5; cursor: not-allowed; }
+    .waitlist-form button:hover {
+      opacity: 0.9;
+    }
 
-    .waitlist-msg { margin-top: 14px; font-size: 14px; min-height: 20px; }
-    .waitlist-msg.ok { color: var(--green); }
-    .waitlist-msg.err { color: #f87171; }
+    .waitlist-form button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .waitlist-msg {
+      margin-top: 14px;
+      font-size: 14px;
+      min-height: 20px;
+    }
+
+    .waitlist-msg.ok {
+      color: var(--green);
+    }
+
+    .waitlist-msg.err {
+      color: #f87171;
+    }
 
     /* FINAL CTA */
     .final-cta {
@@ -590,577 +864,885 @@
       padding: 80px 24px;
     }
 
-    .final-cta h2 { font-size: clamp(28px, 5vw, 48px); margin-bottom: 14px; }
-    .final-cta p { color: var(--muted); font-size: 17px; margin-bottom: 32px; }
-    .final-note { margin-top: 16px; font-size: 12px; color: #334155; }
+    .final-cta h2 {
+      font-size: clamp(28px, 5vw, 48px);
+      margin-bottom: 14px;
+    }
+
+    .final-cta p {
+      color: var(--muted);
+      font-size: 17px;
+      margin-bottom: 32px;
+    }
+
+    .final-note {
+      margin-top: 16px;
+      font-size: 12px;
+      color: #334155;
+    }
 
     /* FOOTER */
     footer {
       padding: 24px 32px;
       border-top: 1px solid var(--border);
-      display: flex; align-items: center; justify-content: space-between;
-      flex-wrap: wrap; gap: 12px;
-      color: var(--muted); font-size: 13px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      color: var(--muted);
+      font-size: 13px;
     }
 
-    footer a { color: var(--muted); text-decoration: none; }
-    footer a:hover { color: var(--text); }
-    .footer-links { display: flex; gap: 20px; }
+    footer a {
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: var(--text);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 20px;
+    }
 
     @media (max-width: 760px) {
-      .steps, .modes-grid, .quotes { grid-template-columns: 1fr; }
-      .steps::before { display: none; }
-      .pain-steps { flex-direction: column; gap: 4px; }
-      .pain-arrow { transform: rotate(90deg); }
+
+      .steps,
+      .modes-grid,
+      .quotes {
+        grid-template-columns: 1fr;
+      }
+
+      .steps::before {
+        display: none;
+      }
+
+      .pain-steps {
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      .pain-arrow {
+        transform: rotate(90deg);
+      }
     }
   </style>
   <meta name="google-site-verification" content="BtZnZ0cvx2iCDPxlkQtHi5rZ46-8qXbSSR_IZWLY9NY" />
 </head>
+
 <body>
 
-<!-- NAV -->
-<nav>
-  <a href="#" class="logo">
-    <img src="./icon48.png" alt="CodeRa">
-    CodeRa
-  </a>
-  <a href="#install" class="nav-install">Add to Chrome — Free</a>
-</nav>
-
-<!-- ═══════ HERO ═══════ -->
-<section class="hero">
-  <div class="badge">
-    <div class="badge-dot"></div>
-    by <a href="https://www.linkedin.com/in/anton-zaharenko/" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;margin-left:3px;">Anton Zakharenka</a>
-  </div>
-
-  <h1>Extract code from tutorials<br><em>without pausing the video</em></h1>
-
-  <p class="sub">
-    The video is playing. The code is on screen. One click —
-    <strong>it's in your clipboard in 3 seconds. Video never stops.</strong>
-  </p>
-
-  <div class="cta-row">
-    <a href="#install" class="btn-main">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/></svg>
-      Add to Chrome — Free
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="logo">
+      <img src="./icon48.png" alt="CodeRa">
+      CodeRa
     </a>
-    <a href="#how" class="btn-ghost">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-      See how it works
-    </a>
-  </div>
+    <a href="https://chromewebstore.google.com/detail/codera/achdkjdakdpnihgjhdgmodgamefkffid" class="nav-install">Add
+      to Chrome — Free</a>
+  </nav>
 
-  <p class="hero-note">▶ Video keeps playing · Works on YouTube · Udemy · Coursera · Skillshare</p>
-
-  <!-- ANIMATED DEMO -->
-  <style>
-    .demo-wrap { position: relative; width: min(860px,100%); margin-top: 56px; border-radius: 16px; overflow: hidden; border: 1px solid var(--border); box-shadow: 0 32px 80px rgba(0,0,0,0.5); }
-    .demo-bar { display:flex; align-items:center; gap:6px; padding:10px 14px; background:#1a2330; border-bottom:1px solid var(--border); }
-    .demo-url { flex:1; text-align:center; font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--muted); }
-
-    /* video player mock */
-    .video-mock { background:#0d1117; display:grid; grid-template-columns:1fr 300px; min-height:300px; }
-    .video-screen { position:relative; padding:28px 32px; font-family:'JetBrains Mono',monospace; font-size:12.5px; line-height:1.8; color:#8b949e; overflow:hidden; }
-
-    /* play indicator — video is RUNNING */
-    .vid-playing {
-      position:absolute; top:12px; left:12px;
-      display:flex; align-items:center; gap:6px;
-      font-size:10px; color:var(--green);
-      font-family:'JetBrains Mono',monospace;
-    }
-    .vid-dot { width:8px; height:8px; border-radius:50%; background:var(--green); animation:pulse 1.2s infinite; }
-    .vid-timer { font-size:10px; color:#475569; font-family:'JetBrains Mono',monospace; position:absolute; bottom:12px; right:12px; }
-
-    /* selection box — appears in step 2 */
-    .anim-sel {
-      position:absolute; top:52px; left:24px; right:24px; bottom:50px;
-      border:2px solid var(--cyan); background:rgba(34,211,238,0.07); border-radius:6px;
-      pointer-events:none;
-      opacity:0; transform:scale(0.97);
-      transition:opacity 0.3s, transform 0.3s;
-    }
-    .anim-sel.show { opacity:1; transform:scale(1); }
-
-    /* cursor */
-    .anim-cursor {
-      position:absolute; width:20px; height:20px;
-      background:white; border-radius:50%;
-      box-shadow:0 0 0 3px rgba(34,211,238,0.4), 0 2px 8px rgba(0,0,0,0.4);
-      pointer-events:none;
-      transition:top 0.5s cubic-bezier(.4,0,.2,1), left 0.5s cubic-bezier(.4,0,.2,1), opacity 0.3s;
-      opacity:0;
-    }
-
-    /* processing toast */
-    .anim-toast {
-      position:absolute; top:16px; right:16px;
-      display:flex; align-items:center; gap:8px;
-      background:#1a2330; border:1px solid var(--border); border-radius:10px;
-      padding:9px 13px; font-size:11px; font-weight:500;
-      opacity:0; transform:translateY(-6px);
-      transition:opacity 0.3s, transform 0.3s;
-    }
-    .anim-toast.show { opacity:1; transform:translateY(0); }
-    .anim-spinner { width:13px; height:13px; border:2px solid rgba(34,211,238,0.2); border-top-color:var(--cyan); border-radius:50%; animation:spin .7s linear infinite; }
-
-    /* right panel — popup */
-    .popup-side {
-      background:#161d28; border-left:1px solid var(--border);
-      display:flex; flex-direction:column;
-      font-size:12px;
-    }
-    .popup-side-head { padding:14px 16px; border-bottom:1px solid var(--border); display:flex; align-items:center; gap:8px; }
-    .popup-side-head img { width:28px; height:28px; border-radius:6px; }
-    .popup-side-head strong { font-size:13px; }
-    .popup-btns { padding:10px; display:flex; flex-direction:column; gap:7px; flex:1; }
-    .popup-btn-item {
-      display:flex; align-items:center; gap:10px;
-      padding:10px 12px; border-radius:9px;
-      border:1px solid var(--border); background:rgba(255,255,255,0.02);
-      cursor:default; transition:all 0.25s;
-    }
-    .popup-btn-item.active {
-      border-color:var(--cyan-border);
-      background:rgba(34,211,238,0.08);
-      box-shadow:0 0 12px rgba(34,211,238,0.12);
-    }
-    .pbi-icon { width:28px; height:28px; border-radius:7px; background:var(--surface); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
-    .popup-btn-item.active .pbi-icon { background:rgba(34,211,238,0.15); }
-    .pbi-title { font-size:12px; font-weight:600; }
-    .pbi-sub { font-size:10px; color:var(--muted); margin-top:1px; }
-
-    /* result panel slides up */
-    .anim-result {
-      position:absolute; bottom:16px; right:16px;
-      width:310px;
-      background:#161b27; border:1px solid rgba(34,211,238,0.25); border-radius:12px;
-      overflow:hidden; box-shadow:0 16px 48px rgba(0,0,0,0.5);
-      opacity:0; transform:translateY(20px);
-      transition:opacity 0.4s, transform 0.4s;
-    }
-    .anim-result.show { opacity:1; transform:translateY(0); }
-    .ar-head { display:flex; align-items:center; justify-content:space-between; padding:9px 12px; background:#1e2a3a; border-bottom:1px solid var(--border); font-size:11px; font-weight:600; }
-    .ar-tag { font-size:10px; color:var(--cyan); background:var(--cyan-dim); border:1px solid var(--cyan-border); padding:1px 7px; border-radius:99px; margin-left:5px; }
-    .ar-body { padding:12px; font-family:'JetBrains Mono',monospace; font-size:10px; line-height:1.6; color:#8b949e; }
-    .ar-foot { padding:8px 12px; border-top:1px solid var(--border); font-size:10px; color:var(--green); display:flex; align-items:center; gap:5px; }
-
-    /* step label */
-    .step-label {
-      position:absolute; bottom:16px; left:50%; transform:translateX(-50%);
-      font-family:'JetBrains Mono',monospace; font-size:10px;
-      color:var(--cyan); background:rgba(34,211,238,0.08);
-      border:1px solid var(--cyan-border); padding:4px 12px; border-radius:99px;
-      white-space:nowrap; pointer-events:none;
-      opacity:0; transition:opacity 0.3s;
-    }
-    .step-label.show { opacity:1; }
-
-    @keyframes spin { to{transform:rotate(360deg)} }
-  </style>
-
-  <div class="demo-wrap" id="animDemo">
-    <div class="demo-bar">
-      <div class="dot dr"></div><div class="dot dy"></div><div class="dot dg"></div>
-      <div class="demo-url" id="demoUrl">youtube.com/watch — React Hooks Tutorial</div>
+  <!-- ═══════ HERO ═══════ -->
+  <section class="hero">
+    <div class="badge">
+      <div class="badge-dot"></div>
+      by <a href="https://www.linkedin.com/in/anton-zaharenko/" target="_blank" rel="noopener"
+        style="color:inherit;text-decoration:none;margin-left:3px;">Anton Zakharenka</a>
     </div>
-    <div class="video-mock">
-      <!-- Left: video screen -->
-      <div class="video-screen" id="videoScreen">
-        <div class="vid-playing">
-          <div class="vid-dot"></div>
-          <span id="playLabel">▶ PLAYING</span>
-        </div>
-        <br><br>
-        <span style="color:#8b949e">// Tutorial: custom React hook</span><br>
-        <span style="color:#ff7b72">function</span> <span style="color:#79c0ff">useCounter</span>(initial = <span style="color:#f0883e">0</span>) {<br>
-        &nbsp;&nbsp;<span style="color:#ff7b72">const</span> [count, setCount] = <span style="color:#79c0ff">useState</span>(initial);<br><br>
-        &nbsp;&nbsp;<span style="color:#ff7b72">return</span> {<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;count,<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;increment: () =&gt; setCount(c =&gt; c + <span style="color:#f0883e">1</span>),<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;reset: () =&gt; setCount(initial)<br>
-        &nbsp;&nbsp;};<br>
+
+    <h1>Extract code from tutorials<br><em>without pausing the video</em></h1>
+
+    <p class="sub">
+      The video is playing. The code is on screen. One click and
+      <strong>it's in your clipboard in 3 seconds. Video never stops.</strong>
+    </p>
+
+    <div class="cta-row">
+      <a href="https://chromewebstore.google.com/detail/codera/achdkjdakdpnihgjhdgmodgamefkffid" class="btn-main">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10" />
+          <circle cx="12" cy="12" r="4" />
+        </svg>
+        Add to Chrome — Free
+      </a>
+      <a href="#how" class="btn-ghost">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polygon points="5 3 19 12 5 21 5 3" />
+        </svg>
+        Check how it works
+      </a>
+    </div>
+
+    <p class="hero-note">▶ Video keeps playing · Works on YouTube · Udemy · Coursera · Skillshare</p>
+
+    <!-- ANIMATED DEMO -->
+    <style>
+      .demo-wrap {
+        position: relative;
+        width: min(860px, 100%);
+        margin-top: 56px;
+        border-radius: 16px;
+        overflow: hidden;
+        border: 1px solid var(--border);
+        box-shadow: 0 32px 80px rgba(0, 0, 0, 0.5);
+      }
+
+      .demo-bar {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 10px 14px;
+        background: #1a2330;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .demo-url {
+        flex: 1;
+        text-align: center;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 11px;
+        color: var(--muted);
+      }
+
+      /* video player mock */
+      .video-mock {
+        background: #0d1117;
+        display: grid;
+        grid-template-columns: 1fr 300px;
+        min-height: 300px;
+      }
+
+      .video-screen {
+        position: relative;
+        padding: 28px 32px;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 12.5px;
+        line-height: 1.8;
+        color: #8b949e;
+        overflow: hidden;
+      }
+
+      /* play indicator — video is RUNNING */
+      .vid-playing {
+        position: absolute;
+        top: 12px;
+        left: 12px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 10px;
+        color: var(--green);
+        font-family: 'JetBrains Mono', monospace;
+      }
+
+      .vid-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--green);
+        animation: pulse 1.2s infinite;
+      }
+
+      .vid-timer {
+        font-size: 10px;
+        color: #475569;
+        font-family: 'JetBrains Mono', monospace;
+        position: absolute;
+        bottom: 12px;
+        right: 12px;
+      }
+
+      /* selection box — appears in step 2 */
+      .anim-sel {
+        position: absolute;
+        top: 52px;
+        left: 24px;
+        right: 24px;
+        bottom: 50px;
+        border: 2px solid var(--cyan);
+        background: rgba(34, 211, 238, 0.07);
+        border-radius: 6px;
+        pointer-events: none;
+        opacity: 0;
+        transform: scale(0.97);
+        transition: opacity 0.3s, transform 0.3s;
+      }
+
+      .anim-sel.show {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      /* cursor */
+      .anim-cursor {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background: white;
+        border-radius: 50%;
+        box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.4), 0 2px 8px rgba(0, 0, 0, 0.4);
+        pointer-events: none;
+        transition: top 0.5s cubic-bezier(.4, 0, .2, 1), left 0.5s cubic-bezier(.4, 0, .2, 1), opacity 0.3s;
+        opacity: 0;
+      }
+
+      /* processing toast */
+      .anim-toast {
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: #1a2330;
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 9px 13px;
+        font-size: 11px;
+        font-weight: 500;
+        opacity: 0;
+        transform: translateY(-6px);
+        transition: opacity 0.3s, transform 0.3s;
+      }
+
+      .anim-toast.show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .anim-spinner {
+        width: 13px;
+        height: 13px;
+        border: 2px solid rgba(34, 211, 238, 0.2);
+        border-top-color: var(--cyan);
+        border-radius: 50%;
+        animation: spin .7s linear infinite;
+      }
+
+      /* right panel — popup */
+      .popup-side {
+        background: #161d28;
+        border-left: 1px solid var(--border);
+        display: flex;
+        flex-direction: column;
+        font-size: 12px;
+      }
+
+      .popup-side-head {
+        padding: 14px 16px;
+        border-bottom: 1px solid var(--border);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .popup-side-head img {
+        width: 28px;
+        height: 28px;
+        border-radius: 6px;
+      }
+
+      .popup-side-head strong {
+        font-size: 13px;
+      }
+
+      .popup-btns {
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 7px;
+        flex: 1;
+      }
+
+      .popup-btn-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 12px;
+        border-radius: 9px;
+        border: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.02);
+        cursor: default;
+        transition: all 0.25s;
+      }
+
+      .popup-btn-item.active {
+        border-color: var(--cyan-border);
+        background: rgba(34, 211, 238, 0.08);
+        box-shadow: 0 0 12px rgba(34, 211, 238, 0.12);
+      }
+
+      .pbi-icon {
+        width: 28px;
+        height: 28px;
+        border-radius: 7px;
+        background: var(--surface);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+
+      .popup-btn-item.active .pbi-icon {
+        background: rgba(34, 211, 238, 0.15);
+      }
+
+      .pbi-title {
+        font-size: 12px;
+        font-weight: 600;
+      }
+
+      .pbi-sub {
+        font-size: 10px;
+        color: var(--muted);
+        margin-top: 1px;
+      }
+
+      /* result panel slides up */
+      .anim-result {
+        position: absolute;
+        bottom: 16px;
+        right: 16px;
+        width: 310px;
+        background: #161b27;
+        border: 1px solid rgba(34, 211, 238, 0.25);
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5);
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.4s, transform 0.4s;
+      }
+
+      .anim-result.show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .ar-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 9px 12px;
+        background: #1e2a3a;
+        border-bottom: 1px solid var(--border);
+        font-size: 11px;
+        font-weight: 600;
+      }
+
+      .ar-tag {
+        font-size: 10px;
+        color: var(--cyan);
+        background: var(--cyan-dim);
+        border: 1px solid var(--cyan-border);
+        padding: 1px 7px;
+        border-radius: 99px;
+        margin-left: 5px;
+      }
+
+      .ar-body {
+        padding: 12px;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 10px;
+        line-height: 1.6;
+        color: #8b949e;
+      }
+
+      .ar-foot {
+        padding: 8px 12px;
+        border-top: 1px solid var(--border);
+        font-size: 10px;
+        color: var(--green);
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+
+      /* step label */
+      .step-label {
+        position: absolute;
+        bottom: 16px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 10px;
+        color: var(--cyan);
+        background: rgba(34, 211, 238, 0.08);
+        border: 1px solid var(--cyan-border);
+        padding: 4px 12px;
+        border-radius: 99px;
+        white-space: nowrap;
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.3s;
+      }
+
+      .step-label.show {
+        opacity: 1;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg)
         }
-        <div class="vid-timer" id="vidTimer">2:34 / 18:42</div>
+      }
+    </style>
 
-        <!-- animated elements -->
-        <div class="anim-sel" id="animSel"></div>
-        <div class="anim-cursor" id="animCursor"></div>
-        <div class="anim-toast" id="animToast">
-          <div class="anim-spinner"></div>
-          Claude is reading the code...
-        </div>
-        <div class="anim-result" id="animResult">
-          <div class="ar-head">
-            <span>CodeRa <span class="ar-tag">🎬 video frame</span></span>
-            <span style="font-size:10px;color:var(--muted)">9 lines · auto-copied</span>
-          </div>
-          <div class="ar-body">
-            <span style="color:#ff7b72">function</span> <span style="color:#79c0ff">useCounter</span>(initial = <span style="color:#f0883e">0</span>) {<br>
-            &nbsp;&nbsp;<span style="color:#ff7b72">const</span> [count, setCount] = <span style="color:#79c0ff">useState</span>(initial);<br><br>
-            &nbsp;&nbsp;<span style="color:#ff7b72">return</span> {<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;count,<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;increment: () =&gt; setCount(c =&gt; c + <span style="color:#f0883e">1</span>),<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;reset: () =&gt; setCount(initial)<br>
-            &nbsp;&nbsp;};<br>
-            }
-          </div>
-          <div class="ar-foot">
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            Copied to clipboard — Ctrl+V to paste
-          </div>
-        </div>
-        <div class="step-label" id="stepLabel">step 1 of 3</div>
+    <div class="demo-wrap" id="animDemo">
+      <div class="demo-bar">
+        <div class="dot dr"></div>
+        <div class="dot dy"></div>
+        <div class="dot dg"></div>
+        <div class="demo-url" id="demoUrl">youtube.com/watch & React Hooks Tutorial</div>
       </div>
+      <div class="video-mock">
+        <!-- Left: video screen -->
+        <div class="video-screen" id="videoScreen">
+          <div class="vid-playing">
+            <div class="vid-dot"></div>
+            <span id="playLabel">▶ PLAYING</span>
+          </div>
+          <br><br>
+          <span style="color:#8b949e">// Tutorial: custom React hook</span><br>
+          <span style="color:#ff7b72">function</span> <span style="color:#79c0ff">useCounter</span>(initial = <span
+            style="color:#f0883e">0</span>) {<br>
+          &nbsp;&nbsp;<span style="color:#ff7b72">const</span> [count, setCount] = <span
+            style="color:#79c0ff">useState</span>(initial);<br><br>
+          &nbsp;&nbsp;<span style="color:#ff7b72">return</span> {<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;count,<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;increment: () =&gt; setCount(c =&gt; c + <span style="color:#f0883e">1</span>),<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;reset: () =&gt; setCount(initial)<br>
+          &nbsp;&nbsp;};<br>
+          }
+          <div class="vid-timer" id="vidTimer">2:34 / 18:42</div>
 
-      <!-- Right: extension popup -->
-      <div class="popup-side">
-        <div class="popup-side-head">
-          <img src="./icon48.png" alt="">
-          <div><strong>CodeRa</strong><div style="font-size:10px;color:var(--muted)">Extract as code</div></div>
+          <!-- animated elements -->
+          <div class="anim-sel" id="animSel"></div>
+          <div class="anim-cursor" id="animCursor"></div>
+          <div class="anim-toast" id="animToast">
+            <div class="anim-spinner"></div>
+            CodeRa is reading the code...
+          </div>
+          <div class="anim-result" id="animResult">
+            <div class="ar-head">
+              <span>CodeRa <span class="ar-tag">🎬 video frame</span></span>
+              <span style="font-size:10px;color:var(--muted)">9 lines · auto-copied</span>
+            </div>
+            <div class="ar-body">
+              <span style="color:#ff7b72">function</span> <span style="color:#79c0ff">useCounter</span>(initial = <span
+                style="color:#f0883e">0</span>) {<br>
+              &nbsp;&nbsp;<span style="color:#ff7b72">const</span> [count, setCount] = <span
+                style="color:#79c0ff">useState</span>(initial);<br><br>
+              &nbsp;&nbsp;<span style="color:#ff7b72">return</span> {<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;count,<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;increment: () =&gt; setCount(c =&gt; c + <span
+                style="color:#f0883e">1</span>),<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;reset: () =&gt; setCount(initial)<br>
+              &nbsp;&nbsp;};<br>
+              }
+            </div>
+            <div class="ar-foot">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              Copied to clipboard — Ctrl+V to paste
+            </div>
+          </div>
+          <div class="step-label" id="stepLabel">step 1 of 3</div>
         </div>
-        <div class="popup-btns">
-          <div class="popup-btn-item" id="pbtnSelect">
-            <div class="pbi-icon">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+
+        <!-- Right: extension popup -->
+        <div class="popup-side">
+          <div class="popup-side-head">
+            <img src="./icon48.png" alt="">
+            <div><strong>CodeRa</strong>
+              <div style="font-size:10px;color:var(--muted)">Extract as code</div>
             </div>
-            <div><div class="pbi-title">Select Area</div><div class="pbi-sub">Drag to capture</div></div>
           </div>
-          <div class="popup-btn-item" id="pbtnVideo">
-            <div class="pbi-icon" id="pbtnVideoIcon">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2" id="videoIconSvg"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+          <div class="popup-btns">
+            <div class="popup-btn-item" id="pbtnSelect">
+              <div class="pbi-icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2">
+                  <rect x="3" y="3" width="18" height="18" rx="2" />
+                </svg>
+              </div>
+              <div>
+                <div class="pbi-title">Select Area</div>
+                <div class="pbi-sub">Drag to capture</div>
+              </div>
             </div>
-            <div><div class="pbi-title">Capture Video Frame</div><div class="pbi-sub">Video keeps playing ▶</div></div>
+            <div class="popup-btn-item" id="pbtnVideo">
+              <div class="pbi-icon" id="pbtnVideoIcon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2"
+                  id="videoIconSvg">
+                  <polygon points="23 7 16 12 23 17 23 7" />
+                  <rect x="1" y="5" width="15" height="14" rx="2" />
+                </svg>
+              </div>
+              <div>
+                <div class="pbi-title">Capture Video Frame</div>
+                <div class="pbi-sub">Video keeps playing ▶</div>
+              </div>
+            </div>
+            <div class="popup-btn-item" id="pbtnUpload">
+              <div class="pbi-icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2">
+                  <rect x="9" y="9" width="13" height="13" rx="2" />
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+                </svg>
+              </div>
+              <div>
+                <div class="pbi-title">Upload Image</div>
+                <div class="pbi-sub">From screenshot file</div>
+              </div>
+            </div>
           </div>
-          <div class="popup-btn-item" id="pbtnUpload">
-            <div class="pbi-icon">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-            </div>
-            <div><div class="pbi-title">Upload Image</div><div class="pbi-sub">From screenshot file</div></div>
+          <div style="padding:10px 14px;border-top:1px solid var(--border);font-size:10px;color:#334155;">
+            Powered by CodeRa
           </div>
         </div>
-        <div style="padding:10px 14px;border-top:1px solid var(--border);font-size:10px;color:#334155;">
-          Powered by Claude Vision AI
+      </div>
+    </div>
+
+    <script>
+      (function () {
+        // Timer ticks while video plays
+        let sec = 34, min = 2;
+        setInterval(() => {
+          sec++;
+          if (sec >= 60) { sec = 0; min++; }
+          const el = document.getElementById('vidTimer');
+          if (el) el.textContent = min + ':' + String(sec).padStart(2, '0') + ' / 18:42';
+        }, 1000);
+
+        // Animation sequence — loops every 8s
+        function runSequence() {
+          const sel = document.getElementById('animSel');
+          const toast = document.getElementById('animToast');
+          const result = document.getElementById('animResult');
+          const pbtnVideo = document.getElementById('pbtnVideo');
+          const stepLabel = document.getElementById('stepLabel');
+
+          // Reset
+          sel.classList.remove('show');
+          toast.classList.remove('show');
+          result.classList.remove('show');
+          pbtnVideo.classList.remove('active');
+          stepLabel.textContent = '';
+          stepLabel.classList.remove('show');
+
+          // Step 1: highlight the button (1s)
+          setTimeout(() => {
+            stepLabel.textContent = '① click "Capture Video Frame"';
+            stepLabel.classList.add('show');
+            pbtnVideo.classList.add('active');
+            document.getElementById('videoIconSvg').setAttribute('stroke', '#22d3ee');
+          }, 800);
+
+          // Step 2: selection box appears (2.5s) — video still playing
+          setTimeout(() => {
+            stepLabel.textContent = '② capturing frame — video keeps playing ▶';
+            sel.classList.add('show');
+          }, 2500);
+
+          // Step 3: toast — processing (3.5s)
+          setTimeout(() => {
+            stepLabel.textContent = '③ CodeRa is reading...';
+            toast.classList.add('show');
+          }, 3500);
+
+          // Step 4: result panel (5.5s)
+          setTimeout(() => {
+            toast.classList.remove('show');
+            result.classList.add('show');
+            stepLabel.textContent = '✓ code copied to clipboard!';
+          }, 5500);
+
+          // Reset after pause (8s total)
+          setTimeout(() => {
+            stepLabel.classList.remove('show');
+            sel.classList.remove('show');
+            result.classList.remove('show');
+            pbtnVideo.classList.remove('active');
+            document.getElementById('videoIconSvg').setAttribute('stroke', '#94a3b8');
+          }, 8000);
+        }
+
+        // Start after page load
+        setTimeout(runSequence, 1200);
+        setInterval(runSequence, 9500);
+      })();
+    </script>
+  </section>
+
+  <!-- ═══════ PAIN STRIP ═══════ -->
+  <div class="pain-strip">
+    <h2>// the old way — every snippet, every tutorial</h2>
+    <div class="pain-steps">
+      <div class="pain-step"><span class="bad">⏸ Pause video</span></div>
+      <div class="pain-arrow">→</div>
+      <div class="pain-step"><span class="bad">😬 Squint at code</span></div>
+      <div class="pain-arrow">→</div>
+      <div class="pain-step"><span class="bad">⌨️ Type slowly</span></div>
+      <div class="pain-arrow">→</div>
+      <div class="pain-step"><span class="bad">🐛 Typo. Fix.</span></div>
+      <div class="pain-arrow">→</div>
+      <div class="pain-step"><span class="bad">⏪ Rewind</span></div>
+      <div class="pain-arrow">→</div>
+      <div class="pain-step"><span class="bad">🔁 Repeat</span></div>
+    </div>
+    <div class="pain-fix">
+      With CodeRa: <span class="good">▶ video plays → click → 3 seconds → paste. Never pause.</span>
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-n">3–5s</div>
+      <div class="stat-l">Extraction time</div>
+    </div>
+    <div class="stat">
+      <div class="stat-n">~2 min</div>
+      <div class="stat-l">Saved per snippet</div>
+    </div>
+    <div class="stat">
+      <div class="stat-n">3</div>
+      <div class="stat-l">AI modes</div>
+    </div>
+    <div class="stat">
+      <div class="stat-n">0</div>
+      <div class="stat-l">Screenshots stored</div>
+    </div>
+  </div>
+
+  <!-- ═══════ HOW IT WORKS ═══════ -->
+  <section class="how-section" id="how">
+    <div class="section-tag">// how it works</div>
+    <h2>Three steps. Under 10 seconds.</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Click CodeRa</h3>
+        <p>Open the extension on any page. Pick your mode — text, code, or understand.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Capture</h3>
+        <p>Hit <strong>Capture Video Frame</strong> on YouTube or Udemy. Or drag over any code. Or upload a screenshot.
+        </p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Paste anywhere</h3>
+        <p>Code lands in your clipboard. Review in the result panel. Ctrl+V into your editor.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ MODES ═══════ -->
+  <section class="modes-section" id="modes">
+    <div class="section-tag">// three AI modes</div>
+    <h2>One click. Three ways to use it.</h2>
+    <div class="modes-grid">
+      <div class="mode-card">
+        <span class="mode-emoji">📄</span>
+        <div class="mode-label">Default mode</div>
+        <h3>Plain text</h3>
+        <p>Extracts everything visible — subtitles, slide text, captions, UI labels. Exactly as shown, nothing
+          rewritten.</p>
+      </div>
+      <div class="mode-card featured">
+        <span class="mode-emoji">💻</span>
+        <div class="mode-label">Extract as code</div>
+        <h3>Code extraction</h3>
+        <p>CodeRa finds the code, preserves indentation, brackets, and comments. Open your editor and run it — no
+          cleanup.</p>
+      </div>
+      <div class="mode-card">
+        <span class="mode-emoji">🧠</span>
+        <div class="mode-label">Understand code</div>
+        <h3>Learn & trace</h3>
+        <p>CodeRa explains what the snippet does, traces execution line by line, shows expected output. <strong>Learn
+            the logic.</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ SOCIAL PROOF ═══════ -->
+  <div class="proof-section">
+    <div class="proof-inner">
+      <div class="section-tag">// what developers say</div>
+      <div class="quotes">
+        <div class="quote">
+          <p>"I was retyping code from Udemy for years. <strong>One click and I'm done.</strong> Wish I had this
+            sooner."</p>
+          <div class="quote-author">— Frontend dev, Udemy learner</div>
+        </div>
+        <div class="quote">
+          <p>"The code extraction is surprisingly accurate — <strong>even preserves my tabs.</strong> Finally something
+            that actually works."</p>
+          <div class="quote-author">— Backend engineer, Python learner</div>
+        </div>
+        <div class="quote">
+          <p>"The Understand mode is what sold me. <strong>I don't just copy anymore</strong> — I get what the snippet
+            does before I paste it."</p>
+          <div class="quote-author">— CS student, self-taught dev</div>
         </div>
       </div>
     </div>
   </div>
+
+  <!-- ═══════ COMPARE ═══════ -->
+  <section class="compare-section" id="compare">
+    <div class="section-tag">// vs alternatives</div>
+    <h2>Why not just use OCR or ChatGPT?</h2>
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>Tool</th>
+          <th>The problem</th>
+          <th>CodeRa wins because</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="tool">Apple Live Text / Google Lens</td>
+          <td class="bad">Destroys indentation, confuses { } => ;</td>
+          <td class="good">Understands syntax — preserves formatting</td>
+        </tr>
+        <tr>
+          <td class="tool">ChatGPT / Claude.ai</td>
+          <td class="bad">5+ steps: screenshot → save → upload → prompt → copy</td>
+          <td class="good">1 click, prompts built in, auto-copy</td>
+        </tr>
+        <tr>
+          <td class="tool">Blackbox / OCR extensions</td>
+          <td class="bad">Old models, can't capture video frames</td>
+          <td class="good">Claude Vision + video frame capture</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ═══════ FAQ ═══════ -->
+  <section class="faq-section" id="faq">
+    <div class="section-tag">// faq</div>
+    <h2 style="margin-bottom:32px;">Quick answers</h2>
+    <div class="faq-list">
+      <details class="faq">
+        <summary>Is it really free?</summary>
+        <div class="faq-body">Yes — completely free during early access. All features unlocked. No account, no credit
+          card.</div>
+      </details>
+      <details class="faq">
+        <summary>Is it safe to use at work?</summary>
+        <div class="faq-body">Yes. Screenshots are processed and immediately discarded — nothing stored on any server.
+          Same privacy as typing into Claude directly. Safe for proprietary code.</div>
+      </details>
+      <details class="faq">
+        <summary>Does it work on YouTube and Udemy?</summary>
+        <div class="faq-body">Yes. Click Capture Video Frame on any course site — grabs the current frame while the
+          video keeps playing. Works on YouTube, Udemy, Coursera, Skillshare, and any embedded player.</div>
+      </details>
+      <details class="faq">
+        <summary>What's the difference between the three modes?</summary>
+        <div class="faq-body">Plain text — extracts everything as-is (subtitles, slides). Extract as code — IDE-ready
+          formatted source. Understand code — CodeRa explains the logic and shows expected output, built for learning.
+        </div>
+      </details>
+      <details class="faq">
+        <summary>Who built CodeRa?</summary>
+        <div class="faq-body">Built by <a href="https://www.linkedin.com/in/anton-zaharenko/" target="_blank"
+            rel="noopener" style="color:var(--cyan);">Anton Zakharenka</a> — a developer who got tired of retyping code
+          from tutorials. Not developed by Anthropic.</div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ═══════ WAITLIST ═══════ -->
+  <div class="waitlist-section" id="early-access">
+    <h2>Stay in the loop</h2>
+    <p class="waitlist-sub">Early access updates — no spam, one email.</p>
+    <form class="waitlist-form" id="wf">
+      <input type="email" id="we" placeholder="your@email.com" required autocomplete="email">
+      <input type="text" name="_honey" style="display:none" tabindex="-1">
+      <button type="submit" id="wb">Join waitlist</button>
+    </form>
+    <p class="waitlist-msg" id="wm"></p>
+  </div>
+
+  <!-- ═══════ FINAL CTA ═══════ -->
+  <div class="final-cta" id="install">
+    <h2>Stop retyping.<br><span style="color:var(--cyan)">Start extracting.</span></h2>
+    <p>Every developer rewatches tutorials to retype code. You don't have to.</p>
+    <a href="#" class="btn-main" style="font-size:16px;padding:16px 32px;">
+      Add to Chrome — It's Free
+    </a>
+    <p class="final-note">Load unpacked from the files/ folder · Chrome 88+ · No account needed</p>
+  </div>
+
+  <footer>
+    <a href="#" class="logo" style="font-size:14px;">
+      <img src="./icon48.png" alt="" style="width:22px;height:22px;">
+      CodeRa
+    </a>
+    <div class="footer-links">
+      <a href="#how">How it works</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="#modes">Modes</a>
+      <a href="https://www.linkedin.com/in/anton-zaharenko/" target="_blank" rel="noopener">Anton Zakharenka</a>
+    </div>
+    <span>© ${new Date().getFullYear()} CodeRa</span>
+  </footer>
 
   <script>
-  (function() {
-    // Timer ticks while video plays
-    let sec = 34, min = 2;
-    setInterval(() => {
-      sec++;
-      if (sec >= 60) { sec = 0; min++; }
-      const el = document.getElementById('vidTimer');
-      if (el) el.textContent = min + ':' + String(sec).padStart(2,'0') + ' / 18:42';
-    }, 1000);
+    const FORM_ENDPOINT = 'https://formsubmit.co/ajax/anton.zaharenko@gmail.com';
 
-    // Animation sequence — loops every 8s
-    function runSequence() {
-      const sel = document.getElementById('animSel');
-      const toast = document.getElementById('animToast');
-      const result = document.getElementById('animResult');
-      const pbtnVideo = document.getElementById('pbtnVideo');
-      const stepLabel = document.getElementById('stepLabel');
+    document.getElementById('wf').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = document.getElementById('we').value.trim();
+      const btn = document.getElementById('wb');
+      const msg = document.getElementById('wm');
+      if (!email) return;
 
-      // Reset
-      sel.classList.remove('show');
-      toast.classList.remove('show');
-      result.classList.remove('show');
-      pbtnVideo.classList.remove('active');
-      stepLabel.textContent = '';
-      stepLabel.classList.remove('show');
+      btn.disabled = true;
+      btn.textContent = 'Sending...';
+      msg.className = 'waitlist-msg';
+      msg.textContent = '';
 
-      // Step 1: highlight the button (1s)
-      setTimeout(() => {
-        stepLabel.textContent = '① click "Capture Video Frame"';
-        stepLabel.classList.add('show');
-        pbtnVideo.classList.add('active');
-        document.getElementById('videoIconSvg').setAttribute('stroke', '#22d3ee');
-      }, 800);
-
-      // Step 2: selection box appears (2.5s) — video still playing
-      setTimeout(() => {
-        stepLabel.textContent = '② capturing frame — video keeps playing ▶';
-        sel.classList.add('show');
-      }, 2500);
-
-      // Step 3: toast — processing (3.5s)
-      setTimeout(() => {
-        stepLabel.textContent = '③ Claude is reading...';
-        toast.classList.add('show');
-      }, 3500);
-
-      // Step 4: result panel (5.5s)
-      setTimeout(() => {
-        toast.classList.remove('show');
-        result.classList.add('show');
-        stepLabel.textContent = '✓ code copied to clipboard!';
-      }, 5500);
-
-      // Reset after pause (8s total)
-      setTimeout(() => {
-        stepLabel.classList.remove('show');
-        sel.classList.remove('show');
-        result.classList.remove('show');
-        pbtnVideo.classList.remove('active');
-        document.getElementById('videoIconSvg').setAttribute('stroke', '#94a3b8');
-      }, 8000);
-    }
-
-    // Start after page load
-    setTimeout(runSequence, 1200);
-    setInterval(runSequence, 9500);
-  })();
-  </script>
-</section>
-
-<!-- ═══════ PAIN STRIP ═══════ -->
-<div class="pain-strip">
-  <h2>// the old way — every snippet, every tutorial</h2>
-  <div class="pain-steps">
-    <div class="pain-step"><span class="bad">⏸ Pause video</span></div>
-    <div class="pain-arrow">→</div>
-    <div class="pain-step"><span class="bad">😬 Squint at code</span></div>
-    <div class="pain-arrow">→</div>
-    <div class="pain-step"><span class="bad">⌨️ Type slowly</span></div>
-    <div class="pain-arrow">→</div>
-    <div class="pain-step"><span class="bad">🐛 Typo. Fix.</span></div>
-    <div class="pain-arrow">→</div>
-    <div class="pain-step"><span class="bad">⏪ Rewind</span></div>
-    <div class="pain-arrow">→</div>
-    <div class="pain-step"><span class="bad">🔁 Repeat</span></div>
-  </div>
-  <div class="pain-fix">
-    With CodeRa: <span class="good">▶ video plays → click → 3 seconds → paste. Never pause.</span>
-  </div>
-</div>
-
-<!-- STATS -->
-<div class="stats">
-  <div class="stat"><div class="stat-n">3–5s</div><div class="stat-l">Extraction time</div></div>
-  <div class="stat"><div class="stat-n">~2 min</div><div class="stat-l">Saved per snippet</div></div>
-  <div class="stat"><div class="stat-n">3</div><div class="stat-l">AI modes</div></div>
-  <div class="stat"><div class="stat-n">0</div><div class="stat-l">Screenshots stored</div></div>
-</div>
-
-<!-- ═══════ HOW IT WORKS ═══════ -->
-<section class="how-section" id="how">
-  <div class="section-tag">// how it works</div>
-  <h2>Three steps. Under 10 seconds.</h2>
-  <div class="steps">
-    <div class="step">
-      <div class="step-num">1</div>
-      <h3>Click CodeRa</h3>
-      <p>Open the extension on any page. Pick your mode — text, code, or understand.</p>
-    </div>
-    <div class="step">
-      <div class="step-num">2</div>
-      <h3>Capture</h3>
-      <p>Hit <strong>Capture Video Frame</strong> on YouTube or Udemy. Or drag over any code. Or upload a screenshot.</p>
-    </div>
-    <div class="step">
-      <div class="step-num">3</div>
-      <h3>Paste anywhere</h3>
-      <p>Code lands in your clipboard. Review in the result panel. Ctrl+V into your editor.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════ MODES ═══════ -->
-<section class="modes-section" id="modes">
-  <div class="section-tag">// three AI modes</div>
-  <h2>One click. Three ways to use it.</h2>
-  <div class="modes-grid">
-    <div class="mode-card">
-      <span class="mode-emoji">📄</span>
-      <div class="mode-label">Default mode</div>
-      <h3>Plain text</h3>
-      <p>Extracts everything visible — subtitles, slide text, captions, UI labels. Exactly as shown, nothing rewritten.</p>
-    </div>
-    <div class="mode-card featured">
-      <span class="mode-emoji">💻</span>
-      <div class="mode-label">Extract as code</div>
-      <h3>Code extraction</h3>
-      <p>Claude finds the code, preserves indentation, brackets, and comments. Open your editor and run it — no cleanup.</p>
-    </div>
-    <div class="mode-card">
-      <span class="mode-emoji">🧠</span>
-      <div class="mode-label">Understand code</div>
-      <h3>Learn & trace</h3>
-      <p>Claude explains what the snippet does, traces execution line by line, shows expected output. <strong>Learn the logic.</strong></p>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════ SOCIAL PROOF ═══════ -->
-<div class="proof-section">
-  <div class="proof-inner">
-    <div class="section-tag">// what developers say</div>
-    <div class="quotes">
-      <div class="quote">
-        <p>"I was retyping code from Udemy for years. <strong>One click and I'm done.</strong> Wish I had this sooner."</p>
-        <div class="quote-author">— Frontend dev, Udemy learner</div>
-      </div>
-      <div class="quote">
-        <p>"The code extraction is surprisingly accurate — <strong>even preserves my tabs.</strong> Finally something that actually works."</p>
-        <div class="quote-author">— Backend engineer, Python learner</div>
-      </div>
-      <div class="quote">
-        <p>"The Understand mode is what sold me. <strong>I don't just copy anymore</strong> — I get what the snippet does before I paste it."</p>
-        <div class="quote-author">— CS student, self-taught dev</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ═══════ COMPARE ═══════ -->
-<section class="compare-section" id="compare">
-  <div class="section-tag">// vs alternatives</div>
-  <h2>Why not just use OCR or ChatGPT?</h2>
-  <table class="compare-table">
-    <thead>
-      <tr>
-        <th>Tool</th>
-        <th>The problem</th>
-        <th>CodeRa wins because</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td class="tool">Apple Live Text / Google Lens</td>
-        <td class="bad">Destroys indentation, confuses { } => ;</td>
-        <td class="good">Understands syntax — preserves formatting</td>
-      </tr>
-      <tr>
-        <td class="tool">ChatGPT / Claude.ai</td>
-        <td class="bad">5+ steps: screenshot → save → upload → prompt → copy</td>
-        <td class="good">1 click, prompts built in, auto-copy</td>
-      </tr>
-      <tr>
-        <td class="tool">Blackbox / OCR extensions</td>
-        <td class="bad">Old models, can't capture video frames</td>
-        <td class="good">Claude Vision + video frame capture</td>
-      </tr>
-    </tbody>
-  </table>
-</section>
-
-<!-- ═══════ FAQ ═══════ -->
-<section class="faq-section" id="faq">
-  <div class="section-tag">// faq</div>
-  <h2 style="margin-bottom:32px;">Quick answers</h2>
-  <div class="faq-list">
-    <details class="faq">
-      <summary>Is it really free?</summary>
-      <div class="faq-body">Yes — completely free during early access. All features unlocked. No account, no credit card.</div>
-    </details>
-    <details class="faq">
-      <summary>Is it safe to use at work?</summary>
-      <div class="faq-body">Yes. Screenshots are processed and immediately discarded — nothing stored on any server. Same privacy as typing into Claude directly. Safe for proprietary code.</div>
-    </details>
-    <details class="faq">
-      <summary>Does it work on YouTube and Udemy?</summary>
-      <div class="faq-body">Yes. Click Capture Video Frame on any course site — grabs the current frame while the video keeps playing. Works on YouTube, Udemy, Coursera, Skillshare, and any embedded player.</div>
-    </details>
-    <details class="faq">
-      <summary>What's the difference between the three modes?</summary>
-      <div class="faq-body">Plain text — extracts everything as-is (subtitles, slides). Extract as code — IDE-ready formatted source. Understand code — Claude explains the logic and shows expected output, built for learning.</div>
-    </details>
-    <details class="faq">
-      <summary>Who built CodeRa?</summary>
-      <div class="faq-body">Built by <a href="https://www.linkedin.com/in/anton-zaharenko/" target="_blank" rel="noopener" style="color:var(--cyan);">Anton Zakharenka</a> — a developer who got tired of retyping code from tutorials. Not developed by Anthropic.</div>
-    </details>
-  </div>
-</section>
-
-<!-- ═══════ WAITLIST ═══════ -->
-<div class="waitlist-section" id="early-access">
-  <h2>Stay in the loop</h2>
-  <p class="waitlist-sub">Early access updates — no spam, one email.</p>
-  <form class="waitlist-form" id="wf">
-    <input type="email" id="we" placeholder="your@email.com" required autocomplete="email">
-    <input type="text" name="_honey" style="display:none" tabindex="-1">
-    <button type="submit" id="wb">Join waitlist</button>
-  </form>
-  <p class="waitlist-msg" id="wm"></p>
-</div>
-
-<!-- ═══════ FINAL CTA ═══════ -->
-<div class="final-cta" id="install">
-  <h2>Stop retyping.<br><span style="color:var(--cyan)">Start extracting.</span></h2>
-  <p>Every developer rewatches tutorials to retype code. You don't have to.</p>
-  <a href="#" class="btn-main" style="font-size:16px;padding:16px 32px;">
-    Add to Chrome — It's Free
-  </a>
-  <p class="final-note">Load unpacked from the files/ folder · Chrome 88+ · No account needed</p>
-</div>
-
-<footer>
-  <a href="#" class="logo" style="font-size:14px;">
-    <img src="./icon48.png" alt="" style="width:22px;height:22px;">
-    CodeRa
-  </a>
-  <div class="footer-links">
-    <a href="#how">How it works</a>
-    <a href="privacy.html">Privacy</a>
-    <a href="#modes">Modes</a>
-    <a href="https://www.linkedin.com/in/anton-zaharenko/" target="_blank" rel="noopener">Anton Zakharenka</a>
-  </div>
-  <span>© 2026 CodeRa · Uses Claude Vision AI</span>
-</footer>
-
-<script>
-// Web3Forms — надёжная замена formsubmit.co
-// Получите бесплатный ключ на https://web3forms.com → введите email → скопируйте Access Key
-// Вставьте его ниже вместо 'YOUR_ACCESS_KEY'
-const W3F_KEY = '23279f80-d28b-4519-8031-b0459aefd649';
-
-document.getElementById('wf').addEventListener('submit', async (e) => {
-  e.preventDefault();
-  const email = document.getElementById('we').value.trim();
-  const btn = document.getElementById('wb');
-  const msg = document.getElementById('wm');
-  if (!email) return;
-
-  btn.disabled = true;
-  btn.textContent = 'Sending...';
-  msg.className = 'waitlist-msg';
-  msg.textContent = '';
-
-  try {
-    const res = await fetch('https://api.web3forms.com/submit', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-      body: JSON.stringify({
-        access_key: W3F_KEY,
-        email: email,
-        subject: 'CodeRa waitlist — new signup',
-        message: 'New signup: ' + email,
-        from_name: 'CodeRa Waitlist'
-      })
+      try {
+        const res = await fetch(FORM_ENDPOINT, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify({
+            email,
+            _subject: 'CodeRa waitlist — new signup',
+            _template: 'table',
+            message: 'New signup: ' + email
+          })
+        });
+        const data = await res.json();
+        if (res.ok && data.success) {
+          msg.className = 'waitlist-msg ok';
+          msg.textContent = "✓ You're in! We'll email you with updates.";
+          e.target.reset();
+        } else {
+          throw new Error(data.message || 'error');
+        }
+      } catch (err) {
+        msg.className = 'waitlist-msg err';
+        msg.textContent = 'Something went wrong. Email: anton.zaharenko@gmail.com';
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Join waitlist';
+      }
     });
-    const data = await res.json();
-    if (data.success) {
-      msg.className = 'waitlist-msg ok';
-      msg.textContent = "✓ You're in! We'll email you with updates.";
-      e.target.reset();
-    } else {
-      throw new Error(data.message || 'error');
-    }
-  } catch (err) {
-    msg.className = 'waitlist-msg err';
-    msg.textContent = 'Something went wrong. Email: anton.zaharenko@gmail.com';
-  } finally {
-    btn.disabled = false;
-    btn.textContent = 'Join waitlist';
-  }
-});
-</script>
+  </script>
 
 </body>
+
 </html>
