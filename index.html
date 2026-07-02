@@ -942,18 +942,14 @@
   </script>
   <script>
     function gtag_report_conversion(url) {
-      var callback = function () {
-        if (typeof (url) != 'undefined') {
-          window.location = url;
-        }
-      };
-      gtag('event', 'conversion', {
-        'send_to': 'AW-18289816138/vvoCCNSJ5cgcEMrkoZFE',
-        'value': 1.0,
-        'currency': 'EUR',
-        'event_callback': callback
-      });
-      return false;
+      if (typeof gtag === 'function') {
+        gtag('event', 'conversion', {
+          'send_to': 'AW-18289816138/vvoCCNSJ5cgcEMrkoZFE',
+          'value': 1.0,
+          'currency': 'EUR'
+        });
+      }
+      return true;
     }
   </script>
 
@@ -968,7 +964,7 @@
       CodeRa
     </a>
     <a href="https://chromewebstore.google.com/detail/codera/achdkjdakdpnihgjhdgmodgamefkffid" class="nav-install"
-      onclick="return gtag_report_conversion('https://chromewebstore.google.com/detail/codera/achdkjdakdpnihgjhdgmodgamefkffid');">Add
+      onclick="gtag_report_conversion('https://chromewebstore.google.com/detail/codera/achdkjdakdpnihgjhdgmodgamefkffid');">Add
       to Chrome, Free</a>
   </nav>
 
@@ -989,7 +985,7 @@
 
     <div class="cta-row">
       <a href="https://chromewebstore.google.com/detail/codera/achdkjdakdpnihgjhdgmodgamefkffid" class="btn-main"
-        onclick="return gtag_report_conversion('https://chromewebstore.google.com/detail/codera/achdkjdakdpnihgjhdgmodgamefkffid');">
+        onclick="gtag_report_conversion('https://chromewebstore.google.com/detail/codera/achdkjdakdpnihgjhdgmodgamefkffid');">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <circle cx="12" cy="12" r="10" />
           <circle cx="12" cy="12" r="4" />
@@ -1709,7 +1705,7 @@
     <p>Every developer rewatches tutorials to retype code. You don't have to.</p>
     <a href="https://chromewebstore.google.com/detail/codera/achdkjdakdpnihgjhdgmodgamefkffid" class="btn-main"
       style="font-size:16px;padding:16px 32px;"
-      onclick="return gtag_report_conversion('https://chromewebstore.google.com/detail/codera/achdkjdakdpnihgjhdgmodgamefkffid');">
+      onclick="gtag_report_conversion('https://chromewebstore.google.com/detail/codera/achdkjdakdpnihgjhdgmodgamefkffid');">
       Add to Chrome, It's Free
     </a>
     <p class="final-note">Load unpacked from the files/ folder · Chrome 88+ · No account needed</p>
