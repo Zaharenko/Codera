@@ -931,6 +931,25 @@
     }
   </style>
   <meta name="google-site-verification" content="BtZnZ0cvx2iCDPxlkQtHi5rZ46-8qXbSSR_IZWLY9NY" />
+  <!-- Event snippet for Просмотр страницы conversion page
+In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
+  <script>
+    function gtag_report_conversion(url) {
+      var callback = function () {
+        if (typeof (url) != 'undefined') {
+          window.location = url;
+        }
+      };
+      gtag('event', 'conversion', {
+        'send_to': 'AW-18289816138/vvoCCNSJ5cgcEMrkoZFE',
+        'value': 1.0,
+        'currency': 'EUR',
+        'event_callback': callback
+      });
+      return false;
+    }
+  </script>
+
 </head>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18289816138"></script>
@@ -950,7 +969,8 @@
       <img src="./icon48.png" alt="CodeRa">
       CodeRa
     </a>
-    <a href="https://chromewebstore.google.com/detail/codera/achdkjdakdpnihgjhdgmodgamefkffid" class="nav-install">Add
+    <a href="https://chromewebstore.google.com/detail/codera/achdkjdakdpnihgjhdgmodgamefkffid" class="nav-install"
+      onclick="return gtag_report_conversion('https://chromewebstore.google.com/detail/codera/achdkjdakdpnihgjhdgmodgamefkffid');">Add
       to Chrome, Free</a>
   </nav>
 
@@ -970,7 +990,8 @@
     </p>
 
     <div class="cta-row">
-      <a href="https://chromewebstore.google.com/detail/codera/achdkjdakdpnihgjhdgmodgamefkffid" class="btn-main">
+      <a href="https://chromewebstore.google.com/detail/codera/achdkjdakdpnihgjhdgmodgamefkffid" class="btn-main"
+        onclick="return gtag_report_conversion('https://chromewebstore.google.com/detail/codera/achdkjdakdpnihgjhdgmodgamefkffid');">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <circle cx="12" cy="12" r="10" />
           <circle cx="12" cy="12" r="4" />
@@ -1689,7 +1710,8 @@
     <h2>Stop retyping.<br><span style="color:var(--cyan)">Start extracting.</span></h2>
     <p>Every developer rewatches tutorials to retype code. You don't have to.</p>
     <a href="https://chromewebstore.google.com/detail/codera/achdkjdakdpnihgjhdgmodgamefkffid" class="btn-main"
-      style="font-size:16px;padding:16px 32px;">
+      style="font-size:16px;padding:16px 32px;"
+      onclick="return gtag_report_conversion('https://chromewebstore.google.com/detail/codera/achdkjdakdpnihgjhdgmodgamefkffid');">
       Add to Chrome, It's Free
     </a>
     <p class="final-note">Load unpacked from the files/ folder · Chrome 88+ · No account needed</p>
