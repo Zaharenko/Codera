@@ -1,0 +1,19 @@
+# CodeRa
+> Chrome extension that extracts formatted code from video frames (YouTube, Udemy, Coursera) and screenshots using AI vision, preserving indentation. Free, no sign-up.
+
+## Key pages
+- [Home](https://codera.click/)
+- [How to copy code from a YouTube video](https://codera.click/how-to-copy-code-from-youtube.html)
+- [How to copy code from Udemy videos](https://codera.click/how-to-copy-code-from-udemy.html)
+- [Extract code from a screenshot](https://codera.click/extract-code-from-screenshot.html)
+- [Privacy](https://codera.click/privacy.html)
+- [About](https://codera.click/about.html)
+- [Changelog](https://codera.click/changelog.html)
+- [Chrome Web Store](https://chromewebstore.google.com/detail/codera/achdkjdakdpnihgjhdgmodgamefkffid)
+
+## Product facts
+- Modes: plain text, extract as code, understand code
+- Capture: Alt+C, floating button, select area, lesson collection while watching
+- Local snippet library with filters and GitLab Snippets publish
+- Exports: Obsidian, Notion Markdown, Anki
+- Author: Anton Zakharenka
