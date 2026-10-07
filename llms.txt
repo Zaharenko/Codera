@@ -3,9 +3,11 @@
 
 ## Key pages
 - [Home](https://codera.click/)
+- [Русская версия](https://codera.click/ru/)
 - [How to copy code from a YouTube video](https://codera.click/how-to-copy-code-from-youtube.html)
 - [How to copy code from Udemy videos](https://codera.click/how-to-copy-code-from-udemy.html)
 - [Extract code from a screenshot](https://codera.click/extract-code-from-screenshot.html)
+- [CodeRa vs Google Lens](https://codera.click/codera-vs-google-lens.html)
 - [Privacy](https://codera.click/privacy.html)
 - [About](https://codera.click/about.html)
 - [Changelog](https://codera.click/changelog.html)

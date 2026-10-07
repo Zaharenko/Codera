@@ -8,20 +8,23 @@
   <meta name="description"
     content="CodeRa is a free Chrome extension that extracts formatted code from YouTube, Udemy and Coursera videos or screenshots. Keeps indentation. No sign-up.">
   <link rel="canonical" href="https://codera.click/">
+  <link rel="alternate" hreflang="en" href="https://codera.click/">
+  <link rel="alternate" hreflang="ru" href="https://codera.click/ru/">
+  <link rel="alternate" hreflang="x-default" href="https://codera.click/">
   <meta name="robots" content="index,follow">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="CodeRa">
   <meta property="og:url" content="https://codera.click/">
-  <meta property="og:title" content="Copy Code from YouTube &amp; Udemy Videos in 1 Click | CodeRa">
+  <meta property="og:title" content="CodeRa: Copy Code from Video in 1 Click">
   <meta property="og:description"
-    content="Free Chrome extension that extracts formatted code from video frames and screenshots. Keeps indentation. No sign-up.">
+    content="Extract formatted code from YouTube, Udemy and Coursera videos. Free Chrome extension.">
   <meta property="og:image" content="https://codera.click/og.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="CodeRa – extract code from YouTube &amp; Udemy">
+  <meta name="twitter:title" content="CodeRa: Copy Code from Video in 1 Click">
   <meta name="twitter:description"
-    content="Free Chrome extension: copy formatted code from video tutorials and screenshots in one click.">
+    content="Extract formatted code from YouTube, Udemy and Coursera videos. Free Chrome extension.">
   <meta name="twitter:image" content="https://codera.click/og.jpg">
   <link rel="icon" href="./icon48.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -999,9 +1002,12 @@
       <img src="./icon48.png" alt="CodeRa – Chrome extension for extracting code from video">
       CodeRa
     </a>
-    <a href="https://chromewebstore.google.com/detail/codera/achdkjdakdpnihgjhdgmodgamefkffid" class="nav-install"
-      onclick="gtag_report_conversion('https://chromewebstore.google.com/detail/codera/achdkjdakdpnihgjhdgmodgamefkffid');">Add
-      to Chrome, Free</a>
+    <div style="display:flex;align-items:center;gap:14px;">
+      <a href="ru/" style="color:var(--muted);font-size:13px;text-decoration:none;">RU</a>
+      <a href="https://chromewebstore.google.com/detail/codera/achdkjdakdpnihgjhdgmodgamefkffid" class="nav-install"
+        onclick="gtag_report_conversion('https://chromewebstore.google.com/detail/codera/achdkjdakdpnihgjhdgmodgamefkffid');">Add
+        to Chrome, Free</a>
+    </div>
   </nav>
 
   <!-- ═══════ HERO ═══════ -->
@@ -1029,7 +1035,7 @@
       </a>
     </div>
 
-    <p class="hero-note">No sign-up required. Zero configuration. Free.</p>
+    <p class="hero-note">Works in Chrome, Edge, Brave, Opera · No sign-up · Free</p>
 
     <!-- DEMO VIDEO (YouTube) -->
     <style>
@@ -1084,11 +1090,10 @@
         <div class="demo-url">CodeRa — 30 second demo</div>
       </div>
       <div class="video-embed">
-        <!-- TODO: replace YOUTUBE_VIDEO_ID with the real video id once uploaded -->
-
-        <video autoplay muted loop width="100%" height="100%" src="./video-codera.mp4" title="CodeRa demo video"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen></video>
+        <video autoplay muted loop playsinline controls width="100%" height="100%"
+          src="./video-codera.mp4"
+          title="CodeRa demo — copy code from YouTube and Udemy videos"
+          poster="./og.jpg"></video>
       </div>
     </div>
   </section>
@@ -1217,30 +1222,6 @@
     </div>
   </section>
 
-  <!-- ═══════ SOCIAL PROOF ═══════ -->
-  <div class="proof-section">
-    <div class="proof-inner">
-      <div class="section-tag">// what developers say</div>
-      <div class="quotes">
-        <div class="quote">
-          <p>"I was retyping code from Udemy for years. <strong>One click and I'm done.</strong> Wish I had this
-            sooner."</p>
-          <div class="quote-author">Frontend dev, Udemy learner</div>
-        </div>
-        <div class="quote">
-          <p>"The code extraction is surprisingly accurate, <strong>even preserves my tabs.</strong> Finally something
-            that actually works."</p>
-          <div class="quote-author">Backend engineer, Python learner</div>
-        </div>
-        <div class="quote">
-          <p>"The Understand mode is what sold me. <strong>I don't just copy anymore</strong>, I get what the snippet
-            does before I paste it."</p>
-          <div class="quote-author">CS student, self-taught dev</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <!-- ═══════ COMPARE ═══════ -->
   <section class="compare-section" id="compare">
     <div class="section-tag">// vs alternatives</div>
@@ -1266,8 +1247,8 @@
         </tr>
         <tr>
           <td class="tool">Blackbox / OCR extensions</td>
-          <td class="bad">Old models, can't capture video frames</td>
-          <td class="good">Claude Vision + video frame capture</td>
+          <td class="bad">Often focused on in-editor or image OCR — not built to capture a live video frame on YouTube/Udemy</td>
+          <td class="good">One-click video frame capture + Claude Vision for formatted code</td>
         </tr>
       </tbody>
     </table>
@@ -1331,9 +1312,12 @@
       <a href="how-to-copy-code-from-youtube.html">YouTube guide</a>
       <a href="how-to-copy-code-from-udemy.html">Udemy guide</a>
       <a href="extract-code-from-screenshot.html">Screenshot → code</a>
+      <a href="codera-vs-google-lens.html">vs Google Lens</a>
+      <a href="ru/">Русский</a>
       <a href="about.html">About</a>
       <a href="changelog.html">Changelog</a>
       <a href="privacy.html">Privacy</a>
+      <a href="mailto:anton.zaharenko@gmail.com">Contact</a>
       <a href="https://www.linkedin.com/in/anton-zaharenko/" target="_blank" rel="noopener">Anton Zakharenka</a>
     </div>
     <span>© 2026 CodeRa · Chrome extension for extracting code from video</span>
