@@ -398,70 +398,6 @@
       gap: 5px;
     }
 
-    /* PAIN STRIP */
-    .pain-strip {
-      background: var(--surface);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      padding: 40px 24px;
-      text-align: center;
-    }
-
-    .pain-strip h2 {
-      font-size: 14px;
-      font-family: 'JetBrains Mono', monospace;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 20px;
-    }
-
-    .pain-steps {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 0;
-      max-width: 875px;
-      margin: 0 auto;
-    }
-
-    .pain-step {
-      display: flex;
-      align-items: center;
-      font-size: 14px;
-      color: var(--muted);
-    }
-
-    .pain-step span {
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid var(--border);
-      padding: 8px 14px;
-      border-radius: 8px;
-    }
-
-    .pain-step span.bad {
-      color: #f87171;
-      border-color: rgba(248, 113, 113, 0.2);
-      background: rgba(248, 113, 113, 0.04);
-    }
-
-    .pain-arrow {
-      color: #334155;
-      padding: 0 8px;
-      font-size: 18px;
-    }
-
-    .pain-fix {
-      margin-top: 24px;
-      font-size: 17px;
-      font-weight: 600;
-    }
-
-    .pain-fix .good {
-      color: var(--cyan);
-    }
-
     /* HOW */
     .how-section {
       padding: 80px 24px;
@@ -550,6 +486,57 @@
       grid-template-columns: repeat(3, 1fr);
       gap: 16px;
       text-align: left;
+    }
+
+    .features-section {
+      padding: 80px 24px;
+      max-width: 960px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .features-section .section-sub {
+      color: var(--muted);
+      font-size: 15px;
+      max-width: 560px;
+      margin: 10px auto 36px;
+      line-height: 1.55;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      text-align: left;
+    }
+
+    .feature-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px;
+    }
+
+    .feature-item h3 {
+      font-size: 15px;
+      margin-bottom: 8px;
+      letter-spacing: -0.2px;
+    }
+
+    .feature-item p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    .feature-item .feature-tag {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      color: var(--cyan);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 10px;
     }
 
     .mode-card {
@@ -644,32 +631,6 @@
       font-size: 12px;
       color: #475569;
       font-family: 'JetBrains Mono', monospace;
-    }
-
-    /* STATS */
-    .stats {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 40px 64px;
-      padding: 52px 24px;
-    }
-
-    .stat {
-      text-align: center;
-    }
-
-    .stat-n {
-      font-size: 34px;
-      font-weight: 700;
-      color: var(--cyan);
-      letter-spacing: -1px;
-    }
-
-    .stat-l {
-      font-size: 13px;
-      color: var(--muted);
-      margin-top: 4px;
     }
 
     /* COMPARE */
@@ -912,21 +873,13 @@
 
       .steps,
       .modes-grid,
+      .features-grid,
       .quotes {
         grid-template-columns: 1fr;
       }
 
       .steps::before {
         display: none;
-      }
-
-      .pain-steps {
-        flex-direction: column;
-        gap: 4px;
-      }
-
-      .pain-arrow {
-        transform: rotate(90deg);
       }
     }
   </style>
@@ -976,10 +929,11 @@
         rel="noopener" style="color:inherit;text-decoration:none;margin-left:3px;">Chrome Extension</a>
     </div>
 
-    <h1><em></em>Stop pausing tutorials</em><br> to retype code</h1>
+    <h1><em>Stop pausing tutorials</em><br> to retype code</h1>
 
     <p class="sub">
-      CodeRa extracts beautifully formatted code from YouTube, Udemy, and Coursera videos in <strong>1 click</strong>.
+
+      CodeRa extracts beautifully formatted code from any video, <strong>anywhere</strong>, in 1 click.
     </p>
 
     <div class="cta-row">
@@ -991,17 +945,11 @@
         </svg>
         Add to Chrome, Free
       </a>
-      <a href="#how" class="btn-ghost">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <polygon points="5 3 19 12 5 21 5 3" />
-        </svg>
-        Check how it works
-      </a>
     </div>
 
     <p class="hero-note">No sign-up required. Zero configuration. Free.</p>
 
-    <!-- ANIMATED DEMO -->
+    <!-- DEMO VIDEO (YouTube) -->
     <style>
       .demo-wrap {
         position: relative;
@@ -1030,516 +978,49 @@
         color: var(--muted);
       }
 
-      /* video player mock */
-      .video-mock {
-        background: #0d1117;
-        display: grid;
-        grid-template-columns: 1fr 300px;
-        min-height: 300px;
-      }
-
-      .video-screen {
+      .video-embed {
         position: relative;
-        padding: 28px 32px;
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 12.5px;
-        line-height: 1.8;
-        color: #8b949e;
-        overflow: hidden;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        background: #0d1117;
       }
 
-      /* play indicator, video is RUNNING */
-      .vid-playing {
+      .video-embed iframe {
         position: absolute;
-        top: 12px;
-        left: 12px;
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        font-size: 10px;
-        color: var(--green);
-        font-family: 'JetBrains Mono', monospace;
-      }
-
-      .vid-dot {
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        background: var(--green);
-        animation: pulse 1.2s infinite;
-      }
-
-      .vid-timer {
-        font-size: 10px;
-        color: #475569;
-        font-family: 'JetBrains Mono', monospace;
-        position: absolute;
-        bottom: 12px;
-        right: 12px;
-      }
-
-      /* selection box, appears in step 2 */
-      .anim-sel {
-        position: absolute;
-        top: 52px;
-        left: 24px;
-        right: 24px;
-        bottom: 50px;
-        border: 2px solid var(--cyan);
-        background: rgba(34, 211, 238, 0.07);
-        border-radius: 6px;
-        pointer-events: none;
-        opacity: 0;
-        transform: scale(0.97);
-        transition: opacity 0.3s, transform 0.3s;
-      }
-
-      .anim-sel.show {
-        opacity: 1;
-        transform: scale(1);
-      }
-
-      /* cursor */
-      .anim-cursor {
-        position: absolute;
-        width: 20px;
-        height: 20px;
-        background: white;
-        border-radius: 50%;
-        box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.4), 0 2px 8px rgba(0, 0, 0, 0.4);
-        pointer-events: none;
-        transition: top 0.5s cubic-bezier(.4, 0, .2, 1), left 0.5s cubic-bezier(.4, 0, .2, 1), opacity 0.3s;
-        opacity: 0;
-      }
-
-      /* processing toast */
-      .anim-toast {
-        position: absolute;
-        top: 16px;
-        right: 16px;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        background: #1a2330;
-        border: 1px solid var(--border);
-        border-radius: 10px;
-        padding: 9px 13px;
-        font-size: 11px;
-        font-weight: 500;
-        opacity: 0;
-        transform: translateY(-6px);
-        transition: opacity 0.3s, transform 0.3s;
-      }
-
-      .anim-toast.show {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      .anim-spinner {
-        width: 13px;
-        height: 13px;
-        border: 2px solid rgba(34, 211, 238, 0.2);
-        border-top-color: var(--cyan);
-        border-radius: 50%;
-        animation: spin .7s linear infinite;
-      }
-
-      /* right panel, popup */
-      .popup-side {
-        background: #161d28;
-        border-left: 1px solid var(--border);
-        display: flex;
-        flex-direction: column;
-        font-size: 12px;
-      }
-
-      .popup-side-head {
-        padding: 14px 16px;
-        border-bottom: 1px solid var(--border);
-        display: flex;
-        align-items: center;
-        gap: 8px;
-      }
-
-      .popup-side-head img {
-        width: 28px;
-        height: 28px;
-        border-radius: 6px;
-      }
-
-      .popup-side-head strong {
-        font-size: 13px;
-      }
-
-      .popup-btns {
-        padding: 10px;
-        display: flex;
-        flex-direction: column;
-        gap: 7px;
-        flex: 1;
-      }
-
-      .popup-btn-item {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        padding: 10px 12px;
-        border-radius: 9px;
-        border: 1px solid var(--border);
-        background: rgba(255, 255, 255, 0.02);
-        cursor: default;
-        transition: all 0.25s;
-      }
-
-      .popup-btn-item.active {
-        border-color: var(--cyan-border);
-        background: rgba(34, 211, 238, 0.08);
-        box-shadow: 0 0 12px rgba(34, 211, 238, 0.12);
-      }
-
-      .pbi-icon {
-        width: 28px;
-        height: 28px;
-        border-radius: 7px;
-        background: var(--surface);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-shrink: 0;
-      }
-
-      .popup-btn-item.active .pbi-icon {
-        background: rgba(34, 211, 238, 0.15);
-      }
-
-      .pbi-title {
-        font-size: 12px;
-        font-weight: 600;
-      }
-
-      .pbi-sub {
-        font-size: 10px;
-        color: var(--muted);
-        margin-top: 1px;
-      }
-
-      /* result panel slides up */
-      .anim-result {
-        position: absolute;
-        bottom: 16px;
-        right: 16px;
-        width: 310px;
-        background: #161b27;
-        border: 1px solid rgba(34, 211, 238, 0.25);
-        border-radius: 12px;
-        overflow: hidden;
-        box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5);
-        opacity: 0;
-        transform: translateY(20px);
-        transition: opacity 0.4s, transform 0.4s;
-      }
-
-      .anim-result.show {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      .ar-head {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 9px 12px;
-        background: #1e2a3a;
-        border-bottom: 1px solid var(--border);
-        font-size: 11px;
-        font-weight: 600;
-      }
-
-      .ar-tag {
-        font-size: 10px;
-        color: var(--cyan);
-        background: var(--cyan-dim);
-        border: 1px solid var(--cyan-border);
-        padding: 1px 7px;
-        border-radius: 99px;
-        margin-left: 5px;
-      }
-
-      .ar-body {
-        padding: 12px;
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 10px;
-        line-height: 1.6;
-        color: #8b949e;
-      }
-
-      .ar-foot {
-        padding: 8px 12px;
-        border-top: 1px solid var(--border);
-        font-size: 10px;
-        color: var(--green);
-        display: flex;
-        align-items: center;
-        gap: 5px;
-      }
-
-      /* step label */
-      .step-label {
-        position: absolute;
-        bottom: 16px;
-        left: 50%;
-        transform: translateX(-50%);
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 10px;
-        color: var(--cyan);
-        background: rgba(34, 211, 238, 0.08);
-        border: 1px solid var(--cyan-border);
-        padding: 4px 12px;
-        border-radius: 99px;
-        white-space: nowrap;
-        pointer-events: none;
-        opacity: 0;
-        transition: opacity 0.3s;
-      }
-
-      .step-label.show {
-        opacity: 1;
-      }
-
-      @keyframes spin {
-        to {
-          transform: rotate(360deg)
-        }
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
       }
     </style>
 
-    <div class="demo-wrap" id="animDemo">
+    <div class="demo-wrap" id="demoVideo">
       <div class="demo-bar">
         <div class="dot dr"></div>
         <div class="dot dy"></div>
         <div class="dot dg"></div>
-        <div class="demo-url" id="demoUrl">youtube.com/watch & React Hooks Tutorial</div>
+        <div class="demo-url">CodeRa — 30 second demo</div>
       </div>
-      <div class="video-mock">
-        <!-- Left: video screen -->
-        <div class="video-screen" id="videoScreen">
-          <div class="vid-playing">
-            <div class="vid-dot"></div>
-            <span id="playLabel">▶ PLAYING</span>
-          </div>
-          <br><br>
-          <span style="color:#8b949e">// Tutorial: custom React hook</span><br>
-          <span style="color:#ff7b72">function</span> <span style="color:#79c0ff">useCounter</span>(initial = <span
-            style="color:#f0883e">0</span>) {<br>
-          &nbsp;&nbsp;<span style="color:#ff7b72">const</span> [count, setCount] = <span
-            style="color:#79c0ff">useState</span>(initial);<br><br>
-          &nbsp;&nbsp;<span style="color:#ff7b72">return</span> {<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;count,<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;increment: () =&gt; setCount(c =&gt; c + <span style="color:#f0883e">1</span>),<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;reset: () =&gt; setCount(initial)<br>
-          &nbsp;&nbsp;};<br>
-          }
-          <div class="vid-timer" id="vidTimer">2:34 / 18:42</div>
+      <div class="video-embed">
+        <!-- TODO: replace YOUTUBE_VIDEO_ID with the real video id once uploaded -->
 
-          <!-- animated elements -->
-          <div class="anim-sel" id="animSel"></div>
-          <div class="anim-cursor" id="animCursor"></div>
-          <div class="anim-toast" id="animToast">
-            <div class="anim-spinner"></div>
-            CodeRa is reading the code...
-          </div>
-          <div class="anim-result" id="animResult">
-            <div class="ar-head">
-              <span>CodeRa <span class="ar-tag">🎬 video frame</span></span>
-              <span style="font-size:10px;color:var(--muted)">9 lines · auto-copied</span>
-            </div>
-            <div class="ar-body">
-              <span style="color:#ff7b72">function</span> <span style="color:#79c0ff">useCounter</span>(initial = <span
-                style="color:#f0883e">0</span>) {<br>
-              &nbsp;&nbsp;<span style="color:#ff7b72">const</span> [count, setCount] = <span
-                style="color:#79c0ff">useState</span>(initial);<br><br>
-              &nbsp;&nbsp;<span style="color:#ff7b72">return</span> {<br>
-              &nbsp;&nbsp;&nbsp;&nbsp;count,<br>
-              &nbsp;&nbsp;&nbsp;&nbsp;increment: () =&gt; setCount(c =&gt; c + <span
-                style="color:#f0883e">1</span>),<br>
-              &nbsp;&nbsp;&nbsp;&nbsp;reset: () =&gt; setCount(initial)<br>
-              &nbsp;&nbsp;};<br>
-              }
-            </div>
-            <div class="ar-foot">
-              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                <polyline points="20 6 9 17 4 12" />
-              </svg>
-              Copied to clipboard, Ctrl+V to paste
-            </div>
-          </div>
-          <div class="step-label" id="stepLabel">step 1 of 3</div>
-        </div>
-
-        <!-- Right: extension popup -->
-        <div class="popup-side">
-          <div class="popup-side-head">
-            <img src="./icon48.png" alt="">
-            <div><strong>CodeRa</strong>
-              <div style="font-size:10px;color:var(--muted)">Extract as code</div>
-            </div>
-          </div>
-          <div class="popup-btns">
-            <div class="popup-btn-item" id="pbtnSelect">
-              <div class="pbi-icon">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2">
-                  <rect x="3" y="3" width="18" height="18" rx="2" />
-                </svg>
-              </div>
-              <div>
-                <div class="pbi-title">Select Area</div>
-                <div class="pbi-sub">Drag to capture</div>
-              </div>
-            </div>
-            <div class="popup-btn-item" id="pbtnVideo">
-              <div class="pbi-icon" id="pbtnVideoIcon">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2"
-                  id="videoIconSvg">
-                  <polygon points="23 7 16 12 23 17 23 7" />
-                  <rect x="1" y="5" width="15" height="14" rx="2" />
-                </svg>
-              </div>
-              <div>
-                <div class="pbi-title">Capture Video Frame</div>
-                <div class="pbi-sub">Video keeps playing ▶</div>
-              </div>
-            </div>
-            <div class="popup-btn-item" id="pbtnUpload">
-              <div class="pbi-icon">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2">
-                  <rect x="9" y="9" width="13" height="13" rx="2" />
-                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-                </svg>
-              </div>
-              <div>
-                <div class="pbi-title">Upload Image</div>
-                <div class="pbi-sub">From screenshot file</div>
-              </div>
-            </div>
-          </div>
-          <div style="padding:10px 14px;border-top:1px solid var(--border);font-size:10px;color:#334155;">
-            Powered by CodeRa
-          </div>
-        </div>
+        <video autoplay muted loop width="100%" height="100%" src="./video-codera.mp4" title="CodeRa demo video"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen></video>
       </div>
     </div>
-
-    <script>
-      (function () {
-        // Timer ticks while video plays
-        let sec = 34, min = 2;
-        setInterval(() => {
-          sec++;
-          if (sec >= 60) { sec = 0; min++; }
-          const el = document.getElementById('vidTimer');
-          if (el) el.textContent = min + ':' + String(sec).padStart(2, '0') + ' / 18:42';
-        }, 1000);
-
-        // Animation sequence, loops every 8s
-        function runSequence() {
-          const sel = document.getElementById('animSel');
-          const toast = document.getElementById('animToast');
-          const result = document.getElementById('animResult');
-          const pbtnVideo = document.getElementById('pbtnVideo');
-          const stepLabel = document.getElementById('stepLabel');
-
-          // Reset
-          sel.classList.remove('show');
-          toast.classList.remove('show');
-          result.classList.remove('show');
-          pbtnVideo.classList.remove('active');
-          stepLabel.textContent = '';
-          stepLabel.classList.remove('show');
-
-          // Step 1: highlight the button (1s)
-          setTimeout(() => {
-            stepLabel.textContent = '① click "Capture Video Frame"';
-            stepLabel.classList.add('show');
-            pbtnVideo.classList.add('active');
-            document.getElementById('videoIconSvg').setAttribute('stroke', '#22d3ee');
-          }, 800);
-
-          // Step 2: selection box appears (2.5s), video still playing
-          setTimeout(() => {
-            stepLabel.textContent = '② capturing frame, video keeps playing ▶';
-            sel.classList.add('show');
-          }, 2500);
-
-          // Step 3: toast, processing (3.5s)
-          setTimeout(() => {
-            stepLabel.textContent = '③ CodeRa is reading...';
-            toast.classList.add('show');
-          }, 3500);
-
-          // Step 4: result panel (5.5s)
-          setTimeout(() => {
-            toast.classList.remove('show');
-            result.classList.add('show');
-            stepLabel.textContent = '✓ code copied to clipboard!';
-          }, 5500);
-
-          // Reset after pause (8s total)
-          setTimeout(() => {
-            stepLabel.classList.remove('show');
-            sel.classList.remove('show');
-            result.classList.remove('show');
-            pbtnVideo.classList.remove('active');
-            document.getElementById('videoIconSvg').setAttribute('stroke', '#94a3b8');
-          }, 8000);
-        }
-
-        // Start after page load
-        setTimeout(runSequence, 1200);
-        setInterval(runSequence, 9500);
-      })();
-    </script>
   </section>
 
-  <!-- ═══════ PAIN STRIP ═══════ -->
-  <div class="pain-strip">
-    <h2>// the old way, every snippet, every tutorial</h2>
-    <div class="pain-steps">
-      <div class="pain-step"><span class="bad">⏸ Pause video</span></div>
-      <div class="pain-arrow">→</div>
-      <div class="pain-step"><span class="bad">😬 Squint at code</span></div>
-      <div class="pain-arrow">→</div>
-      <div class="pain-step"><span class="bad">⌨️ Type slowly</span></div>
-      <div class="pain-arrow">→</div>
-      <div class="pain-step"><span class="bad">🐛 Typo. Fix.</span></div>
-      <div class="pain-arrow">→</div>
-      <div class="pain-step"><span class="bad">⏪ Rewind</span></div>
-      <div class="pain-arrow">→</div>
-      <div class="pain-step"><span class="bad">🔁 Repeat</span></div>
-    </div>
-    <div class="pain-fix">
-      With CodeRa: <span class="good">▶ video plays → click → 3 seconds → paste. Never pause.</span>
-    </div>
-  </div>
-
-  <!-- STATS -->
-  <div class="stats">
-    <div class="stat">
-      <div class="stat-n">3 to 5s</div>
-      <div class="stat-l">Extraction time</div>
-    </div>
-    <div class="stat">
-      <div class="stat-n">~2 min</div>
-      <div class="stat-l">Saved per snippet</div>
-    </div>
-    <div class="stat">
-      <div class="stat-n">3</div>
-      <div class="stat-l">AI modes</div>
-    </div>
-    <div class="stat">
-      <div class="stat-n">0</div>
-      <div class="stat-l">Screenshots stored</div>
-    </div>
+  <!-- ═══════ WAITLIST (moved up, right after the hero/demo) ═══════ -->
+  <div class="waitlist-section" id="early-access">
+    <h2>Stay in the loop</h2>
+    <p class="waitlist-sub">Be first to know when paid plans launch, early members get special pricing.</p>
+    <form class="waitlist-form" id="wf">
+      <input type="email" id="we" placeholder="your@email.com" required autocomplete="email">
+      <input type="text" name="_honey" style="display:none" tabindex="-1">
+      <button type="submit" id="wb">Join waitlist</button>
+    </form>
+    <p class="waitlist-msg" id="wm"></p>
   </div>
 
   <!-- ═══════ HOW IT WORKS ═══════ -->
@@ -1592,6 +1073,65 @@
         <p>CodeRa explains what the snippet does, traces execution line by line, shows expected output. <strong>Learn
             the logic.</strong></p>
       </div>
+    </div>
+  </section>
+
+  <!-- ═══════ PRODUCT FEATURES ═══════ -->
+  <section class="features-section" id="features">
+    <div class="section-tag">// product features</div>
+    <h2>Built for the whole learning loop</h2>
+    <p class="section-sub">Capture once, keep the snippet, ask follow-ups, export to your notes — without reopening the popup every time.</p>
+    <div class="features-grid">
+      <article class="feature-item">
+        <div class="feature-tag">1-click capture</div>
+        <h3>Hotkey + floating button</h3>
+        <p>Press <strong>Alt+C</strong> or tap the floating CodeRa button on the player. Frame capture without opening the popup.</p>
+      </article>
+      <article class="feature-item">
+        <div class="feature-tag">local library</div>
+        <h3>Snippet library</h3>
+        <p>Sidebar filters by YouTube / Udemy / source type, search, timestamps, and one-click publish to <strong>GitLab Snippets</strong>.</p>
+      </article>
+      <article class="feature-item">
+        <div class="feature-tag">exports</div>
+        <h3>Notion, Obsidian, Anki, GitLab</h3>
+        <p>Export a snippet as Obsidian Markdown, Notion-ready Markdown, Anki cards, or push straight to GitLab Snippets.</p>
+      </article>
+      <article class="feature-item">
+        <div class="feature-tag">trust</div>
+        <h3>Bracket / syntax check</h3>
+        <p>After code extraction, CodeRa checks brackets and flags likely OCR mistakes before you paste into your editor.</p>
+      </article>
+      <article class="feature-item">
+        <div class="feature-tag">understand</div>
+        <h3>Ask about the snippet</h3>
+        <p>Follow-up chat on the result panel: ask anything, or one-click “explain like a beginner” (including Russian).</p>
+      </article>
+      <article class="feature-item">
+        <div class="feature-tag">translate</div>
+        <h3>Language conversion</h3>
+        <p>Convert a captured snippet to JavaScript, Python, Go, Java, Rust, or TypeScript in one click.</p>
+      </article>
+      <article class="feature-item">
+        <div class="feature-tag">anywhere</div>
+        <h3>Not only course videos</h3>
+        <p>Select Area works on Zoom/Meet shares, PDFs, slides, Twitch, Slack/Discord screenshots — any code on screen.</p>
+      </article>
+      <article class="feature-item">
+        <div class="feature-tag">editor</div>
+        <h3>VS Code / Cursor bridge</h3>
+        <p>One click copies a CodeRa-marked snippet. In VS Code/Cursor run <strong>CodeRa: Insert Snippet</strong> (companion extension) to drop it into the open file.</p>
+      </article>
+      <article class="feature-item">
+        <div class="feature-tag">lectures</div>
+        <h3>Collect whole lesson</h3>
+        <p>Start collection and keep watching — CodeRa grabs frames as you play (and when you scrub), with no blinking and no forced rewind. Finish to get a timestamped timeline plus assembled files like <code>index.html</code>, <code>styles.css</code>, <code>script.js</code>.</p>
+      </article>
+      <article class="feature-item">
+        <div class="feature-tag">UX</div>
+        <h3>Corner toasts</h3>
+        <p>Confirms, progress, and errors appear as small corner notifications — they never block the video or steal focus from the lesson.</p>
+      </article>
     </div>
   </section>
 
@@ -1686,18 +1226,6 @@
     </div>
   </section>
 
-  <!-- ═══════ WAITLIST ═══════ -->
-  <div class="waitlist-section" id="early-access">
-    <h2>Stay in the loop</h2>
-    <p class="waitlist-sub">Be first to know when paid plans launch, early members get special pricing.</p>
-    <form class="waitlist-form" id="wf">
-      <input type="email" id="we" placeholder="your@email.com" required autocomplete="email">
-      <input type="text" name="_honey" style="display:none" tabindex="-1">
-      <button type="submit" id="wb">Join waitlist</button>
-    </form>
-    <p class="waitlist-msg" id="wm"></p>
-  </div>
-
   <!-- ═══════ FINAL CTA ═══════ -->
   <div class="final-cta" id="install">
     <h2>Stop retyping.<br><span style="color:var(--cyan)">Start extracting.</span></h2>
@@ -1707,7 +1235,6 @@
       onclick="gtag_report_conversion('https://chromewebstore.google.com/detail/codera/achdkjdakdpnihgjhdgmodgamefkffid');">
       Add to Chrome, It's Free
     </a>
-    <p class="final-note">Load unpacked from the files/ folder · Chrome 88+ · No account needed</p>
   </div>
 
   <footer>
@@ -1719,6 +1246,7 @@
       <a href="#how">How it works</a>
       <a href="privacy.html">Privacy</a>
       <a href="#modes">Modes</a>
+      <a href="#features">Features</a>
       <a href="https://www.linkedin.com/in/anton-zaharenko/" target="_blank" rel="noopener">Anton Zakharenka</a>
     </div>
     <span>© <span id="year"></span> CodeRa</span>

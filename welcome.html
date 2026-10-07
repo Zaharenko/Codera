@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to CodeRa — pin it to get started</title>
+    <link rel="icon" href="./icon48.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --cyan: #22d3ee;
+            --cyan-dim: rgba(34, 211, 238, 0.12);
+            --cyan-border: rgba(34, 211, 238, 0.28);
+            --bg: #0b0f14;
+            --surface: #141b24;
+            --border: rgba(255, 255, 255, 0.08);
+            --text: #f1f5f9;
+            --muted: #94a3b8;
+            --green: #34d399;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Space Grotesk', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .wrap {
+            max-width: 780px;
+            margin: 0 auto;
+            padding: 64px 24px 100px;
+        }
+
+        .top {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .logo-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .logo-row img {
+            width: 32px;
+            height: 32px;
+            border-radius: 7px;
+        }
+
+        .logo-row span {
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .success-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            background: rgba(52, 211, 153, 0.12);
+            border: 1px solid rgba(52, 211, 153, 0.3);
+            color: var(--green);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            padding: 6px 14px;
+            border-radius: 99px;
+            margin-bottom: 22px;
+        }
+
+        h1 {
+            font-size: clamp(28px, 5vw, 42px);
+            font-weight: 700;
+            letter-spacing: -1px;
+            margin-bottom: 14px;
+        }
+
+        h1 span {
+            color: var(--cyan);
+        }
+
+        .top p {
+            color: var(--muted);
+            font-size: 16px;
+            max-width: 480px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* PIN STEP — the most important action on this page */
+        .pin-card {
+            background: var(--surface);
+            border: 1px solid var(--cyan-border);
+            border-radius: 18px;
+            padding: 32px;
+            margin-bottom: 40px;
+            box-shadow: 0 0 40px rgba(34, 211, 238, 0.06);
+        }
+
+        .pin-card .step-tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: var(--cyan);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .pin-card h2 {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .pin-card>p {
+            color: var(--muted);
+            font-size: 14px;
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
+
+        /* mock toolbar illustration */
+        .toolbar-mock {
+            background: #1a2330;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 10px;
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .tb-url {
+            flex: 1;
+            background: #0d1117;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 8px 12px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            color: #475569;
+        }
+
+        .tb-icon {
+            width: 30px;
+            height: 30px;
+            border-radius: 7px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border);
+            flex-shrink: 0;
+        }
+
+        .tb-puzzle {
+            position: relative;
+        }
+
+        .tb-puzzle.highlight {
+            border-color: var(--cyan-border);
+            background: rgba(34, 211, 238, 0.1);
+        }
+
+        .tb-arrow-callout {
+            position: absolute;
+            top: 44px;
+            right: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 4px;
+        }
+
+        .tb-callout-line {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: var(--cyan);
+            background: rgba(34, 211, 238, 0.1);
+            border: 1px solid var(--cyan-border);
+            padding: 4px 10px;
+            border-radius: 99px;
+            white-space: nowrap;
+        }
+
+        .pin-steps-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 8px;
+        }
+
+        .pin-steps-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 14px;
+            color: var(--text);
+        }
+
+        .pin-num {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: var(--cyan-dim);
+            border: 1px solid var(--cyan-border);
+            color: var(--cyan);
+            font-size: 12px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        .pin-steps-list b {
+            color: var(--cyan);
+        }
+
+        /* generic section */
+        .section-tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: var(--cyan);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+
+        h3.block-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 24px;
+        }
+
+        .modes-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+            margin-bottom: 28px;
+        }
+
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-bottom: 48px;
+        }
+
+        .tip-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 16px 18px;
+        }
+
+        .tip-card .tip-tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            color: var(--cyan);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .tip-card h4 {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .tip-card p {
+            font-size: 12.5px;
+            color: var(--muted);
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        .mode-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 20px;
+        }
+
+        .mode-emoji {
+            font-size: 24px;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .mode-card h4 {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .mode-card p {
+            font-size: 12.5px;
+            color: var(--muted);
+            line-height: 1.5;
+        }
+
+        /* try it now */
+        .try-card {
+            background: rgba(34, 211, 238, 0.04);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 28px;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .try-card h3 {
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+
+        .try-card p {
+            color: var(--muted);
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .btn-main {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--cyan);
+            color: #0b0f14;
+            padding: 13px 24px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 14px;
+            box-shadow: 0 0 24px rgba(34, 211, 238, 0.25);
+        }
+
+        .btn-ghost {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 13px 22px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        .try-btn-row {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        footer {
+            text-align: center;
+            font-size: 12px;
+            color: #475569;
+        }
+
+        footer a {
+            color: var(--muted);
+            text-decoration: none;
+        }
+
+        @media (max-width: 620px) {
+            .modes-grid,
+            .tips-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .toolbar-mock {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+
+        <!-- TOP -->
+        <div class="top">
+            <div class="logo-row">
+                <img src="./icon48.png" alt="CodeRa">
+                <span>CodeRa</span>
+            </div>
+            <div class="success-badge">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                    <polyline points="20 6 9 17 4 12" />
+                </svg>
+                Installed successfully
+            </div>
+            <h1>Welcome to <span>CodeRa</span> 👋</h1>
+            <p>One thing first, takes 5 seconds, and it's the difference between using CodeRa daily and forgetting it
+                exists tomorrow.</p>
+        </div>
+
+        <!-- PIN STEP -->
+        <div class="pin-card">
+            <div class="step-tag">// do this first</div>
+            <h2>Pin CodeRa to your toolbar</h2>
+            <p>Chrome hides new extensions inside the puzzle-piece menu. Pin CodeRa so it's always one click away
+                while you're watching a tutorial.</p>
+
+            <div class="toolbar-mock">
+                <div class="tb-url">youtube.com/watch?v=...</div>
+                <div class="tb-icon">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2">
+                        <circle cx="12" cy="12" r="1" />
+                        <circle cx="12" cy="5" r="1" />
+                        <circle cx="12" cy="19" r="1" />
+                    </svg>
+                </div>
+                <div class="tb-icon tb-puzzle highlight">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#22d3ee" stroke-width="2">
+                        <path
+                            d="M19.439 7.85c-.049.322.059.648.289.878l1.568 1.568c.47.47.706 1.087.706 1.704s-.235 1.233-.706 1.704l-1.611 1.611a.98.98 0 0 1-.837.276c-.47-.07-.802-.48-.968-.925a2.501 2.501 0 1 0-3.214 3.214c.446.166.855.497.925.968a.979.979 0 0 1-.276.837l-1.61 1.61a2.404 2.404 0 0 1-1.705.707 2.402 2.402 0 0 1-1.704-.706l-1.568-1.568a1.026 1.026 0 0 0-.877-.29c-.493.074-.84.504-1.02.968a2.5 2.5 0 1 1-3.237-3.237c.464-.18.894-.527.967-1.02a1.026 1.026 0 0 0-.289-.877l-1.568-1.568A2.402 2.402 0 0 1 1.998 12c0-.617.236-1.234.706-1.704L4.23 8.77c.24-.24.581-.353.917-.303.515.077.877.526 1.073 1.01a2.5 2.5 0 1 0 3.259-3.259c-.484-.196-.933-.558-1.01-1.073a1.402 1.402 0 0 1 .303-.917l1.525-1.525A2.402 2.402 0 0 1 12 1.998c.617 0 1.234.236 1.704.706l1.568 1.568c.23.23.556.338.877.29.493-.074.84-.504 1.02-.968a2.5 2.5 0 1 1 3.237 3.237c-.464.18-.894.527-.967 1.02Z" />
+                    </svg>
+                </div>
+                <div class="tb-icon" style="border-color: var(--cyan-border); background: rgba(34,211,238,.08);">
+                    <img src="./icon48.png" alt="" style="width:18px;height:18px;border-radius:4px;">
+                </div>
+                <div class="tb-arrow-callout">
+                    <div class="tb-callout-line">① click the puzzle icon</div>
+                </div>
+            </div>
+
+            <ul class="pin-steps-list">
+                <li><span class="pin-num">1</span> Click the <b>puzzle-piece icon</b> in Chrome's toolbar (top right).
+                </li>
+                <li><span class="pin-num">2</span> Find <b>CodeRa</b> in the list.</li>
+                <li><span class="pin-num">3</span> Click the <b>pin icon</b> next to it. Done — CodeRa now lives in your
+                    toolbar.</li>
+            </ul>
+        </div>
+
+        <!-- MODES -->
+        <div class="section-tag">// three ways to use it</div>
+        <h3 class="block-title">Pick a mode whenever you click CodeRa</h3>
+        <div class="modes-grid">
+            <div class="mode-card">
+                <span class="mode-emoji">📄</span>
+                <h4>Plain text</h4>
+                <p>Grabs everything visible, subtitles, slides, captions, exactly as shown.</p>
+            </div>
+            <div class="mode-card">
+                <span class="mode-emoji">💻</span>
+                <h4>Extract as code</h4>
+                <p>Finds the code, keeps indentation and comments, ready to paste into your editor.</p>
+            </div>
+            <div class="mode-card">
+                <span class="mode-emoji">🧠</span>
+                <h4>Understand code</h4>
+                <p>Explains the snippet line by line and shows the expected output.</p>
+            </div>
+        </div>
+
+        <div class="section-tag">// new power tools</div>
+        <h3 class="block-title">Worth knowing on day one</h3>
+        <div class="tips-grid">
+            <div class="tip-card">
+                <div class="tip-tag">fast capture</div>
+                <h4>Alt+C + floating button</h4>
+                <p>Grab a video frame without opening the popup. One keystroke while the tutorial plays.</p>
+            </div>
+            <div class="tip-card">
+                <div class="tip-tag">whole lesson</div>
+                <h4>Collect whole lesson</h4>
+                <p>Hit Lesson on the player and keep watching. Frames are sampled as you play (and when you scrub) — no blinking, no forced rewind. Press Assemble for a timeline plus HTML/CSS/JS files.</p>
+            </div>
+            <div class="tip-card">
+                <div class="tip-tag">library</div>
+                <h4>Snippet library</h4>
+                <p>Filter by YouTube / Udemy / capture type, search locally, remove duplicates, export to Obsidian, Anki, Notion, or GitLab Snippets.</p>
+            </div>
+            <div class="tip-card">
+                <div class="tip-tag">editor</div>
+                <h4>Ask, convert, send to Cursor</h4>
+                <p>Chat about a snippet, translate languages, or copy a marked payload for VS Code / Cursor insert.</p>
+            </div>
+            <div class="tip-card">
+                <div class="tip-tag">UX</div>
+                <h4>Corner toasts</h4>
+                <p>Progress and confirms stay in the corner so the tutorial video is never covered by a full-screen dialog.</p>
+            </div>
+        </div>
+
+        <!-- TRY IT NOW -->
+        <div class="try-card">
+            <h3>See it in action first</h3>
+            <p>Watch the 30-second demo, or jump straight to a tutorial video and try "Capture Video Frame" yourself.
+            </p>
+            <div class="try-btn-row">
+                <!-- TODO: replace YOUTUBE_VIDEO_ID with the real demo video id -->
+                <a class="btn-main" href="https://www.youtube.com/watch?v=YOUTUBE_VIDEO_ID" target="_blank"
+                    rel="noopener">
+                    ▶ Watch the demo
+                </a>
+                <a class="btn-ghost" href="https://codera.click/#how" target="_blank" rel="noopener">How it works</a>
+            </div>
+        </div>
+
+        <footer>
+            Need help? <a href="mailto:anton.zaharenko@gmail.com">anton.zaharenko@gmail.com</a> ·
+            <a href="https://codera.click" target="_blank" rel="noopener">codera.click</a>
+        </footer>
+    </div>
+</body>
+
+</html>
