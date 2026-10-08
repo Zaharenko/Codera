@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CodeRa vs Google Lens for Code (2026)</title>
-  <meta name="description" content="CodeRa vs Google Lens for extracting code from screenshots and video. Lens is general OCR; CodeRa keeps indentation and captures YouTube/Udemy frames. Benchmark planned.">
+  <title>CodeRa vs Google Lens for Extracting Code (2026)</title>
+  <meta name="description" content="CodeRa vs Google Lens for extracting code from screenshots and video. Lens is general OCR; CodeRa targets tutorial frames and indentation-aware extraction.">
   <link rel="canonical" href="https://codera.click/codera-vs-google-lens.html">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://codera.click/codera-vs-google-lens.html">
@@ -70,16 +70,8 @@
     </table>
 
     <div class="note">
-      <strong style="color:var(--text)">Benchmark status:</strong> a public side-by-side (≈50–100 frames, Python/JS/React, metrics: indentation fidelity, symbol errors) is not published yet. Until then this page states product positioning, not measured accuracy percentages. Results and sample failures will be posted here when ready.
+      <strong style="color:var(--text)">Accuracy numbers:</strong> this page describes product differences (workflow, privacy, lesson features), not a measured accuracy score. A public side-by-side dataset will live on the <a href="/roadmap.html">roadmap</a> / benchmark page when published.
     </div>
-
-    <h2>Planned methodology (preview)</h2>
-    <ol>
-      <li>Collect N frames from public coding videos + screenshots.</li>
-      <li>Run Lens / Live Text / CodeRa on the same crop.</li>
-      <li>Score: exact-indent lines, wrong symbols, missing lines.</li>
-      <li>Publish raw table + examples of each tool’s typical mistakes.</li>
-    </ol>
 
     <div class="cta">
       <p><a class="btn" href="https://chromewebstore.google.com/detail/codera/achdkjdakdpnihgjhdgmodgamefkffid">Try CodeRa</a></p>

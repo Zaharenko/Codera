@@ -1112,10 +1112,10 @@
         <div class="demo-url">CodeRa — 30 second demo</div>
       </div>
       <div class="video-embed">
-        <video autoplay muted loop playsinline controls preload="metadata" width="100%" height="100%"
-          src="./video-codera.mp4?v=20261008"
+        <video muted loop playsinline controls preload="none" width="100%" height="100%"
+          src="./video-codera.mp4"
           title="CodeRa demo — copy code from YouTube and Udemy videos"
-          poster="./og.jpg?v=20261008">
+          poster="./og.jpg">
           Your browser does not support HTML5 video.
           <a href="./video-codera.mp4">Download the CodeRa demo (MP4)</a>.
         </video>
@@ -1218,10 +1218,10 @@
         <p>Convert a captured snippet to JavaScript, Python, Go, Java, Rust, or TypeScript in one click.</p>
       </article>
       <article class="feature-item">
-        <div class="feature-tag">editor</div>
-        <h3>VS Code / Cursor companion</h3>
-        <p>Copy a CodeRa-marked snippet, then in VS Code/Cursor run <strong>CodeRa: Insert Snippet</strong>. Details:
-          <a href="vscode-companion.html" style="color:var(--cyan);">companion setup</a>.</p>
+        <div class="feature-tag">clipboard</div>
+        <h3>Marked clipboard copy</h3>
+        <p>Copy a CodeRa-marked snippet and paste into VS Code, Cursor, or any editor. A dedicated insert command is
+          <a href="roadmap.html" style="color:var(--cyan);">on the roadmap</a>.</p>
       </article>
       <article class="feature-item">
         <div class="feature-tag">anywhere</div>
@@ -1252,7 +1252,7 @@
         <tr>
           <td class="tool">Apple Live Text / Google Lens</td>
           <td class="bad">Destroys indentation, confuses { } => ;</td>
-          <td class="good">Understands syntax, preserves formatting</td>
+          <td class="good">Code mode aims to preserve indentation and structure</td>
         </tr>
         <tr>
           <td class="tool">ChatGPT / Claude.ai</td>
@@ -1313,8 +1313,7 @@
       <details class="faq">
         <summary>What are the free-plan limits?</summary>
         <div class="faq-body">During early access, core features are unlocked without a CodeRa account. Fair-use /
-          API limits may apply (especially on shared early-access keys or future paid tiers). We’ll publish concrete
-          quotas when paid plans launch.</div>
+          API limits may apply. Concrete quotas will be published when paid plans launch.</div>
       </details>
       <details class="faq">
         <summary>Does it work in Edge, Brave, Opera? What about Firefox?</summary>
@@ -1373,7 +1372,9 @@
       <a href="codera-vs-google-lens.html">vs Google Lens</a>
       <a href="codera-vs-selectext.html">vs Selectext</a>
       <a href="offline-alternatives.html">Offline alts</a>
-      <a href="vscode-companion.html">VS Code companion</a>
+      <a href="guides/">Guides</a>
+      <a href="compare/">Compare</a>
+      <a href="roadmap.html">Roadmap</a>
       <a href="ru/">Русский</a>
       <a href="about.html">About</a>
       <a href="changelog.html">Changelog</a>
@@ -1382,7 +1383,7 @@
       <a href="mailto:anton.zaharenko@gmail.com">Contact</a>
       <a href="https://www.linkedin.com/in/anton-zaharenko/" target="_blank" rel="noopener">Anton Zakharenka</a>
     </div>
-    <span>© 2026 CodeRa · Chrome extension for extracting code from video</span>
+    <span>© 2026 CodeRa · Chrome extension for extracting code from video · Not affiliated with Anthropic</span>
   </footer>
 
   <script>

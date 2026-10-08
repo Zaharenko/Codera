@@ -79,6 +79,24 @@
     <priority>0.4</priority>
   </url>
   <url>
+    <loc>https://codera.click/guides/</loc>
+    <lastmod>2026-10-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://codera.click/compare/</loc>
+    <lastmod>2026-10-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://codera.click/roadmap.html</loc>
+    <lastmod>2026-10-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://codera.click/welcome.html</loc>
     <lastmod>2026-10-08</lastmod>
     <changefreq>monthly</changefreq>

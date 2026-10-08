@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Offline &amp; Privacy-First Alternatives to CodeRa (2026)</title>
-  <meta name="description" content="Honest look at offline OCR for code (Screenshot Search, Live Text, Lens) vs CodeRa. Local privacy vs cloud vision accuracy and lesson workflow.">
+  <meta name="description" content="Honest look at offline OCR for code (Live Text, Lens, Tesseract) vs CodeRa. Local privacy vs cloud vision and lesson workflow.">
   <link rel="canonical" href="https://codera.click/offline-alternatives.html">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://codera.click/offline-alternatives.html">
@@ -57,13 +57,21 @@
       <tbody>
         <tr><td><strong>Apple Live Text</strong></td><td>On device (Apple)</td><td>Private, free with macOS/iOS</td><td>Often flattens indentation; no YouTube one-click in Chrome</td></tr>
         <tr><td><strong>Google Lens</strong></td><td>Google / device</td><td>Fast general OCR</td><td>Not built for IDE-ready code; multi-step from desktop video</td></tr>
-        <tr><td><strong>Screenshot Search</strong> (Mac apps in this niche)</td><td>Often on device</td><td>Strong privacy story; one-time purchase models</td><td>Not a Chrome course companion; no lesson→project pack inside the browser</td></tr>
-        <tr><td><strong>CodeRa</strong></td><td>Browser + Anthropic API</td><td>Video frame capture, code mode, lesson collect, library, exports</td><td>Frames leave your machine for AI processing</td></tr>
+        <tr><td><strong>Tesseract / local OCR stacks</strong></td><td>On device</td><td>Fully offline; free/open options</td><td>Setup cost; weak on nested code without tuning</td></tr>
+        <tr><td><strong>CodeRa</strong></td><td>Browser + CodeRa relay + Anthropic</td><td>Video frame capture, code mode, lesson collect, library, exports</td><td>Frames leave your machine for AI processing</td></tr>
       </tbody>
     </table>
 
     <h2>Our position</h2>
-    <p>Choose offline tools when proprietary code must never leave the device. Choose CodeRa when you accept Anthropic processing (see <a href="/privacy.html">Privacy</a>) in exchange for better tutorial workflow. We will publish a measured benchmark (Lens / Live Text / CodeRa) with methodology — this page will link to it when ready.</p>
+    <p>Choose offline tools when proprietary code must never leave the device. Choose CodeRa when you accept relay + Anthropic processing (see <a href="/privacy.html">Privacy</a>) in exchange for a tutorial workflow in Chrome.</p>
+
+    <h2>How to reduce risk when using CodeRa</h2>
+    <ul>
+      <li>Crop to the code region only (Select Area)</li>
+      <li>Avoid capturing credentials, chat sidebars, or personal windows</li>
+      <li>Use your own API key in settings when available</li>
+      <li>Read <a href="/privacy.html">what the extract request contains</a></li>
+    </ul>
 
     <div class="cta">
       <p><strong style="color:var(--text)">Still want the browser workflow?</strong></p>

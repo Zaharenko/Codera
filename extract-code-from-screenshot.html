@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Extract Code from a Screenshot (Image to Code)</title>
-  <meta name="description" content="Turn a screenshot into paste-ready code: Lens vs ChatGPT vs CodeRa upload. Keep indentation. Free Chrome extension, no sign-up. Updated Oct 2026.">
+  <title>Screenshot to Code: Extract Code from an Image (Free)</title>
+  <meta name="description" content="Turn a screenshot into paste-ready code: system OCR, Google Lens, ChatGPT, or CodeRa upload. Indentation tips. Free Chrome extension.">
   <link rel="canonical" href="https://codera.click/extract-code-from-screenshot.html">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://codera.click/extract-code-from-screenshot.html">
@@ -69,9 +69,17 @@
       <li>Install the extension.</li>
       <li>Open the popup → <strong>Upload Image</strong> (PNG, JPEG, WebP).</li>
       <li>Pick <strong>Extract as code</strong>.</li>
-      <li>Review + paste. Optional: save to local library or <a href="/vscode-companion.html">insert via VS Code companion</a>.</li>
+      <li>Review + paste. Optional: save to the local library or copy a marked snippet into your editor.</li>
     </ol>
     <p>Also works with <strong>Select Area</strong> on any page (PDF, Slack, Zoom share).</p>
+
+    <h2>Methods compared</h2>
+    <ul>
+      <li><strong>System OCR / Live Text</strong> — private and fast; often flattens indentation</li>
+      <li><strong>Google Lens</strong> — strong general OCR; weak for nested code blocks</li>
+      <li><strong>ChatGPT / Claude upload</strong> — flexible with a good prompt; many steps</li>
+      <li><strong>CodeRa upload</strong> — one popup, “extract as code” mode, library + exports</li>
+    </ul>
 
     <h2>Example: what goes wrong with plain OCR</h2>
     <div class="beforeafter">
@@ -84,13 +92,10 @@ def greet(name):
     print("hi", name)
     return True</pre>
     </div>
-    <p>Real screenshots and a measured benchmark will be added here; until then treat this as an illustrative pattern. See <a href="/codera-vs-google-lens.html">vs Google Lens</a> and <a href="/offline-alternatives.html">offline alternatives</a>.</p>
-
-    <h2>Free web “Image to Code” tool</h2>
-    <p>A browser upload tool (no extension) is planned to capture search traffic for “screenshot to code”. When it ships, this page will link to it. For now use the Chrome extension upload path.</p>
+    <p>Common code OCR mistakes: ligatures (<code>=&gt;</code>, <code>!=</code>), <code>l</code>/<code>1</code>/<code>I</code>, <code>0</code>/<code>O</code>, lost tabs. More comparisons: <a href="/codera-vs-google-lens.html">vs Google Lens</a>, <a href="/offline-alternatives.html">offline alternatives</a>.</p>
 
     <h2>FAQ</h2>
-    <p><strong>Screenshot to code without installing?</strong><br>Chatbot upload works today; a dedicated CodeRa web tool is on the roadmap.</p>
+    <p><strong>Screenshot to code without installing?</strong><br>Upload the image to a chatbot, or install CodeRa for a one-click browser flow. A web upload tool is listed on the <a href="/roadmap.html">roadmap</a>.</p>
     <p><strong>Privacy?</strong><br>Uploads are processed by Anthropic’s API — <a href="/privacy.html">Privacy Policy</a>.</p>
 
     <div class="cta">
