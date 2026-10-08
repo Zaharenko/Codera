@@ -1,29 +1,16 @@
 # CodeRa
-> CodeRa is a Chrome extension that extracts formatted code from video frames and screenshots. Free, no sign-up. Flagship (1.2.0 rolling out): collect whole lesson → project pack + local library + exports. Extract path: CodeRa relay → Anthropic API.
+> CodeRa is a Chrome extension that extracts formatted code from video frames and screenshots. Free during early access, no sign-up. Extract path: CodeRa relay → Anthropic API.
 
 ## Key pages
 - [Home](https://codera.click/)
-- [Русская версия](https://codera.click/ru/)
-- [How to copy code from a YouTube video](https://codera.click/how-to-copy-code-from-youtube.html)
-- [How to copy code from Udemy videos](https://codera.click/how-to-copy-code-from-udemy.html)
-- [Extract code from a screenshot](https://codera.click/extract-code-from-screenshot.html)
-- [CodeRa vs Google Lens](https://codera.click/codera-vs-google-lens.html)
-- [CodeRa vs Selectext](https://codera.click/codera-vs-selectext.html)
-- [Offline / privacy-first alternatives](https://codera.click/offline-alternatives.html)
-- [Guides hub](https://codera.click/guides/)
-- [Compare hub](https://codera.click/compare/)
-- [Roadmap](https://codera.click/roadmap.html)
-- [VS Code / Cursor (in development)](https://codera.click/vscode-companion.html)
 - [Privacy](https://codera.click/privacy.html)
 - [Terms](https://codera.click/terms.html)
-- [About](https://codera.click/about.html)
-- [Changelog](https://codera.click/changelog.html)
 - [Chrome Web Store](https://chromewebstore.google.com/detail/codera/achdkjdakdpnihgjhdgmodgamefkffid)
 
 ## Product facts
+- Shortcut: Alt+C captures the current video frame while playback continues
 - Modes: plain text, extract as code, understand code
-- Capture: Alt+C, floating button, select area, lesson collection while watching
-- Local snippet library with filters and GitLab Snippets publish
-- Exports: Obsidian, Notion Markdown, Anki
-- AI: Anthropic API (see Privacy); optional own API key
-- Author: Anton Zakharenka
+- Capture also via floating button, select area, or image upload
+- Local snippet library in the browser; optional exports
+- AI: Anthropic Claude API via CodeRa HTTPS relay (see Privacy)
+- Author: Anton Zakharenka · hello@codera.click

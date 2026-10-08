@@ -11,7 +11,7 @@ Copy code from YouTube, Udemy & Coursera videos in 1 click. AI OCR keeps indenta
 Developer Tools
 
 ## Support URL
-https://codera.click/changelog.html
+https://codera.click/
 
 ## Website
 https://codera.click/
