@@ -1,5 +1,5 @@
 # CodeRa
-> CodeRa is a Chrome extension that extracts formatted code from video frames and screenshots. Free during early access, no sign-up. Extract path: CodeRa relay → Anthropic API.
+> CodeRa is a Chrome extension that extracts formatted code from video frames and screenshots. Free during early access, no sign-up. Extract path: CodeRa relay → Anthropic API. Flagship (1.2.0 rolling out): collect a whole lesson → project pack.
 
 ## Key pages
 - [Home](https://codera.click/)
@@ -10,7 +10,9 @@
 ## Product facts
 - Shortcut: Alt+C captures the current video frame while playback continues
 - Modes: plain text, extract as code, understand code
+- Lesson collection: watch → timeline → assembled files (e.g. html/css/js)
 - Capture also via floating button, select area, or image upload
-- Local snippet library in the browser; optional exports
+- Local snippet library; exports: Obsidian, Notion Markdown, Anki, GitLab Snippets
+- Follow-up: ask about a snippet or convert language; bracket check for OCR mistakes
 - AI: Anthropic Claude API via CodeRa HTTPS relay (see Privacy)
 - Author: Anton Zakharenka · hello@codera.click

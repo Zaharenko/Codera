@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CodeRa — Never pause a tutorial to retype code again</title>
   <meta name="description"
-    content="Hit Alt+C. Get clean, indented code from YouTube, Udemy and Coursera into your editor in seconds. Free Chrome extension. No sign-up.">
+    content="Alt+C copies indented code from YouTube and Udemy. Collect a whole lesson into project files. Local library, exports, ask and convert. Free Chrome extension.">
   <link rel="canonical" href="https://codera.click/">
   <link rel="alternate" hreflang="en" href="https://codera.click/">
   <link rel="alternate" hreflang="x-default" href="https://codera.click/">
@@ -25,7 +25,7 @@
   <meta name="twitter:description"
     content="Hit Alt+C. Clean, indented code from YouTube &amp; Udemy into your editor.">
   <meta name="twitter:image" content="https://codera.click/og.jpg">
-  <meta name="codera-build" content="2026-10-08-onepage">
+  <meta name="codera-build" content="2026-10-08-toolkit">
   <link rel="icon" href="./icon48.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link
@@ -79,6 +79,14 @@
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "Yes during early access — all features unlocked, no account, no credit card. Fair-use limits may apply. Pricing will be published before any charges begin."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What’s the whole-lesson feature?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Start collection and keep watching. CodeRa gathers frames and assembles a timeline plus project-style files. Shipping in 1.2.0 (rolling out). Frames use the HTTPS extract relay — see the Privacy Policy."
         }
       }
     ]
@@ -349,6 +357,106 @@
     .mode h3 { font-size: 17px; margin-bottom: 8px; }
     .mode p { font-size: 14px; color: var(--muted); line-height: 1.55; }
 
+    .section-lead {
+      max-width: 640px;
+      margin: -20px auto 32px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.55;
+    }
+    .lesson {
+      text-align: left;
+      background: linear-gradient(180deg, rgba(34, 211, 238, 0.06), transparent 40%), var(--surface);
+      border: 1px solid var(--cyan-border);
+      border-radius: 18px;
+      padding: 28px 26px 24px;
+    }
+    .lesson-top {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .lesson-pill {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--cyan);
+      border: 1px solid var(--cyan-border);
+      background: var(--cyan-dim);
+      padding: 4px 10px;
+      border-radius: 999px;
+    }
+    .lesson h3 {
+      font-size: clamp(1.35rem, 3vw, 1.75rem);
+      letter-spacing: -0.03em;
+      margin-bottom: 10px;
+    }
+    .lesson > p {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.6;
+      margin-bottom: 22px;
+      max-width: 62ch;
+    }
+    .lesson-flow {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .lesson-card {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+    .lesson-card strong {
+      display: block;
+      color: var(--cyan);
+      font-size: 11px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+    .lesson-note {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .toolkit {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      text-align: left;
+    }
+    .tool-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px 18px;
+    }
+    .tool-item code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--cyan);
+    }
+    .tool-item h3 {
+      font-size: 16px;
+      margin: 6px 0 8px;
+    }
+    .tool-item p {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
     .compare-wrap {
       max-width: 720px;
       margin: 0 auto;
@@ -457,7 +565,7 @@
 
     @media (max-width: 760px) {
       .nav-links { display: none; }
-      .steps, .modes { grid-template-columns: 1fr; gap: 20px; }
+      .steps, .modes, .lesson-flow, .toolkit { grid-template-columns: 1fr; gap: 20px; }
       .steps::before { display: none; }
       .hero { padding-top: 48px; }
       footer { flex-direction: column; align-items: flex-start; }
@@ -503,7 +611,8 @@
     <div class="nav-right">
       <ul class="nav-links">
         <li><a href="#how">How</a></li>
-        <li><a href="#features">Modes</a></li>
+        <li><a href="#lesson">Lesson</a></li>
+        <li><a href="#toolkit">Toolkit</a></li>
         <li><a href="#faq">FAQ</a></li>
       </ul>
       <a class="nav-install"
@@ -517,7 +626,7 @@
   <section class="hero">
     <div class="badge"><span class="badge-dot"></span> Live on the Chrome Web Store</div>
     <h1><em>Never pause a tutorial</em><br>to retype code again.</h1>
-    <p class="sub">Hit Alt+C. Get clean, indented code straight into your editor in seconds.</p>
+    <p class="sub">Alt+C for one frame. Or collect the whole lesson into real project files while you watch. Built by a developer who got tired of the pause–squint–retype loop.</p>
     <a class="btn-main"
       href="https://chromewebstore.google.com/detail/codera/achdkjdakdpnihgjhdgmodgamefkffid"
       onclick="gtag_report_conversion('https://chromewebstore.google.com/detail/codera/achdkjdakdpnihgjhdgmodgamefkffid');">
@@ -592,6 +701,91 @@
     </div>
   </section>
 
+  <section class="block" id="lesson">
+    <div class="section-tag">// new · whole lesson</div>
+    <h2>One frame is cute. A lecture is a project.</h2>
+    <p class="section-lead">
+      Tutorials don’t write one function and stop. They grow HTML, then CSS, then JS over twenty minutes.
+      CodeRa can ride along — collect frames while you watch, then hand you a timeline and files you can open.
+    </p>
+    <div class="lesson">
+      <div class="lesson-top">
+        <span class="lesson-pill">1.2.0 · rolling out</span>
+      </div>
+      <h3>Watch → collect → assemble</h3>
+      <p>
+        Hit the floating <strong style="color:var(--text)">Lesson</strong> control (or start collection from the popup).
+        Keep watching. No forced rewind loop, no blinking the player for every sample.
+        When you’re done, you get timestamps plus assembled pieces — think
+        <code style="color:var(--cyan);font-family:'JetBrains Mono',monospace;font-size:13px;">index.html</code>,
+        <code style="color:var(--cyan);font-family:'JetBrains Mono',monospace;font-size:13px;">styles.css</code>,
+        <code style="color:var(--cyan);font-family:'JetBrains Mono',monospace;font-size:13px;">script.js</code>.
+      </p>
+      <div class="lesson-flow">
+        <div class="lesson-card">
+          <strong>01 · watch</strong>
+          Video plays · collection on<br>
+          scrub when you want
+        </div>
+        <div class="lesson-card">
+          <strong>02 · timeline</strong>
+          0:42 html · 3:10 css<br>
+          7:05 js · …
+        </div>
+        <div class="lesson-card">
+          <strong>03 · files</strong>
+          Project pack ready<br>
+          paste into your repo
+        </div>
+      </div>
+      <p class="lesson-note">
+        If the Chrome Web Store still shows 1.1.0, update when 1.2.0 appears.
+        While collection runs, frames go through the extract relay — same path as a single Alt+C.
+        Stop anytime. Details in the <a href="/privacy.html">Privacy Policy</a>.
+      </p>
+    </div>
+  </section>
+
+  <section class="block" id="toolkit">
+    <div class="section-tag">// the rest of the toolkit</div>
+    <h2>Not just a clipboard trick</h2>
+    <p class="section-lead">
+      Same extension after the paste: library, exports, follow-ups — the boring-but-useful stuff you actually keep using.
+    </p>
+    <div class="toolkit">
+      <article class="tool-item">
+        <code>capture</code>
+        <h3>Frame, area, or upload</h3>
+        <p>Alt+C / floating button for video. Select Area for slides and docs. Upload a PNG/JPEG when the code is already a screenshot.</p>
+      </article>
+      <article class="tool-item">
+        <code>library</code>
+        <h3>Local snippet library</h3>
+        <p>Search, filter by source and language, jump back to the timestamp. Stored in your browser — not a CodeRa cloud folder.</p>
+      </article>
+      <article class="tool-item">
+        <code>exports</code>
+        <h3>Obsidian · Notion · Anki · GitLab</h3>
+        <p>Export only when you press the button. GitLab Snippets with a token that stays local.</p>
+      </article>
+      <article class="tool-item">
+        <code>follow-up</code>
+        <h3>Ask &amp; convert</h3>
+        <p>Ask about a snippet, or convert it to JS, Python, Go, Java, Rust, or TypeScript without leaving the flow.</p>
+      </article>
+      <article class="tool-item">
+        <code>bracket check</code>
+        <h3>Catch OCR oops before paste</h3>
+        <p>Flags likely missing braces and similar recognition mistakes so you don’t debug garbage for ten minutes.</p>
+      </article>
+      <article class="tool-item">
+        <code>controls</code>
+        <h3>Floating buttons you can hide</h3>
+        <p>CodeRa + Lesson sit on the player when you want them. Toggle them off in the popup if you prefer Alt+C only.</p>
+      </article>
+    </div>
+  </section>
+
   <section class="block" id="compare">
     <div class="section-tag">// vs alternatives</div>
     <h2>Why not Lens or ChatGPT?</h2>
@@ -649,6 +843,14 @@
         <div class="faq-body">
           Yes during early access: all features unlocked, no account, no credit card. Fair-use limits may apply.
           Pricing will be published before any charges begin.
+        </div>
+      </details>
+      <details class="faq">
+        <summary>What’s the whole-lesson feature?</summary>
+        <div class="faq-body">
+          Instead of one Alt+C, you start collection and keep watching. CodeRa gathers frames along the way and
+          assembles a timeline plus project-style files. Shipping in 1.2.0 (rolling out). Frames still use the
+          HTTPS extract relay — see <a href="/privacy.html">Privacy</a>.
         </div>
       </details>
     </div>
