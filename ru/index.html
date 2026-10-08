@@ -25,7 +25,9 @@
     *{box-sizing:border-box;margin:0;padding:0}
     body{background:var(--bg);color:var(--text);font-family:'Space Grotesk',sans-serif;line-height:1.65}
     a{color:var(--cyan)}
-    nav{display:flex;justify-content:space-between;align-items:center;padding:14px 24px;border-bottom:1px solid var(--border);position:sticky;top:0;background:rgba(11,15,20,.92);backdrop-filter:blur(10px);z-index:10}
+    nav{display:flex;justify-content:space-between;align-items:center;padding:14px 24px;border-bottom:1px solid var(--border);position:sticky;top:0;background:rgba(11,15,20,.92);backdrop-filter:blur(10px);z-index:10;transition:box-shadow .2s,border-color .2s}
+    nav.is-scrolled{box-shadow:0 8px 28px rgba(0,0,0,.35);border-color:rgba(34,211,238,.25)}
+    @media(max-width:640px){.wrap div[style*="grid-template-columns:repeat(3"]{grid-template-columns:1fr!important}}
     .logo{display:flex;gap:8px;align-items:center;color:var(--text);text-decoration:none;font-weight:700}
     .logo img{width:28px;height:28px;border-radius:6px}
     .nav-right{display:flex;align-items:center;gap:14px}
@@ -72,12 +74,13 @@
     <a class="btn" href="https://chromewebstore.google.com/detail/codera/achdkjdakdpnihgjhdgmodgamefkffid">Установить из Chrome Web Store</a>
     <p class="note">Работает в Chrome, Edge, Brave и Opera · Без аккаунта · Бесплатно в раннем доступе</p>
     <div class="demo">
-      <video muted loop playsinline controls preload="none" src="../video-codera.mp4" poster="../og.jpg"
+      <video autoplay muted loop playsinline controls preload="metadata" src="../video-codera.mp4" poster="../og.jpg"
         title="Демо CodeRa — копирование кода с видео"></video>
     </div>
-    <p class="note" style="max-width:640px;margin:16px auto 0;text-align:left;">
-      <strong style="color:var(--text)">Описание для поиска:</strong> на YouTube идёт урок по программированию. Зритель нажимает Alt+C. CodeRa захватывает текущий кадр, пока видео продолжает играть, распознаёт код и копирует его с отступами. Зритель вставляет код в VS Code, и он готов к запуску.
-    </p>
+    <details style="max-width:640px;margin:16px auto 0;font-size:13px;color:var(--muted);text-align:left;">
+      <summary style="cursor:pointer;">Транскрипт видео</summary>
+      <p style="margin-top:10px;">На YouTube идёт урок. Зритель нажимает Alt+C. CodeRa захватывает кадр, распознаёт код с отступами и копирует в буфер. Вставка в VS Code — готово.</p>
+    </details>
   </section>
 
   <div class="wrap">
@@ -98,9 +101,14 @@
     </ul>
 
     <p class="tag">// урок</p>
-    <h2>Целый урок в файлы проекта <span style="font-size:0.7em;color:var(--cyan)">(версия 1.2.0, постепенно выходит)</span></h2>
-    <p>Обычное распознавание даёт один кадр, а код на лекции пишется много минут. Включите сбор и смотрите дальше: CodeRa собирает кадры во время просмотра и при перемотке, не мигает видео и не заставляет перематывать назад. В конце вы получаете таймлайн с отметками времени и собранные файлы, например <code>index.html</code>, <code>styles.css</code> и <code>script.js</code>.</p>
-    <p>Пока идёт сбор, отправляется много кадров. Остановить его можно в любой момент. Подробности: <a href="/privacy.html">что отправляется</a>.</p>
+    <h2>Целый урок → файлы проекта</h2>
+    <p>Один кадр — мало. Включите сбор, смотрите дальше — в конце таймлайн и файлы вроде <code>index.html</code>, <code>styles.css</code>, <code>script.js</code>.</p>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:16px 0 12px;">
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px;font-size:13px;color:var(--muted);"><div style="color:var(--cyan);margin-bottom:6px;font-family:monospace;">01 · смотрите</div>Видео играет · сбор включён</div>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px;font-size:13px;color:var(--muted);"><div style="color:var(--cyan);margin-bottom:6px;font-family:monospace;">02 · таймлайн</div>0:42 html · 3:10 css · 7:05 js</div>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px;font-size:13px;color:var(--muted);"><div style="color:var(--cyan);margin-bottom:6px;font-family:monospace;">03 · файлы</div>index.html · styles.css · script.js</div>
+    </div>
+    <p style="font-size:13px;">В сборке 1.2.0 (выкатывается). Если в Store ещё 1.1.0 — обновите расширение. Кадры идут через релей — <a href="/privacy.html">подробности</a>.</p>
 
     <p class="tag">// для кого</p>
     <h2>Для кого CodeRa</h2>
@@ -120,19 +128,18 @@
     </ul>
 
     <p class="tag">// приватность</p>
-    <h2>Приватность простыми словами</h2>
+    <h2>Как устроен поток данных</h2>
     <ul>
-      <li>CodeRa не хранит ваши скриншоты и не ведёт облачную библиотеку. Библиотека сниппетов остаётся в вашем браузере.</li>
-      <li>При распознавании изображение проходит через релей CodeRa и попадает в API Claude (Anthropic), который возвращает текст.</li>
-      <li>По коммерческим условиям Anthropic данные клиентов API по умолчанию не используются для обучения моделей. Срок хранения определяет Anthropic.</li>
-      <li>Обрезайте кадр до кода и не снимайте пароли и ключи. Если работодатель запрещает отправлять код во внешние ИИ-сервисы, не используйте CodeRa для такого кода.</li>
+      <li><strong>Без облачной библиотеки CodeRa.</strong> Сниппеты остаются в хранилище браузера.</li>
+      <li><strong>HTTPS-релей.</strong> Кадр идёт на релей CodeRa → API Claude (Anthropic) → текст обратно.</li>
+      <li><strong>Обучение моделей.</strong> По коммерческим условиям Anthropic входные данные API по умолчанию не используются для обучения.</li>
+      <li><strong>Вы решаете, что отправлять.</strong> Удобнее Select Area — только область с кодом. Полный разбор: <a href="/privacy.html">Политика конфиденциальности</a>. Нужен полностью офлайн OCR — <a href="/offline-alternatives.html">альтернативы</a>.</li>
     </ul>
-    <p><a href="/privacy.html">Политика конфиденциальности</a></p>
 
     <p class="tag">// faq</p>
     <h2>Частые вопросы</h2>
-    <details><summary>Это бесплатно?</summary><p>Да, в раннем доступе все функции открыты, аккаунт и карта не нужны. Могут действовать лимиты добросовестного использования. Цены опубликуем до начала любых списаний.</p></details>
-    <details><summary>Безопасно ли использовать на работе?</summary><p>CodeRa не хранит ваши скриншоты. При распознавании изображение проходит через релей CodeRa в API Anthropic. Если ваш работодатель ограничивает отправку кода во внешние ИИ-сервисы, не используйте CodeRa для такого кода. Подробнее: <a href="/privacy.html">Приватность</a>.</p></details>
+    <details><summary>Это бесплатно?</summary><p>Да. CodeRa уже в Chrome Web Store — waitlist не нужен для установки. В раннем доступе все функции открыты без аккаунта и карты. Могут быть лимиты fair use; цены объявим до любых списаний. Сбор урока (1.2.0) выкатывается: если в Store ещё 1.1.0, обновите расширение, когда появится новая сборка.</p></details>
+    <details><summary>Безопасно ли использовать на работе?</summary><p>Облачной библиотеки скриншотов нет. Распознавание идёт через HTTPS-релей в API Anthropic (см. <a href="/privacy.html">Приватность</a>). Лучше обрезать до кода. Если политика компании запрещает внешние ИИ API — используйте <a href="/offline-alternatives.html">офлайн-инструмент</a>.</p></details>
     <details><summary>Работает ли на YouTube и Udemy?</summary><p>Да. CodeRa захватывает текущий кадр, пока видео продолжает играть. Подходит для YouTube, Udemy, Coursera, Skillshare и большинства встроенных плееров.</p></details>
     <details><summary>Законно ли копировать код из платных курсов?</summary><p>Вы сами отвечаете за соблюдение правил платформы и закона об авторском праве. CodeRa — инструмент для личного использования. Используйте результат для собственного обучения и не распространяйте материалы курса. См. <a href="/terms.html">Условия использования</a>.</p></details>
     <details><summary>Что если кадр чёрный?</summary><p>Некоторые плееры блокируют захват. Если пикселей нет, ни один инструмент распознавания не прочитает код. Ищите файлы автора курса или его репозиторий на GitHub.</p></details>
@@ -143,14 +150,14 @@
     <p class="tag">// ещё</p>
     <h2>Читайте также</h2>
     <ul>
-      <li><a href="/how-to-copy-code-from-youtube.html">Как скопировать код с видео YouTube</a> (EN)</li>
-      <li><a href="/how-to-copy-code-from-udemy.html">Как скопировать код с Udemy</a> (EN)</li>
-      <li><a href="/extract-code-from-screenshot.html">Скриншот в код</a> (EN)</li>
+      <li><a href="kak-skopirovat-kod-s-youtube.html">Как скопировать код с видео YouTube</a></li>
+      <li><a href="kak-skopirovat-kod-s-udemy.html">Как скопировать код с Udemy</a></li>
+      <li><a href="raspoznat-kod-so-skrinshota.html">Скриншот в код</a></li>
     </ul>
 
     <div class="cta-block" id="early-access">
-      <h2 style="margin-bottom:8px;">Новости продукта</h2>
-      <p>Объявления о ценах и новых функциях — на главной странице есть форма waitlist. Или напишите <a href="mailto:hello@codera.click">hello@codera.click</a>.</p>
+      <h2 style="margin-bottom:8px;">Лист раннего доступа</h2>
+      <p>Подписчики первыми узнают о платных планах и получают анонсы льготных условий. Без спама. Форма на <a href="/#early-access">английской главной</a> или письмо на <a href="mailto:hello@codera.click">hello@codera.click</a>.</p>
     </div>
 
     <div class="cta-block">
@@ -160,17 +167,25 @@
     </div>
 
     <footer>
-      <a href="/">English</a>
       <a href="/guides/">Гайды</a>
       <a href="/compare/">Сравнения</a>
       <a href="/roadmap.html">Дорожная карта</a>
       <a href="/about.html">О проекте</a>
-      <a href="/changelog.html">Журнал изменений</a>
+      <a href="/changelog.html">Changelog</a>
       <a href="/privacy.html">Конфиденциальность</a>
       <a href="/terms.html">Условия</a>
       <a href="mailto:hello@codera.click">Контакты</a>
-      <div style="margin-top:12px;">© 2026 CodeRa · Не связан с Anthropic</div>
+      <div style="margin-top:12px;">© 2026 CodeRa · Не связан с Anthropic · Язык: переключатель EN в шапке</div>
     </footer>
   </div>
+  <script>
+    (function () {
+      const nav = document.querySelector('nav');
+      if (!nav) return;
+      const onScroll = () => nav.classList.toggle('is-scrolled', window.scrollY > 12);
+      onScroll();
+      window.addEventListener('scroll', onScroll, { passive: true });
+    })();
+  </script>
 </body>
 </html>
