@@ -37,17 +37,21 @@
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
     "name": "CodeRa",
-    "alternateName": "CodeRa – Chrome extension for extracting code from video",
-    "description": "Chrome extension that extracts formatted code from YouTube, Udemy and Coursera videos and screenshots using AI vision.",
+    "description": "Chrome extension that extracts formatted code from video frames and screenshots using AI vision.",
     "applicationCategory": "DeveloperApplication",
-    "operatingSystem": "Chrome",
+    "operatingSystem": "Chrome, Edge, Brave, Opera",
     "url": "https://codera.click/",
     "downloadUrl": "https://chromewebstore.google.com/detail/codera/achdkjdakdpnihgjhdgmodgamefkffid",
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
     "author": {
       "@type": "Person",
       "name": "Anton Zakharenka",
-      "url": "https://www.linkedin.com/in/anton-zaharenko/"
+      "alternateName": "Anton Zaharenko",
+      "url": "https://codera.click/about.html",
+      "sameAs": [
+        "https://www.linkedin.com/in/anton-zaharenko/",
+        "https://github.com/Zaharenko"
+      ]
     }
   }
   </script>
@@ -56,63 +60,24 @@
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "Is CodeRa free?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes. CodeRa is completely free during early access. All features unlocked. No account, no credit card."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Is it safe to use at work?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "CodeRa does not store your screenshots on its own servers. Images are sent to Anthropic's API for processing under Anthropic's privacy policy. Review that policy before using CodeRa with sensitive material."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Does it work on YouTube and Udemy?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes. Capture Video Frame works on YouTube, Udemy, Coursera, Skillshare, and other embedded players while the video keeps playing."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What's the difference between the three modes?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Plain text extracts everything as-is. Extract as code returns IDE-ready source. Understand code explains the logic and expected output."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Is copying code from paid courses legal?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "You are responsible for complying with each platform's terms and copyright law. Use extracts for your own learning; do not redistribute course materials."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Does CodeRa work in Edge, Brave, Opera, or Firefox?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes on Chromium browsers via the Chrome Web Store (Chrome, Edge, Brave, Opera). Firefox is not supported yet."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Who built CodeRa?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Built by Anton Zakharenka. Not developed by Anthropic."
-        }
-      }
+      {"@type":"Question","name":"Is CodeRa really free?","acceptedAnswer":{"@type":"Answer","text":"Yes, during early access all features are unlocked, with no account and no credit card. Fair-use limits may apply. Pricing will be published before any charges begin."}},
+      {"@type":"Question","name":"Is it safe to use at work?","acceptedAnswer":{"@type":"Answer","text":"CodeRa does not keep your screenshots or build a cloud library. When you extract, the image is sent through a CodeRa relay to Anthropic's API. If your employer restricts sending code to third-party AI services, do not use CodeRa on that code."}},
+      {"@type":"Question","name":"Does it work on YouTube and Udemy?","acceptedAnswer":{"@type":"Answer","text":"Yes. CodeRa grabs the current frame while the video keeps playing on YouTube, Udemy, Coursera, Skillshare and most embedded players."}},
+      {"@type":"Question","name":"Is copying code from paid courses legal?","acceptedAnswer":{"@type":"Answer","text":"You are responsible for following each platform's terms and copyright law. Use extracts for your own learning and do not redistribute course materials."}},
+      {"@type":"Question","name":"Does it work in Edge, Brave and Opera? What about Firefox?","acceptedAnswer":{"@type":"Answer","text":"Yes on Chromium browsers through the Chrome Web Store. Firefox is not supported yet."}},
+      {"@type":"Question","name":"Who built CodeRa?","acceptedAnswer":{"@type":"Answer","text":"Anton Zakharenka, an independent developer. CodeRa is not affiliated with Anthropic."}}
     ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "VideoObject",
+    "name": "CodeRa demo — copy code from video in one click",
+    "description": "A coding tutorial is playing on YouTube. The viewer presses Alt+C. CodeRa captures the current frame while the video keeps playing, reads the code, and copies it with its indentation.",
+    "thumbnailUrl": "https://codera.click/og.jpg",
+    "uploadDate": "2026-07-13",
+    "contentUrl": "https://codera.click/video-codera.mp4"
   }
   </script>
   <style>
@@ -1018,389 +983,252 @@
     }
   </script>
 
-  <!-- NAV -->
   <nav>
-    <a href="./" class="logo">
+    <a href="/" class="logo">
       <img src="./icon48.png" alt="CodeRa – Chrome extension for extracting code from video">
       CodeRa
     </a>
     <div style="display:flex;align-items:center;gap:14px;">
-      <a href="ru/" style="color:var(--muted);font-size:13px;text-decoration:none;">RU</a>
+      <a href="/ru/" style="color:var(--muted);font-size:13px;text-decoration:none;">RU</a>
       <a href="https://chromewebstore.google.com/detail/codera/achdkjdakdpnihgjhdgmodgamefkffid" class="nav-install"
         onclick="gtag_report_conversion('https://chromewebstore.google.com/detail/codera/achdkjdakdpnihgjhdgmodgamefkffid');">Add
         to Chrome, Free</a>
     </div>
   </nav>
 
-  <!-- ═══════ HERO ═══════ -->
   <section class="hero">
     <div class="badge">
       <div class="badge-dot"></div>
       <a href="https://chromewebstore.google.com/detail/codera/achdkjdakdpnihgjhdgmodgamefkffid" target="_blank"
         rel="noopener" style="color:inherit;text-decoration:none;margin-left:3px;">Chrome Extension</a>
     </div>
-
     <h1><em>Copy code from YouTube &amp; Udemy</em><br> without retyping</h1>
-
     <p class="sub">
-      <strong>CodeRa</strong> is a Chrome extension that extracts formatted code from video tutorials and screenshots in 1 click — indentation kept, no sign-up.
+      <strong>CodeRa</strong> is a Chrome extension that extracts formatted code from video tutorials and screenshots in one click. Indentation kept, no account needed.
     </p>
-
     <div class="cta-row">
       <a href="https://chromewebstore.google.com/detail/codera/achdkjdakdpnihgjhdgmodgamefkffid" class="btn-main"
         onclick="gtag_report_conversion('https://chromewebstore.google.com/detail/codera/achdkjdakdpnihgjhdgmodgamefkffid');">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <circle cx="12" cy="12" r="10" />
-          <circle cx="12" cy="12" r="4" />
+          <circle cx="12" cy="12" r="10" /><circle cx="12" cy="12" r="4" />
         </svg>
-        Add to Chrome, Free
+        Add to Chrome, free
       </a>
     </div>
-
-    <p class="hero-note">Works in Chrome, Edge, Brave, Opera · No sign-up · Free</p>
-
-    <!-- DEMO VIDEO (YouTube) -->
-    <style>
-      .demo-wrap {
-        position: relative;
-        width: min(860px, 100%);
-        margin-top: 56px;
-        border-radius: 16px;
-        overflow: hidden;
-        border: 1px solid var(--border);
-        box-shadow: 0 32px 80px rgba(0, 0, 0, 0.5);
-      }
-
-      .demo-bar {
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        padding: 10px 14px;
-        background: #1a2330;
-        border-bottom: 1px solid var(--border);
-      }
-
-      .demo-url {
-        flex: 1;
-        text-align: center;
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 11px;
-        color: var(--muted);
-      }
-
-      .video-embed {
-        position: relative;
-        width: 100%;
-        aspect-ratio: 16 / 9;
-        background: #0d1117;
-      }
-
-      .video-embed iframe {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        border: 0;
-      }
-    </style>
+    <p class="hero-note">Works in Chrome, Edge, Brave and Opera · No sign-up · Free during early access</p>
 
     <div class="demo-wrap" id="demoVideo">
       <div class="demo-bar">
-        <div class="dot dr"></div>
-        <div class="dot dy"></div>
-        <div class="dot dg"></div>
+        <div class="dot dr"></div><div class="dot dy"></div><div class="dot dg"></div>
         <div class="demo-url">CodeRa — 30 second demo</div>
       </div>
       <div class="video-embed">
+        <h2 style="position:absolute;width:1px;height:1px;overflow:hidden;">See it in 30 seconds</h2>
         <video muted loop playsinline controls preload="none" width="100%" height="100%"
-          src="./video-codera.mp4"
-          title="CodeRa demo — copy code from YouTube and Udemy videos"
-          poster="./og.jpg">
+          src="./video-codera.mp4" poster="./og.jpg"
+          title="CodeRa demo — copy code from YouTube and Udemy videos">
           Your browser does not support HTML5 video.
           <a href="./video-codera.mp4">Download the CodeRa demo (MP4)</a>.
         </video>
       </div>
     </div>
+    <p style="max-width:640px;margin:20px auto 0;font-size:13px;color:var(--muted);line-height:1.5;">
+      <strong style="color:var(--text)">Transcript:</strong> A coding tutorial is playing on YouTube. The viewer presses Alt+C. CodeRa captures the current frame while the video keeps playing, reads the code, and copies it with its indentation. The viewer pastes it into VS Code, and it is ready to run.
+    </p>
   </section>
 
-  <!-- ═══════ HOW IT WORKS ═══════ -->
+  <section class="how-section" id="who">
+    <div class="section-tag">// who it's for</div>
+    <h2>Who CodeRa is for</h2>
+    <div class="steps" style="grid-template-columns:repeat(2,1fr);">
+      <div class="step"><h3>Self-taught developers &amp; students</h3><p>Follow video courses and are tired of pause, squint, retype, rewind.</p></div>
+      <div class="step"><h3>Conference watchers</h3><p>Want the snippet on screen, not a screenshot to fix later.</p></div>
+      <div class="step"><h3>Teachers &amp; mentors</h3><p>Review code shown in recordings or screen shares.</p></div>
+      <div class="step"><h3>Anyone with code in an image</h3><p>Slides, PDFs, Slack and Discord screenshots, documentation with code in pictures.</p></div>
+    </div>
+  </section>
+
   <section class="how-section" id="how">
     <div class="section-tag">// how it works</div>
-    <h2>Three steps. Under 10 seconds.</h2>
+    <h2>How it works</h2>
     <div class="steps">
       <div class="step">
         <div class="step-num">1</div>
         <h3>Click CodeRa</h3>
-        <p>Open the extension on any page. Pick your mode, text, code, or understand.</p>
+        <p>Press Alt+C, use the floating button on the player, or open the extension and pick a mode.</p>
       </div>
       <div class="step">
         <div class="step-num">2</div>
         <h3>Capture</h3>
-        <p>Hit <strong>Capture Video Frame</strong> on YouTube or Udemy. Or drag over any code. Or upload a screenshot.
-        </p>
+        <p>Grab the current video frame, drag over any code on the page, or upload a screenshot.</p>
       </div>
       <div class="step">
         <div class="step-num">3</div>
         <h3>Paste anywhere</h3>
-        <p>Code lands in your clipboard. Review in the result panel. Ctrl+V into your editor.</p>
+        <p>The result is copied to your clipboard and shown in the result panel. Press Ctrl+V in your editor.</p>
       </div>
     </div>
   </section>
 
-  <!-- ═══════ MODES ═══════ -->
   <section class="modes-section" id="modes">
     <div class="section-tag">// three AI modes</div>
-    <h2>One click. Three ways to use it.</h2>
+    <h2>Three modes, one click each</h2>
     <div class="modes-grid">
       <div class="mode-card">
         <span class="mode-emoji">📄</span>
-        <div class="mode-label">Default mode</div>
+        <div class="mode-label">Plain text</div>
         <h3>Plain text</h3>
-        <p>Extracts everything visible, subtitles, slide text, captions, UI labels. Exactly as shown, nothing
-          rewritten.</p>
+        <p>Everything visible, exactly as shown: subtitles, slide text, captions, interface labels. Nothing is rewritten.</p>
       </div>
       <div class="mode-card featured">
         <span class="mode-emoji">💻</span>
         <div class="mode-label">Extract as code</div>
-        <h3>Code extraction</h3>
-        <p>CodeRa finds the code, preserves indentation, brackets, and comments. Open your editor and run it, no
-          cleanup.</p>
+        <h3>Extract as code</h3>
+        <p>CodeRa finds the code and keeps indentation, brackets and comments, so you can run it without cleanup.</p>
       </div>
       <div class="mode-card">
         <span class="mode-emoji">🧠</span>
         <div class="mode-label">Understand code</div>
-        <h3>Learn & trace</h3>
-        <p>CodeRa explains what the snippet does, traces execution line by line, shows expected output. <strong>Learn
-            the logic.</strong></p>
+        <h3>Understand code</h3>
+        <p>CodeRa explains what the snippet does, traces it line by line and shows the expected output.</p>
       </div>
     </div>
   </section>
 
-  <!-- ═══════ PRODUCT FEATURES ═══════ -->
   <section class="features-section" id="features">
     <div class="section-tag">// product features</div>
-    <h2>Built for the whole learning loop</h2>
-    <p class="section-sub">Capture once, keep the snippet, ask follow-ups, export to your notes — without reopening the popup every time.</p>
+    <h2>Collect a whole lesson into project files <span style="font-size:0.55em;color:var(--cyan);font-weight:600;">(1.2.0, rolling out)</span></h2>
+    <p class="section-sub">One-off OCR gives you one frame. A lecture builds code over many minutes. Start collection, keep watching, and CodeRa gathers frames as you play and when you scrub, without blinking the video or forcing a rewind. When you finish, you get a timestamped timeline and assembled files such as <code>index.html</code>, <code>styles.css</code> and <code>script.js</code>.</p>
+    <p class="section-sub" style="margin-top:-12px;">Many frames are sent for processing while collection is on. You can stop at any time. <a href="/privacy.html" style="color:var(--cyan);">See what is sent</a>.</p>
+
+    <h2 style="margin-top:48px;">Everything else in the learning loop <span style="font-size:0.55em;color:var(--cyan);font-weight:600;">(1.2.0, rolling out)</span></h2>
     <div class="features-grid">
-      <article class="feature-item" style="grid-column:1/-1;border-color:var(--cyan-border);">
-        <div class="feature-tag">lectures · flagship</div>
-        <h3>Collect whole lesson → ready project</h3>
-        <p>Start collection and keep watching — CodeRa grabs frames as you play (and when you scrub), with no blinking and no forced rewind. Finish to get a timestamped timeline plus assembled files like <code>index.html</code>, <code>styles.css</code>, <code>script.js</code>. This is the main difference vs one-off OCR tools.</p>
-      </article>
-      <article class="feature-item">
-        <div class="feature-tag">local library</div>
-        <h3>Snippet library</h3>
-        <p>Sidebar filters by YouTube / Udemy / source type, search, timestamps, and one-click publish to <strong>GitLab Snippets</strong>.</p>
-      </article>
-      <article class="feature-item">
-        <div class="feature-tag">exports</div>
-        <h3>Notion, Obsidian, Anki, GitLab</h3>
-        <p>Export a snippet as Obsidian Markdown, Notion-ready Markdown, Anki cards, or push straight to GitLab Snippets — only when you choose.</p>
-      </article>
-      <article class="feature-item">
-        <div class="feature-tag">1-click capture</div>
-        <h3>Hotkey + floating button</h3>
-        <p>Press <strong>Alt+C</strong> or tap the floating CodeRa button on the player. Frame capture without opening the popup.</p>
-      </article>
-      <article class="feature-item">
-        <div class="feature-tag">trust</div>
-        <h3>Bracket / syntax check</h3>
-        <p>After code extraction, CodeRa checks brackets and flags likely OCR mistakes before you paste into your editor.</p>
-      </article>
-      <article class="feature-item">
-        <div class="feature-tag">understand</div>
-        <h3>Ask about the snippet</h3>
-        <p>Follow-up chat on the result panel: ask anything, or one-click “explain like a beginner” (including Russian).</p>
-      </article>
-      <article class="feature-item">
-        <div class="feature-tag">translate</div>
-        <h3>Language conversion</h3>
-        <p>Convert a captured snippet to JavaScript, Python, Go, Java, Rust, or TypeScript in one click.</p>
-      </article>
-      <article class="feature-item">
-        <div class="feature-tag">clipboard</div>
-        <h3>Marked clipboard copy</h3>
-        <p>Copy a CodeRa-marked snippet and paste into VS Code, Cursor, or any editor. A dedicated insert command is
-          <a href="roadmap.html" style="color:var(--cyan);">on the roadmap</a>.</p>
-      </article>
-      <article class="feature-item">
-        <div class="feature-tag">anywhere</div>
-        <h3>Not only course videos</h3>
-        <p>Select Area works on Zoom/Meet shares, PDFs, slides, Twitch, Slack/Discord screenshots — any code on screen.</p>
-      </article>
-      <article class="feature-item">
-        <div class="feature-tag">UX</div>
-        <h3>Corner toasts</h3>
-        <p>Confirms, progress, and errors appear as small corner notifications — they never block the video or steal focus from the lesson.</p>
-      </article>
+      <article class="feature-item"><div class="feature-tag">library</div><h3>Snippet library</h3><p>Search, filter by source, timestamps. Stored in your browser.</p></article>
+      <article class="feature-item"><div class="feature-tag">exports</div><h3>Exports</h3><p>Obsidian, Notion (Markdown), Anki cards and GitLab Snippets, only when you press export.</p></article>
+      <article class="feature-item"><div class="feature-tag">trust</div><h3>Bracket check</h3><p>Flags likely OCR mistakes before you paste.</p></article>
+      <article class="feature-item"><div class="feature-tag">follow-up</div><h3>Questions &amp; language conversion</h3><p>Ask about a snippet, or convert it to JavaScript, Python, Go, Java, Rust or TypeScript.</p></article>
+      <article class="feature-item"><div class="feature-tag">clipboard</div><h3>Marked clipboard copy</h3><p>Paste into VS Code, Cursor or any editor. A dedicated insert command is on the <a href="/roadmap.html" style="color:var(--cyan);">roadmap</a>.</p></article>
+      <article class="feature-item"><div class="feature-tag">UX</div><h3>Corner notifications</h3><p>Small toasts that never block the video.</p></article>
     </div>
   </section>
 
-  <!-- ═══════ COMPARE ═══════ -->
   <section class="compare-section" id="compare">
     <div class="section-tag">// vs alternatives</div>
     <h2>Why not just use OCR or ChatGPT?</h2>
     <table class="compare-table">
-      <thead>
-        <tr>
-          <th>Tool</th>
-          <th>The problem</th>
-          <th>CodeRa wins because</th>
-        </tr>
-      </thead>
+      <thead><tr><th>Option</th><th>What usually goes wrong</th><th>What CodeRa does differently</th></tr></thead>
       <tbody>
-        <tr>
-          <td class="tool">Apple Live Text / Google Lens</td>
-          <td class="bad">Destroys indentation, confuses { } => ;</td>
-          <td class="good">Code mode aims to preserve indentation and structure</td>
-        </tr>
-        <tr>
-          <td class="tool">ChatGPT / Claude.ai</td>
-          <td class="bad">5+ steps: screenshot → save → upload → prompt → copy</td>
-          <td class="good">1 click, prompts built in, auto-copy</td>
-        </tr>
-        <tr>
-          <td class="tool">Blackbox / OCR extensions</td>
-          <td class="bad">Often focused on in-editor or image OCR — not built to capture a live video frame on YouTube/Udemy</td>
-          <td class="good">One-click video frame capture + Claude Vision for formatted code</td>
-        </tr>
-        <tr>
-          <td class="tool">Selectext / Video-to-Text</td>
-          <td class="bad">Copy text from video; often need an account; no whole-lesson → project pack</td>
-          <td class="good">Lesson collect, local library, exports, syntax check — <a href="codera-vs-selectext.html" style="color:var(--cyan);">full compare</a></td>
-        </tr>
+        <tr><td class="tool">Apple Live Text / Google Lens</td><td class="bad">Indentation is often flattened and symbols like { } =&gt; ; get confused</td><td class="good">Code mode is built to keep indentation and structure</td></tr>
+        <tr><td class="tool">ChatGPT or Claude.ai</td><td class="bad">Five or more steps: screenshot, save, upload, prompt, copy</td><td class="good">One click with the prompt built in and automatic copy</td></tr>
+        <tr><td class="tool">Other OCR extensions</td><td class="bad">Often built for image OCR, not for capturing a live video frame</td><td class="good">Captures the current frame while the video plays</td></tr>
+        <tr><td class="tool">Selectext and similar</td><td class="bad">Text from video; typically account-based; no whole-lesson pack</td><td class="good">Lesson collection, library, exports, bracket check — <a href="/codera-vs-selectext.html" style="color:var(--cyan);">full comparison</a></td></tr>
       </tbody>
     </table>
-    <p style="margin-top:16px;font-size:14px;color:var(--muted);max-width:720px;">
-      Need fully offline OCR? See <a href="offline-alternatives.html" style="color:var(--cyan);">privacy-first / offline alternatives</a>
-      (honest trade-offs: local privacy vs CodeRa’s cloud vision accuracy and lesson workflow).
-    </p>
+    <p style="margin-top:16px;font-size:14px;color:var(--muted);max-width:720px;">Need fully offline OCR? Read the <a href="/offline-alternatives.html" style="color:var(--cyan);">privacy-first alternatives</a>. They are the right choice when code must never leave your device.</p>
   </section>
 
-  <!-- ═══════ FAQ ═══════ -->
+  <section class="how-section" id="privacy-plain">
+    <div class="section-tag">// privacy</div>
+    <h2>Your privacy, in plain words</h2>
+    <ul style="max-width:720px;margin:0 auto;color:var(--muted);padding-left:1.2rem;line-height:1.7;">
+      <li>CodeRa does not keep your screenshots and has no cloud library. Your snippet library stays in your browser.</li>
+      <li>When you extract, the image goes through a CodeRa relay to Anthropic's Claude API, which returns the text.</li>
+      <li>Anthropic's commercial terms say customer content is not used to train models by default. Retention is set by Anthropic.</li>
+      <li>Crop to the code, and do not capture secrets. If your employer restricts sending code to AI services, do not use CodeRa on that code.</li>
+    </ul>
+    <p style="text-align:center;margin-top:20px;"><a href="/privacy.html" style="color:var(--cyan);">Read the full Privacy Policy</a></p>
+  </section>
+
   <section class="faq-section" id="faq">
     <div class="section-tag">// faq</div>
-    <h2 style="margin-bottom:32px;">Quick answers</h2>
+    <h2 style="margin-bottom:32px;">Frequently asked questions</h2>
     <div class="faq-list">
-      <details class="faq">
-        <summary>Is it really free?</summary>
-        <div class="faq-body">Yes, completely free during early access. All features unlocked. No account, no credit
-          card.</div>
-      </details>
-      <details class="faq">
-        <summary>Is it safe to use at work?</summary>
-        <div class="faq-body">CodeRa stores nothing on its own servers. Screenshots are sent to <strong>Anthropic's API</strong>
-          for processing under <a href="https://www.anthropic.com/privacy" target="_blank" rel="noopener" style="color:var(--cyan);">Anthropic's privacy policy</a>.
-          Review that policy before using CodeRa with sensitive or proprietary material. Details: <a href="privacy.html" style="color:var(--cyan);">Privacy</a>.</div>
-      </details>
-      <details class="faq">
-        <summary>Does it work on YouTube and Udemy?</summary>
-        <div class="faq-body">Yes. Click Capture Video Frame on any course site, grabs the current frame while the
-          video keeps playing. Works on YouTube, Udemy, Coursera, Skillshare, and any embedded player.</div>
-      </details>
-      <details class="faq">
-        <summary>What's the difference between the three modes?</summary>
-        <div class="faq-body">Plain text, extracts everything as-is (subtitles, slides). Extract as code, IDE-ready
-          formatted source. Understand code, CodeRa explains the logic and shows expected output, built for learning.
-        </div>
-      </details>
-      <details class="faq">
-        <summary>Is copying code from paid courses legal?</summary>
-        <div class="faq-body">You are responsible for complying with each platform’s terms and copyright law.
-          CodeRa is a personal productivity tool for capturing what is already on your screen. Use extracts for your own
-          learning; do not redistribute course materials. See <a href="terms.html" style="color:var(--cyan);">Terms</a>.</div>
-      </details>
-      <details class="faq">
-        <summary>What are the free-plan limits?</summary>
-        <div class="faq-body">During early access, core features are unlocked without a CodeRa account. Fair-use /
-          API limits may apply. Concrete quotas will be published when paid plans launch.</div>
-      </details>
-      <details class="faq">
-        <summary>Does it work in Edge, Brave, Opera? What about Firefox?</summary>
-        <div class="faq-body">Yes on Chromium browsers via the Chrome Web Store (Chrome, Edge, Brave, Opera).
-          Firefox is not supported yet.</div>
-      </details>
-      <details class="faq">
-        <summary>How accurate is the extraction?</summary>
-        <div class="faq-body">Accuracy depends on resolution, contrast, fonts, and motion blur. Code mode aims to
-          preserve indentation; bracket checks catch some OCR mistakes. DRM-protected or blacked-out frames cannot be
-          read. We’re preparing a public benchmark vs Lens and others.</div>
-      </details>
-      <details class="faq">
-        <summary>Who built CodeRa?</summary>
-        <div class="faq-body">Built by <a href="https://www.linkedin.com/in/anton-zaharenko/" target="_blank"
-            rel="noopener" style="color:var(--cyan);">Anton Zakharenka</a>, a developer who got tired of retyping code
-          from tutorials. Not developed by Anthropic. <a href="about.html" style="color:var(--cyan);">About</a>.</div>
-      </details>
+      <details class="faq"><summary>Is CodeRa really free?</summary><div class="faq-body">Yes, during early access all features are unlocked, with no account and no credit card. Fair-use limits may apply. Pricing will be published before any charges begin.</div></details>
+      <details class="faq"><summary>Is it safe to use at work?</summary><div class="faq-body">CodeRa does not keep your screenshots or build a cloud library. When you extract, the image is sent through a CodeRa relay to Anthropic's API for processing. If your employer restricts sending code to third-party AI services, do not use CodeRa on that code. Crop to the code region and avoid capturing secrets. Details: <a href="/privacy.html" style="color:var(--cyan);">Privacy</a>.</div></details>
+      <details class="faq"><summary>Does it work on YouTube and Udemy?</summary><div class="faq-body">Yes. CodeRa grabs the current frame while the video keeps playing. It works on YouTube, Udemy, Coursera, Skillshare and most embedded players.</div></details>
+      <details class="faq"><summary>What is the difference between the three modes?</summary><div class="faq-body">Plain text copies everything as shown. Extract as code returns editor-ready source. Understand code explains the logic and shows the expected output.</div></details>
+      <details class="faq"><summary>Is copying code from paid courses legal?</summary><div class="faq-body">You are responsible for following each platform's terms and copyright law. CodeRa is a personal productivity tool for capturing what is already on your screen. Use extracts for your own learning and do not redistribute course materials. See the <a href="/terms.html" style="color:var(--cyan);">Terms</a>.</div></details>
+      <details class="faq"><summary>What are the free-plan limits?</summary><div class="faq-body">During early access, core features are unlocked without an account. Fair-use limits may apply, and exact quotas will be published when paid plans launch.</div></details>
+      <details class="faq"><summary>Does it work in Edge, Brave and Opera? What about Firefox?</summary><div class="faq-body">Yes on Chromium browsers through the Chrome Web Store. Firefox is not supported yet. See the <a href="/roadmap.html" style="color:var(--cyan);">roadmap</a>.</div></details>
+      <details class="faq"><summary>How accurate is it?</summary><div class="faq-body">Accuracy depends on resolution, contrast, fonts and motion blur. Code mode is built to preserve indentation, and the bracket check catches some recognition mistakes. DRM-protected or blacked-out frames cannot be read. A public comparison with Lens and others is on the <a href="/roadmap.html" style="color:var(--cyan);">roadmap</a>.</div></details>
+      <details class="faq"><summary>What happens if a frame is black?</summary><div class="faq-body">Some players block frame capture. If pixels are not available, no OCR tool can read the code. Use the instructor's downloadable resources or GitHub repository instead.</div></details>
+      <details class="faq"><summary>Who built CodeRa?</summary><div class="faq-body">Anton Zakharenka, an independent developer who got tired of retyping code from tutorials. CodeRa is not affiliated with Anthropic. More on the <a href="/about.html" style="color:var(--cyan);">About</a> page.</div></details>
     </div>
   </section>
 
-  <!-- ═══════ WAITLIST (below product, before final install CTA) ═══════ -->
+  <section class="how-section" id="guides">
+    <div class="section-tag">// guides</div>
+    <h2>Guides and comparisons</h2>
+    <div class="features-grid">
+      <article class="feature-item"><h3><a href="/how-to-copy-code-from-youtube.html" style="color:var(--text);text-decoration:none;">How to copy code from a YouTube video</a></h3></article>
+      <article class="feature-item"><h3><a href="/how-to-copy-code-from-udemy.html" style="color:var(--text);text-decoration:none;">How to copy code from Udemy videos</a></h3></article>
+      <article class="feature-item"><h3><a href="/extract-code-from-screenshot.html" style="color:var(--text);text-decoration:none;">Screenshot to code</a></h3></article>
+      <article class="feature-item"><h3><a href="/codera-vs-google-lens.html" style="color:var(--text);text-decoration:none;">vs Google Lens</a> · <a href="/codera-vs-selectext.html" style="color:var(--text);text-decoration:none;">vs Selectext</a> · <a href="/offline-alternatives.html" style="color:var(--text);text-decoration:none;">Offline</a></h3></article>
+    </div>
+  </section>
+
   <div class="waitlist-section" id="early-access">
-    <h2>Stay in the loop</h2>
-    <p class="waitlist-sub">Product updates and early pricing when paid plans launch — no spam.</p>
+    <h2>Get product updates</h2>
+    <p class="waitlist-sub">Price announcements and new features, no spam. By joining you agree to the <a href="/privacy.html" style="color:var(--cyan);">Privacy Policy</a>. Unsubscribe any time.</p>
     <form class="waitlist-form" id="wf">
       <input type="email" id="we" placeholder="your@email.com" required autocomplete="email">
       <input type="text" name="_honey" style="display:none" tabindex="-1">
-      <button type="submit" id="wb">Join waitlist</button>
+      <button type="submit" id="wb">Join the waitlist</button>
     </form>
     <p class="waitlist-msg" id="wm"></p>
   </div>
 
-  <!-- ═══════ FINAL CTA ═══════ -->
   <div class="final-cta" id="install">
     <h2>Stop retyping.<br><span style="color:var(--cyan)">Start extracting.</span></h2>
-    <p>Every developer rewatches tutorials to retype code. You don't have to.</p>
+    <p>Every developer has rewatched a tutorial just to retype one function. You don't have to.</p>
     <a href="https://chromewebstore.google.com/detail/codera/achdkjdakdpnihgjhdgmodgamefkffid" class="btn-main"
       style="font-size:16px;padding:16px 32px;"
       onclick="gtag_report_conversion('https://chromewebstore.google.com/detail/codera/achdkjdakdpnihgjhdgmodgamefkffid');">
-      Add to Chrome, It's Free
+      Add to Chrome, free
     </a>
   </div>
 
   <footer>
-    <a href="./" class="logo" style="font-size:14px;">
+    <a href="/" class="logo" style="font-size:14px;">
       <img src="./icon48.png" alt="CodeRa" style="width:22px;height:22px;">
       CodeRa
     </a>
     <div class="footer-links">
       <a href="#how">How it works</a>
       <a href="#features">Features</a>
-      <a href="how-to-copy-code-from-youtube.html">YouTube guide</a>
-      <a href="how-to-copy-code-from-udemy.html">Udemy guide</a>
-      <a href="extract-code-from-screenshot.html">Screenshot → code</a>
-      <a href="codera-vs-google-lens.html">vs Google Lens</a>
-      <a href="codera-vs-selectext.html">vs Selectext</a>
-      <a href="offline-alternatives.html">Offline alts</a>
-      <a href="guides/">Guides</a>
-      <a href="compare/">Compare</a>
-      <a href="roadmap.html">Roadmap</a>
-      <a href="ru/">Русский</a>
-      <a href="about.html">About</a>
-      <a href="changelog.html">Changelog</a>
-      <a href="privacy.html">Privacy</a>
-      <a href="terms.html">Terms</a>
-      <a href="mailto:anton.zaharenko@gmail.com">Contact</a>
-      <a href="https://www.linkedin.com/in/anton-zaharenko/" target="_blank" rel="noopener">Anton Zakharenka</a>
+      <a href="/guides/">Guides</a>
+      <a href="/compare/">Compare</a>
+      <a href="/roadmap.html">Roadmap</a>
+      <a href="/ru/">Русский</a>
+      <a href="/about.html">About</a>
+      <a href="/changelog.html">Changelog</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/terms.html">Terms</a>
+      <a href="mailto:hello@codera.click">Contact</a>
     </div>
     <span>© 2026 CodeRa · Chrome extension for extracting code from video · Not affiliated with Anthropic</span>
   </footer>
 
+  <style>
+    .demo-wrap{position:relative;width:min(860px,100%);margin-top:56px;border-radius:16px;overflow:hidden;border:1px solid var(--border);box-shadow:0 32px 80px rgba(0,0,0,.5)}
+    .demo-bar{display:flex;align-items:center;gap:6px;padding:10px 14px;background:#1a2330;border-bottom:1px solid var(--border)}
+    .demo-url{flex:1;text-align:center;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted)}
+    .video-embed{position:relative;width:100%;aspect-ratio:16/9;background:#0d1117}
+    .video-embed video{display:block;width:100%;height:100%;object-fit:cover}
+  </style>
+
   <script>
     const FORM_ENDPOINT = 'https://formsubmit.co/ajax/anton.zaharenko@gmail.com';
-
     document.getElementById('wf').addEventListener('submit', async (e) => {
       e.preventDefault();
       const email = document.getElementById('we').value.trim();
       const btn = document.getElementById('wb');
       const msg = document.getElementById('wm');
       if (!email) return;
-
       btn.disabled = true;
       btn.textContent = 'Sending...';
       msg.className = 'waitlist-msg';
       msg.textContent = '';
-
       try {
         const res = await fetch(FORM_ENDPOINT, {
           method: 'POST',
@@ -1422,14 +1250,12 @@
         }
       } catch (err) {
         msg.className = 'waitlist-msg err';
-        msg.textContent = 'Something went wrong. Email: anton.zaharenko@gmail.com';
+        msg.textContent = 'Something went wrong. Email: hello@codera.click';
       } finally {
         btn.disabled = false;
-        btn.textContent = 'Join waitlist';
+        btn.textContent = 'Join the waitlist';
       }
     });
   </script>
-
 </body>
-
 </html>

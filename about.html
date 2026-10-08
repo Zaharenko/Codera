@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About CodeRa &amp; Anton Zakharenka</title>
-  <meta name="description" content="About CodeRa: free Chrome extension by Anton Zakharenka that extracts formatted code from YouTube, Udemy and screenshots. Contact and links.">
+  <meta name="description" content="About CodeRa: a free Chrome extension by independent developer Anton Zakharenka that extracts formatted code from video tutorials and screenshots.">
   <link rel="canonical" href="https://codera.click/about.html">
   <meta property="og:type" content="profile">
   <meta property="og:url" content="https://codera.click/about.html">
@@ -24,8 +24,7 @@
     h2{font-size:1.25rem;margin:28px 0 10px}
     p,li{color:var(--muted);margin-bottom:12px}
     ul{padding-left:1.2rem}
-    .tag{font-size:12px;color:var(--cyan);letter-spacing:.04em}
-    .updated{font-size:13px;color:var(--muted);margin-bottom:24px}
+    .tag{font-size:12px;color:var(--cyan)}
     .card{display:flex;gap:16px;align-items:center;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:16px;margin:20px 0}
     .card img{width:72px;height:72px;border-radius:12px}
     .btn{display:inline-block;background:var(--cyan);color:#0b0f14;padding:8px 16px;border-radius:8px;text-decoration:none;font-weight:600;font-size:14px;margin-top:8px}
@@ -41,7 +40,8 @@
     "founder": {
       "@type": "Person",
       "name": "Anton Zakharenka",
-      "url": "https://www.linkedin.com/in/anton-zaharenko/",
+      "alternateName": "Anton Zaharenko",
+      "url": "https://codera.click/about.html",
       "sameAs": [
         "https://www.linkedin.com/in/anton-zaharenko/",
         "https://github.com/Zaharenko"
@@ -49,7 +49,7 @@
     },
     "contactPoint": {
       "@type": "ContactPoint",
-      "email": "anton.zaharenko@gmail.com",
+      "email": "hello@codera.click",
       "contactType": "customer support"
     }
   }
@@ -59,13 +59,14 @@
     "@context": "https://schema.org",
     "@type": "Person",
     "name": "Anton Zakharenka",
+    "alternateName": "Anton Zaharenko",
     "url": "https://codera.click/about.html",
     "jobTitle": "Independent developer",
     "sameAs": [
       "https://www.linkedin.com/in/anton-zaharenko/",
       "https://github.com/Zaharenko"
     ],
-    "email": "anton.zaharenko@gmail.com"
+    "email": "hello@codera.click"
   }
   </script>
 </head>
@@ -73,51 +74,49 @@
   <div class="wrap">
     <p class="tag">// about</p>
     <h1>About CodeRa</h1>
-    <p class="updated">Last updated: October 8, 2026 · CodeRa – Chrome extension for extracting code from video</p>
 
     <div class="card">
-      <img src="./icon48.png" alt="CodeRa logo">
+      <img src="./icon48.png" alt="CodeRa logo — placeholder until a personal photo is added">
       <div>
         <p style="color:var(--text);margin:0 0 6px;font-weight:600;">Anton Zakharenka</p>
         <p style="margin:0;font-size:14px;">Independent developer · builder of CodeRa</p>
         <p style="margin:8px 0 0;font-size:14px;">
+          <a href="mailto:hello@codera.click">hello@codera.click</a> ·
           <a href="https://www.linkedin.com/in/anton-zaharenko/" target="_blank" rel="noopener">LinkedIn</a> ·
-          <a href="https://github.com/Zaharenko" target="_blank" rel="noopener">GitHub</a> ·
-          <a href="mailto:anton.zaharenko@gmail.com">Email</a>
+          <a href="https://github.com/Zaharenko" target="_blank" rel="noopener">GitHub</a>
         </p>
       </div>
     </div>
 
-    <h2>Why it exists</h2>
-    <p>I kept pausing tutorials, squinting at code, and retyping it into the editor — with broken indentation and wasted time. <strong style="color:var(--text)">CodeRa</strong> is the tool I wanted: capture the frame, get formatted code, keep a local library, and optionally collect a whole lesson into a project pack.</p>
+    <p>Hi, I’m Anton Zakharenka, an independent developer and the person behind CodeRa. I build tools for people who learn programming from video — the same problem that made me pause tutorials one too many times.</p>
+
+    <h2>Why CodeRa exists</h2>
+    <p>I kept pausing tutorials, squinting at the screen and retyping code, with broken indentation and a lot of wasted time. CodeRa is the tool I wanted: capture the frame, get formatted code, keep a local library, and, if you like, collect a whole lesson into a project.</p>
 
     <h2>What CodeRa does</h2>
     <ul>
-      <li>Capture a video frame (Alt+C or floating button) without leaving the lesson</li>
-      <li>Extract as code, plain text, or get an explanation</li>
-      <li>Collect a whole lesson while you watch, then export timeline + HTML/CSS/JS</li>
-      <li>Local snippet library; optional exports to Obsidian, Anki, Notion, GitLab Snippets</li>
-      <li>Marked clipboard copy for pasting into any editor</li>
+      <li>Captures a video frame with Alt+C or the floating button, without leaving the lesson</li>
+      <li>Extracts code, plain text, or an explanation of what the code does</li>
+      <li>Collects a whole lesson into a timestamped timeline and project-style files (1.2.0, rolling out)</li>
+      <li>Keeps a local snippet library and exports to Obsidian, Notion Markdown, Anki and GitLab Snippets (1.2.0, rolling out)</li>
     </ul>
 
-    <h2>Principles</h2>
+    <h2>How I try to build it</h2>
     <ul>
-      <li>No CodeRa account required</li>
-      <li>Honest comparisons (including offline tools)</li>
-      <li>Clear privacy: relay + Anthropic, local library — see <a href="/privacy.html">Privacy</a></li>
+      <li><strong style="color:var(--text)">Honest comparisons.</strong> Our comparison pages say where other tools are the better choice.</li>
+      <li><strong style="color:var(--text)">Clear privacy.</strong> No account, no cloud library, and a plain-language description of exactly what is sent. See the <a href="/privacy.html">Privacy Policy</a>.</li>
+      <li><strong style="color:var(--text)">No invented proof.</strong> No made-up reviews or statistics. When there are real numbers, they will be published with their method.</li>
+      <li><strong style="color:var(--text)">Feedback shapes the roadmap.</strong> See the <a href="/roadmap.html">roadmap</a>.</li>
     </ul>
 
     <h2>Independence</h2>
-    <p>CodeRa is not affiliated with Anthropic. Extraction uses a CodeRa relay and Anthropic’s API — details in <a href="/privacy.html">Privacy</a> and <a href="/terms.html">Terms</a>.</p>
+    <p>CodeRa is an independent product and is not affiliated with or endorsed by Anthropic. AI extraction uses Anthropic’s API under Anthropic’s terms. Details are in the <a href="/privacy.html">Privacy Policy</a> and the <a href="/terms.html">Terms</a>.</p>
+
+    <h2>Contact</h2>
+    <p><a href="mailto:hello@codera.click">hello@codera.click</a> · <a href="https://www.linkedin.com/in/anton-zaharenko/" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://github.com/Zaharenko" target="_blank" rel="noopener">GitHub</a></p>
 
     <p><a class="btn" href="https://chromewebstore.google.com/detail/codera/achdkjdakdpnihgjhdgmodgamefkffid">Add to Chrome — Free</a></p>
-
-    <p style="margin-top:28px;">
-      <a href="/">Home</a> ·
-      <a href="/changelog.html">Changelog</a> ·
-      <a href="/roadmap.html">Roadmap</a> ·
-      <a href="/ru/">Русский</a>
-    </p>
+    <p style="margin-top:28px;"><a href="/">Home</a> · <a href="/changelog.html">Changelog</a> · <a href="/ru/">Русский</a></p>
     <footer>© 2026 CodeRa · Built by Anton Zakharenka</footer>
   </div>
 </body>

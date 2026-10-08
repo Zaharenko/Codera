@@ -1,5 +1,5 @@
 # CodeRa
-> Chrome extension that extracts formatted code from video frames (YouTube, Udemy, Coursera) and screenshots using AI vision, preserving indentation. Free, no sign-up. Flagship: collect whole lesson → project pack + local library + exports.
+> CodeRa is a Chrome extension that extracts formatted code from video frames and screenshots. Free, no sign-up. Flagship (1.2.0 rolling out): collect whole lesson → project pack + local library + exports. Extract path: CodeRa relay → Anthropic API.
 
 ## Key pages
 - [Home](https://codera.click/)

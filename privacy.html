@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Privacy Policy | CodeRa</title>
   <meta name="description"
-    content="CodeRa Privacy Policy: what is sent via the extract relay to Anthropic, local snippet library, exports, waitlist. Built by Anton Zakharenka.">
+    content="CodeRa Privacy Policy: what is sent through the relay to Anthropic, what stays in your browser, exports, the waitlist and your rights.">
   <link rel="canonical" href="https://codera.click/privacy.html">
   <meta property="og:type" content="website">
   <meta property="og:title" content="CodeRa Privacy Policy">
@@ -327,225 +327,145 @@
     <div class="page-tag">// privacy policy</div>
     <h1>Privacy Policy</h1>
     <p class="page-sub">
-      This policy explains how <strong style="color:var(--text)">CodeRa</strong>, a Chrome extension built by
-      Anton Zakharenka, handles your data when you capture screenshots or video frames, collect a lesson, store snippets
-      locally, or use optional exports and AI follow-ups.
+      Effective 8 Oct 2026 · Covers extension versions 1.1.0 and 1.2.0 (rolling out).
+      This is a draft for lawyer review, not legal advice.
     </p>
 
-    <div class="meta-row">
-      <span class="meta-pill">Effective date: October 8, 2026</span>
-      <span class="meta-pill">Features: see <a href="/changelog.html" style="color:inherit">changelog</a></span>
-      <span class="meta-pill">Chrome Web Store</span>
-    </div>
-
     <div class="summary-banner">
-      <strong>Short version:</strong> CodeRa does not keep a cloud screenshot library for you.
-      When you extract (including many frames during “Collect whole lesson”), the extension posts
-      <code>imageData</code>, <code>extractionMode</code>, and <code>locale</code> to a CodeRa relay at
-      <code>https://codera.click/api/extract</code>, which forwards the request to <strong>Anthropic</strong>.
-      Your snippet library stays in <strong>local browser storage</strong> unless you export it.
+      <strong>The short version:</strong>
+      You do not need an account. CodeRa does not keep your screenshots and has no cloud library of your captures.
+      When you extract, the image goes through a CodeRa relay to Anthropic's API, which returns the result.
+      Your snippet library, history and settings stay in your browser. Exports go only to the service you choose, only when you press export.
     </div>
 
-    <section class="policy-section" id="overview">
-      <h2>1. Who operates CodeRa</h2>
-      <p>
-        CodeRa is developed and maintained by <strong>Anton Zakharenka</strong> (“we”, “us”), an independent developer.
-        Contact: <a href="mailto:anton.zaharenko@gmail.com">anton.zaharenko@gmail.com</a>.
-        CodeRa is <strong>not</strong> affiliated with Anthropic.
-      </p>
+    <section class="policy-section" id="who">
+      <h2>1. Who we are</h2>
+      <p>CodeRa is developed and operated by <strong>Anton Zakharenka</strong>, an independent developer.
+        Contact: <a href="mailto:hello@codera.click">hello@codera.click</a>.
+        For data protection purposes, Anton Zakharenka is the controller. CodeRa is not affiliated with Anthropic.</p>
     </section>
 
-    <section class="policy-section" id="data-processed">
-      <h2>2. What is sent for AI extraction (verified in extension code)</h2>
-      <p>
-        <strong>What is sent to the CodeRa relay / Anthropic.</strong> When you trigger an action, the extension sends
-        to <code>https://codera.click/api/extract</code>: (a) the screenshot or video frame(s) as <code>imageData</code>
-        (PNG/JPEG/WebP data URL); (b) <code>extractionMode</code> (plain text, extract as code, or understand);
-        (c) <code>locale</code> (browser UI language). In “Collect whole lesson”, multiple frames are sent while
-        collection is active. For follow-up questions and language conversion, the extension renders the prompt
-        (snippet text + your question or target language) into an image and sends that image the same way.
-        Lecture-summary prompts may include a <em>page title</em> inside that rendered image when you run summary
-        from the library.
-      </p>
-      <p>
-        <strong>Not included in the JSON body today:</strong> page URL, cookies, or browsing history are not fields on
-        the extract request. URL/title/timestamp are used <em>locally</em> to label snippets in your library.
-        Prefer selecting only the code region so other windows or personal UI are not in the frame.
-      </p>
+    <section class="policy-section" id="what">
+      <h2>2. What we process and where it goes</h2>
       <table style="width:100%;border-collapse:collapse;font-size:14px;margin:16px 0;">
-        <thead>
-          <tr>
-            <th style="border:1px solid var(--border);padding:8px;text-align:left;">Function</th>
-            <th style="border:1px solid var(--border);padding:8px;text-align:left;">Sent via relay</th>
-          </tr>
-        </thead>
+        <thead><tr>
+          <th style="border:1px solid var(--border);padding:8px;text-align:left;">Action</th>
+          <th style="border:1px solid var(--border);padding:8px;text-align:left;">What is processed</th>
+          <th style="border:1px solid var(--border);padding:8px;text-align:left;">Where it goes</th>
+        </tr></thead>
         <tbody>
-          <tr>
-            <td style="border:1px solid var(--border);padding:8px;">Frame / area / upload</td>
-            <td style="border:1px solid var(--border);padding:8px;">Image + mode + locale</td>
-          </tr>
-          <tr>
-            <td style="border:1px solid var(--border);padding:8px;">Understand mode</td>
-            <td style="border:1px solid var(--border);padding:8px;">Same (mode selects explain-style processing)</td>
-          </tr>
-          <tr>
-            <td style="border:1px solid var(--border);padding:8px;">Follow-up / convert language</td>
-            <td style="border:1px solid var(--border);padding:8px;">Rendered prompt image (code + question/target)</td>
-          </tr>
-          <tr>
-            <td style="border:1px solid var(--border);padding:8px;">Collect whole lesson</td>
-            <td style="border:1px solid var(--border);padding:8px;">Many frames while collection is on</td>
-          </tr>
-          <tr>
-            <td style="border:1px solid var(--border);padding:8px;">Bracket check, library search, filters</td>
-            <td style="border:1px solid var(--border);padding:8px;">Nothing (local only)</td>
-          </tr>
-          <tr>
-            <td style="border:1px solid var(--border);padding:8px;">Export GitLab / Notion / Obsidian / Anki</td>
-            <td style="border:1px solid var(--border);padding:8px;">To that service when you press export — not via Anthropic</td>
-          </tr>
+          <tr><td style="border:1px solid var(--border);padding:8px;">Capture / area / upload</td><td style="border:1px solid var(--border);padding:8px;">Image, mode (text/code/understand), browser language</td><td style="border:1px solid var(--border);padding:8px;">CodeRa relay → Anthropic API</td></tr>
+          <tr><td style="border:1px solid var(--border);padding:8px;">Understand mode</td><td style="border:1px solid var(--border);padding:8px;">Same, with explain-style processing</td><td style="border:1px solid var(--border);padding:8px;">CodeRa relay → Anthropic</td></tr>
+          <tr><td style="border:1px solid var(--border);padding:8px;">Follow-up / language conversion</td><td style="border:1px solid var(--border);padding:8px;">Snippet text + question or target language, rendered as an image and sent as <code>imageData</code></td><td style="border:1px solid var(--border);padding:8px;">CodeRa relay → Anthropic</td></tr>
+          <tr><td style="border:1px solid var(--border);padding:8px;">Collect whole lesson</td><td style="border:1px solid var(--border);padding:8px;">Many frames while collection is on</td><td style="border:1px solid var(--border);padding:8px;">CodeRa relay → Anthropic</td></tr>
+          <tr><td style="border:1px solid var(--border);padding:8px;">Lecture summary from library</td><td style="border:1px solid var(--border);padding:8px;">Snippets and, if you run it, the page title inside the rendered prompt</td><td style="border:1px solid var(--border);padding:8px;">CodeRa relay → Anthropic</td></tr>
+          <tr><td style="border:1px solid var(--border);padding:8px;">Bracket check, library search, filters</td><td style="border:1px solid var(--border);padding:8px;">Nothing is sent</td><td style="border:1px solid var(--border);padding:8px;">Stays in your browser</td></tr>
+          <tr><td style="border:1px solid var(--border);padding:8px;">Export GitLab / Notion / Obsidian / Anki</td><td style="border:1px solid var(--border);padding:8px;">The snippet you export</td><td style="border:1px solid var(--border);padding:8px;">Only to that service when you press export</td></tr>
+          <tr><td style="border:1px solid var(--border);padding:8px;">Waitlist form</td><td style="border:1px solid var(--border);padding:8px;">Email address</td><td style="border:1px solid var(--border);padding:8px;">FormSubmit → developer inbox</td></tr>
+          <tr><td style="border:1px solid var(--border);padding:8px;">Visiting codera.click</td><td style="border:1px solid var(--border);padding:8px;">Standard server logs (IP, user agent, URL, time)</td><td style="border:1px solid var(--border);padding:8px;">Hosting provider for the site</td></tr>
         </tbody>
       </table>
     </section>
 
     <section class="policy-section" id="relay">
-      <h2>3. Who processes it (relay + Anthropic)</h2>
-      <p>
-        Requests go first to the CodeRa extract endpoint on <strong>codera.click</strong> (relay), then to
-        <strong>Anthropic</strong> under Anthropic’s commercial terms and privacy documentation. The relay exists to
-        run extraction without embedding a user-facing Anthropic key in every call. We do not use extract payloads to
-        build a personal screenshot archive or for advertising.
-      </p>
-      <p>
-        Under Anthropic’s current Commercial Terms, Anthropic does not train models on API customer content by default;
-        retention is defined by Anthropic. See Anthropic’s current documentation and
-        <a href="https://www.anthropic.com/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
-        — we do not quote a fixed retention day count here because it may change.
-      </p>
-      <p>
-        Your IP address is visible to the relay host; Anthropic may see the relay’s egress IP rather than yours,
-        depending on infrastructure. International transfer: Anthropic processes data in the United States (and other
-        regions they document). Review their DPA / terms for details.
-      </p>
+      <h2>3. How a request travels</h2>
+      <p>When you extract, the extension posts to CodeRa's relay at <code>https://codera.click/api/extract</code>, which forwards the request to Anthropic's API and returns the result. The relay lets CodeRa work without putting a shared Anthropic key inside every installation.</p>
+      <p>Verified from the extension code: the JSON body contains <code>imageData</code> (PNG/JPEG/WebP data URL), <code>extractionMode</code> and <code>locale</code>. It does not contain the page address, cookies, browsing history, your name or your email as separate fields. The page address, title and timestamp are used only inside your browser to label snippets, except a lecture summary may include the page title inside the rendered prompt image.</p>
+      <p>Images can contain more than code: other windows, notifications, names. Crop to the code and do not capture secrets.</p>
     </section>
 
-    <section class="policy-section" id="local-storage">
-      <h2>4. Local storage</h2>
-      <p>
-        Your snippet library, history, settings, optional API key (if you add one), and export tokens (for example
-        GitLab) are stored in your browser (<code>chrome.storage.local</code> / IndexedDB) and are not uploaded to a
-        CodeRa cloud library. Removing the extension deletes them.
-      </p>
+    <section class="policy-section" id="relay-keeps">
+      <h2>4. What the relay keeps</h2>
+      <p>We do not operate a user-facing cloud library of your screenshots. The relay may keep request metadata (for example time, IP address, request size, status code) only as needed for abuse prevention, rate limiting and reliability. Exact retention windows for infrastructure logs depend on the host configuration and should be confirmed with your hosting setup. We do not use extract payloads for advertising or profiling.</p>
     </section>
 
-    <section class="policy-section" id="not-collected">
-      <h2>5. What we do not collect</h2>
-      <ul>
-        <li>No CodeRa account is required</li>
-        <li>We do not sell personal data</li>
-        <li>No advertising trackers inside the extension</li>
-        <li>No continuous browsing surveillance — processing runs when you capture, collect a lesson, ask follow-ups, convert language, or export</li>
-      </ul>
+    <section class="policy-section" id="anthropic">
+      <h2>5. Anthropic's role</h2>
+      <p>Anthropic processes the images and prompts to generate the result. Under Anthropic's Commercial Terms as they stand today, Anthropic does not train its models on customer content from its API by default. How long Anthropic retains API data is set by Anthropic and may change, so we do not state a fixed number here. See <a href="https://www.anthropic.com/privacy" target="_blank" rel="noopener noreferrer">Anthropic's Privacy Policy</a> and its current commercial and data-processing documentation. Anthropic may process data in the United States and other regions it documents.</p>
+    </section>
+
+    <section class="policy-section" id="local">
+      <h2>6. What is stored on your device</h2>
+      <p>Your snippet library, history, settings, an optional Anthropic API key (if you add one) and export tokens such as GitLab are stored in your browser (<code>chrome.storage.local</code> and IndexedDB). They are not uploaded to a CodeRa cloud library. Removing the extension or clearing its data deletes them. Today the default extract path uses the CodeRa relay; if you supply your own key in settings, follow the in-extension instructions for how that key is used.</p>
     </section>
 
     <section class="policy-section" id="exports">
-      <h2>6. Exports</h2>
-      <p>
-        Exports to GitLab Snippets, Notion, Obsidian and Anki happen only when you press the export button.
-        For services that require sign-in, access tokens are stored locally. Content you export is governed by that
-        service’s own terms.
-      </p>
-    </section>
-
-    <section class="policy-section" id="permissions">
-      <h2>7. Chrome permissions</h2>
-      <ul>
-        <li><strong>activeTab</strong> — current tab when you start a capture</li>
-        <li><strong>scripting</strong> — area selection, floating button, hotkey UI, toasts, lesson helpers</li>
-        <li><strong>clipboardWrite</strong> — copy results (and marked clipboard payloads for editors)</li>
-        <li><strong>storage</strong> — preferences, optional keys/tokens, local library</li>
-        <li><strong>Host access</strong> — pages where you choose to extract; <code>codera.click</code> for the extract relay and site pages</li>
-      </ul>
-    </section>
-
-    <section class="policy-section" id="legal">
-      <h2>8. Legal basis and your rights (GDPR where applicable)</h2>
-      <p>
-        We process extract requests to perform the function you request (contractual necessity / legitimate interest in
-        operating the product you installed). Waitlist email is based on your consent; you may ask for deletion anytime.
-        Where GDPR applies you may have rights of access, erasure, restriction, and objection, and the right to lodge a
-        complaint with a supervisory authority. Contact us at the email below to exercise rights related to waitlist
-        data or questions about the relay.
-      </p>
+      <h2>7. Exports</h2>
+      <p>Exports happen only when you press the export button. For services that need sign-in, access tokens are stored locally in your browser. Once content reaches GitLab, Notion, Obsidian or Anki, that service's own terms and privacy policy apply.</p>
     </section>
 
     <section class="policy-section" id="waitlist">
-      <h2>9. Waitlist</h2>
-      <p>
-        If you submit your email, it is delivered through FormSubmit to the developer’s inbox, used only for product
-        updates and pricing announcements. Ask for deletion at any time via email.
-      </p>
+      <h2>8. Waitlist and email</h2>
+      <p>If you join the waitlist, your email is delivered through FormSubmit to the developer's inbox and used only for product updates and pricing announcements. Your consent is the legal basis. You can unsubscribe or ask for deletion at any time at <a href="mailto:hello@codera.click">hello@codera.click</a>.</p>
     </section>
 
     <section class="policy-section" id="website">
-      <h2>10. The codera.click website</h2>
-      <p>
-        The site and extract relay may produce standard server logs (IP, user-agent, URL, time) for security and
-        reliability. If cookieless analytics (Plausible/Umami) are enabled, they will be named here. No account is
-        required to browse the marketing pages.
-      </p>
+      <h2>9. The website and cookies</h2>
+      <p>codera.click and the relay may produce standard server logs (IP address, user agent, URL, time) for security and reliability. We use no advertising cookies or trackers on the marketing pages today. If cookieless analytics (for example Plausible or Umami) are added later, they will be named here.</p>
+    </section>
+
+    <section class="policy-section" id="legal">
+      <h2>10. Legal bases (where GDPR applies)</h2>
+      <p>We process extract requests to provide the function you ask for (performance of a contract) and in our legitimate interest in operating and securing the Service. We process waitlist email on the basis of your consent.</p>
     </section>
 
     <section class="policy-section" id="retention">
-      <h2>11. Data retention</h2>
-      <p>
-        We do not operate a user-facing cloud library of your screenshots. Local data remains until you clear it or
-        uninstall. Anthropic retention follows Anthropic’s then-current terms. Relay logs, if any, are kept only as
-        needed for abuse prevention and operations.
-      </p>
-    </section>
-
-    <section class="policy-section" id="security">
-      <h2>12. Security</h2>
-      <p>
-        Traffic uses HTTPS. Avoid capturing secrets. Prefer cropping to code-only regions. You must comply with
-        platform terms for content you capture (<a href="/terms.html">Terms of Use</a>).
-      </p>
-    </section>
-
-    <section class="policy-section" id="children">
-      <h2>13. Children’s privacy</h2>
-      <p>
-        CodeRa is not directed at children under 13 (or the minimum age in your jurisdiction). We do not knowingly
-        collect personal information from children.
-      </p>
-    </section>
-
-    <section class="policy-section" id="choices">
-      <h2>14. Your choices</h2>
+      <h2>11. Retention</h2>
       <ul>
-        <li>Stop using capture / lesson collect / AI follow-ups, or uninstall</li>
-        <li>Clear extension storage in Chrome</li>
-        <li>Use your own Anthropic API key in settings when that option is available</li>
-        <li>Email us for waitlist deletion or privacy questions</li>
+        <li><strong>Images and results at the CodeRa relay:</strong> not kept as a user library.</li>
+        <li><strong>Relay / host request metadata:</strong> only as needed for abuse prevention and operations (confirm host retention).</li>
+        <li><strong>Data at Anthropic:</strong> according to Anthropic's current terms.</li>
+        <li><strong>Local library, history, settings:</strong> until you delete them or uninstall.</li>
+        <li><strong>Waitlist email:</strong> until you unsubscribe or ask for deletion.</li>
       </ul>
     </section>
 
+    <section class="policy-section" id="rights">
+      <h2>12. Your rights</h2>
+      <p>Where GDPR or similar laws apply, you may have the right to access, correct, delete, restrict or object to the processing of your personal data, to withdraw consent, and to data portability. Write to <a href="mailto:hello@codera.click">hello@codera.click</a>. You can also complain to a supervisory authority in your country.</p>
+    </section>
+
+    <section class="policy-section" id="transfers">
+      <h2>13. International transfers</h2>
+      <p>Anthropic and some infrastructure providers operate outside the European Economic Area. Transfers rely on the safeguards described in their data-processing terms, for example standard contractual clauses.</p>
+    </section>
+
+    <section class="policy-section" id="security">
+      <h2>14. Security</h2>
+      <p>Traffic uses HTTPS. The relay applies limits to reduce abuse. No system is perfectly secure, so avoid capturing secrets and crop to the code.</p>
+    </section>
+
+    <section class="policy-section" id="permissions">
+      <h2>15. Chrome permissions explained</h2>
+      <ul>
+        <li><strong>activeTab</strong> — access the current tab when you start a capture.</li>
+        <li><strong>scripting</strong> — inject the selection overlay, floating button, hotkey handler and notifications.</li>
+        <li><strong>clipboardWrite</strong> — copy results, including marked snippets for editors.</li>
+        <li><strong>storage</strong> — save preferences, the local library and optional keys or tokens.</li>
+        <li><strong>Host access</strong> — <code>&lt;all_urls&gt;</code> for capture on pages you use, and <code>https://codera.click/*</code> for the extract relay and site pages (per the current manifest).</li>
+      </ul>
+    </section>
+
+    <section class="policy-section" id="subprocessors">
+      <h2>16. Sub-processors and services</h2>
+      <p>Anthropic (AI processing) · hosting provider for codera.click and the relay · FormSubmit (waitlist email delivery) · optional export targets you choose (for example GitLab, Notion).</p>
+    </section>
+
+    <section class="policy-section" id="children">
+      <h2>17. Children</h2>
+      <p>CodeRa is not directed at children under 13 (or the minimum age in your country). We do not knowingly collect personal information from children.</p>
+    </section>
+
     <section class="policy-section" id="changes">
-      <h2>15. Changes</h2>
-      <p>
-        We may update this policy when the product or law changes. The effective date above will change.
-        Continued use after an update means you accept the revised policy. Feature history:
-        <a href="/changelog.html">changelog</a>.
-      </p>
+      <h2>18. Changes</h2>
+      <p>We will update this policy when the product or the law changes. The effective date above will change, and the <a href="/changelog.html">changelog</a> lists feature changes. Material changes will be announced on the site.</p>
     </section>
 
     <section class="policy-section" id="contact">
-      <h2>16. Contact</h2>
-      <p>For privacy questions about CodeRa:</p>
+      <h2>19. Contact</h2>
       <div class="contact-box">
         Anton Zakharenka<br>
-        Email: <a href="mailto:anton.zaharenko@gmail.com">anton.zaharenko@gmail.com</a><br>
+        Email: <a href="mailto:hello@codera.click">hello@codera.click</a><br>
         Website: <a href="https://codera.click/">codera.click</a> ·
         <a href="/terms.html">Terms of Use</a>
       </div>
@@ -562,8 +482,7 @@
       <a href="/about.html">About</a>
       <a href="/changelog.html">Changelog</a>
       <a href="/terms.html">Terms</a>
-      <a href="https://www.linkedin.com/in/anton-zaharenko/" target="_blank" rel="noopener noreferrer">Anton
-        Zakharenka</a>
+      <a href="https://www.linkedin.com/in/anton-zaharenko/" target="_blank" rel="noopener noreferrer">Anton Zakharenka</a>
     </div>
     <span>© 2026 CodeRa · Privacy Policy · Chrome extension for extracting code from video</span>
   </footer>

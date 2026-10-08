@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CodeRa Roadmap — What’s shipping next</title>
-  <meta name="description" content="CodeRa product roadmap: shipping now, in development (VS Code companion), and later ideas. Vote by emailing what you need most.">
+  <title>CodeRa Roadmap — What's Shipping Next</title>
+  <meta name="description" content="CodeRa product roadmap: what is available now, what is in development and later ideas. Honest, with no invented dates.">
   <link rel="canonical" href="https://codera.click/roadmap.html">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://codera.click/roadmap.html">
   <meta property="og:title" content="CodeRa Roadmap">
-  <meta property="og:description" content="What CodeRa is building next — honest, without fake dates.">
+  <meta property="og:description" content="What CodeRa is building next — honest, without invented dates.">
   <meta property="og:image" content="https://codera.click/og.jpg">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="./icon48.png" type="image/png">
@@ -21,13 +21,12 @@
     .wrap{max-width:720px;margin:0 auto}
     a{color:var(--cyan)}
     h1{font-size:2rem;margin:24px 0 12px}
-    h2{font-size:1.2rem;margin:28px 0 10px}
+    h2{font-size:1.2rem;margin:0 0 10px}
     p,li{color:var(--muted);margin-bottom:10px}
     ul{padding-left:1.2rem;margin-bottom:16px}
     .tag{font-size:12px;color:var(--cyan)}
     .updated{font-size:13px;color:var(--muted);margin-bottom:24px}
     .card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px 20px;margin-bottom:14px}
-    .btn{display:inline-block;background:var(--cyan);color:#0b0f14;padding:8px 16px;border-radius:8px;text-decoration:none;font-weight:600;font-size:14px;margin-top:8px}
     footer{margin-top:48px;padding-top:20px;border-top:1px solid var(--border);font-size:13px;color:var(--muted)}
   </style>
 </head>
@@ -35,40 +34,48 @@
   <div class="wrap">
     <p class="tag">// roadmap</p>
     <h1>CodeRa roadmap</h1>
-    <p class="updated">Last updated: October 8, 2026 · No fake ship dates — priorities move with feedback</p>
+    <p class="updated">Updated 8 Oct 2026 · No invented ship dates. Priorities move with your feedback.</p>
 
     <div class="card">
-      <h2>Available now</h2>
+      <h2>Available now (Store version 1.1.0)</h2>
       <ul>
-        <li>Video frame capture (Alt+C, floating button), select area, upload</li>
-        <li>Modes: plain text, extract as code, understand</li>
-        <li>Collect whole lesson → timeline + project-style files</li>
-        <li>Local snippet library, bracket checks, exports (Obsidian / Notion MD / Anki / GitLab)</li>
-        <li>Clipboard “marked snippet” copy for pasting into editors</li>
+        <li>Video frame capture with Alt+C and the floating button, Select Area, image upload</li>
+        <li>Three modes: plain text, extract as code, understand</li>
+        <li>Bracket and syntax check after extraction</li>
       </ul>
-      <a class="btn" href="https://chromewebstore.google.com/detail/codera/achdkjdakdpnihgjhdgmodgamefkffid">Add to Chrome</a>
     </div>
-
+    <div class="card">
+      <h2>Rolling out (version 1.2.0)</h2>
+      <ul>
+        <li>Collect whole lesson into a timeline and project-style files</li>
+        <li>Local snippet library with search and filters</li>
+        <li>Exports to Obsidian, Notion Markdown, Anki and GitLab Snippets</li>
+        <li>Follow-up questions and language conversion</li>
+        <li>Marked clipboard copy for pasting into editors</li>
+      </ul>
+    </div>
     <div class="card">
       <h2>In development</h2>
       <ul>
-        <li><strong>VS Code / Cursor insert command</strong> — companion extension to insert a marked snippet into the open file (<a href="/vscode-companion.html">status page</a>)</li>
-        <li>Stronger extract relay limits and crop/compress before upload</li>
-        <li>Public accuracy benchmark vs Lens / Live Text</li>
+        <li>VS Code and Cursor insert command (<a href="/vscode-companion.html">status</a>)</li>
+        <li>Public accuracy comparison with Lens and Live Text, with method and examples</li>
+        <li>Reliability and fair-use improvements</li>
+        <li>Crop and compress before upload to send less data</li>
       </ul>
     </div>
-
     <div class="card">
       <h2>Later ideas</h2>
       <ul>
-        <li>Free web “Image to Code” tool (no install)</li>
-        <li>Firefox / Edge Add-ons listings</li>
-        <li>Russian guide hub; instructor checklist</li>
+        <li>Free web version of Image to Code, with no install</li>
+        <li>Firefox and Edge Add-ons listings</li>
+        <li>Russian guide hub</li>
+        <li>Instructor checklist for capture-friendly lessons</li>
+        <li>More export targets</li>
       </ul>
     </div>
 
-    <h2>Vote with feedback</h2>
-    <p>Email <a href="mailto:anton.zaharenko@gmail.com?subject=CodeRa%20roadmap%20vote">anton.zaharenko@gmail.com</a> with the one feature you’d ship first.</p>
+    <h2 style="margin-top:28px;">Tell us what to build first</h2>
+    <p>Email <a href="mailto:hello@codera.click?subject=CodeRa%20roadmap%20vote">hello@codera.click</a> with the one feature you would ship first.</p>
 
     <footer>
       <a href="/">Home</a> · <a href="/changelog.html">Changelog</a> · <a href="/guides/">Guides</a> · <a href="/compare/">Compare</a><br><br>
