@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Offline &amp; Privacy-First Alternatives to CodeRa (2026)</title>
+  <meta name="description" content="Honest look at offline OCR for code (Screenshot Search, Live Text, Lens) vs CodeRa. Local privacy vs cloud vision accuracy and lesson workflow.">
+  <link rel="canonical" href="https://codera.click/offline-alternatives.html">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://codera.click/offline-alternatives.html">
+  <meta property="og:title" content="Offline alternatives to CodeRa">
+  <meta property="og:description" content="When to choose on-device OCR vs CodeRa’s Anthropic-backed extraction.">
+  <meta property="og:image" content="https://codera.click/og.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="./icon48.png" type="image/png">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--cyan:#22d3ee;--bg:#0b0f14;--surface:#141b24;--text:#f1f5f9;--muted:#94a3b8;--border:rgba(255,255,255,.08)}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{background:var(--bg);color:var(--text);font-family:'Space Grotesk',sans-serif;line-height:1.65}
+    a{color:var(--cyan)}
+    nav{display:flex;justify-content:space-between;align-items:center;padding:14px 24px;border-bottom:1px solid var(--border);position:sticky;top:0;background:rgba(11,15,20,.9);backdrop-filter:blur(10px)}
+    .logo{display:flex;gap:8px;align-items:center;color:var(--text);text-decoration:none;font-weight:700}
+    .logo img{width:28px;height:28px;border-radius:6px}
+    .btn{background:var(--cyan);color:#0b0f14;padding:8px 16px;border-radius:8px;text-decoration:none;font-weight:600;font-size:14px}
+    .wrap{max-width:740px;margin:0 auto;padding:40px 20px 80px}
+    .tag{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--cyan);margin-bottom:10px}
+    h1{font-size:clamp(1.8rem,4vw,2.4rem);line-height:1.15;margin-bottom:12px}
+    h2{font-size:1.3rem;margin:32px 0 12px}
+    p,li{color:var(--muted);margin-bottom:12px}
+    strong{color:var(--text)}
+    ul{padding-left:1.25rem;margin-bottom:16px}
+    .lead{font-size:1.05rem;color:var(--text);margin-bottom:20px}
+    .updated{font-size:13px;color:var(--muted);margin-bottom:28px}
+    table{width:100%;border-collapse:collapse;margin:20px 0 28px;font-size:14px}
+    th,td{border:1px solid var(--border);padding:10px 12px;text-align:left;vertical-align:top}
+    th{background:var(--surface);color:var(--text)}
+    td{color:var(--muted)}
+    .cta{margin:32px 0;padding:20px;border:1px solid var(--border);border-radius:12px;background:var(--surface)}
+    footer{margin-top:48px;padding-top:20px;border-top:1px solid var(--border);font-size:13px;color:var(--muted)}
+  </style>
+</head>
+<body>
+  <nav>
+    <a class="logo" href="/"><img src="./icon48.png" alt="CodeRa">CodeRa</a>
+    <a class="btn" href="https://chromewebstore.google.com/detail/codera/achdkjdakdpnihgjhdgmodgamefkffid">Add to Chrome</a>
+  </nav>
+  <article class="wrap">
+    <p class="tag">// alternatives · privacy</p>
+    <h1>Offline &amp; privacy-first alternatives</h1>
+    <p class="updated">Last updated: October 8, 2026</p>
+    <p class="lead"><strong>CodeRa sends frames to Anthropic’s API.</strong> That is a real trade-off. If you need fully on-device OCR, use a local tool — and accept weaker indentation recovery and no whole-lesson browser workflow.</p>
+
+    <h2>Honest comparison</h2>
+    <table>
+      <thead><tr><th>Tool</th><th>Where it runs</th><th>Strength</th><th>Weakness for coding tutorials</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Apple Live Text</strong></td><td>On device (Apple)</td><td>Private, free with macOS/iOS</td><td>Often flattens indentation; no YouTube one-click in Chrome</td></tr>
+        <tr><td><strong>Google Lens</strong></td><td>Google / device</td><td>Fast general OCR</td><td>Not built for IDE-ready code; multi-step from desktop video</td></tr>
+        <tr><td><strong>Screenshot Search</strong> (Mac apps in this niche)</td><td>Often on device</td><td>Strong privacy story; one-time purchase models</td><td>Not a Chrome course companion; no lesson→project pack inside the browser</td></tr>
+        <tr><td><strong>CodeRa</strong></td><td>Browser + Anthropic API</td><td>Video frame capture, code mode, lesson collect, library, exports</td><td>Frames leave your machine for AI processing</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Our position</h2>
+    <p>Choose offline tools when proprietary code must never leave the device. Choose CodeRa when you accept Anthropic processing (see <a href="/privacy.html">Privacy</a>) in exchange for better tutorial workflow. We will publish a measured benchmark (Lens / Live Text / CodeRa) with methodology — this page will link to it when ready.</p>
+
+    <div class="cta">
+      <p><strong style="color:var(--text)">Still want the browser workflow?</strong></p>
+      <p><a class="btn" href="https://chromewebstore.google.com/detail/codera/achdkjdakdpnihgjhdgmodgamefkffid">Add CodeRa to Chrome</a></p>
+    </div>
+
+    <p><a href="/codera-vs-google-lens.html">vs Google Lens</a> · <a href="/codera-vs-selectext.html">vs Selectext</a> · <a href="/privacy.html">Privacy</a></p>
+    <footer>© 2026 CodeRa · Third-party products named for comparison only.</footer>
+  </article>
+</body>
+</html>

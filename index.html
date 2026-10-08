@@ -26,6 +26,7 @@
   <meta name="twitter:description"
     content="Extract formatted code from YouTube, Udemy and Coursera videos. Free Chrome extension.">
   <meta name="twitter:image" content="https://codera.click/og.jpg">
+  <meta name="codera-build" content="2026-10-08">
   <link rel="icon" href="./icon48.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link
@@ -85,6 +86,22 @@
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "Plain text extracts everything as-is. Extract as code returns IDE-ready source. Understand code explains the logic and expected output."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is copying code from paid courses legal?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "You are responsible for complying with each platform's terms and copyright law. Use extracts for your own learning; do not redistribute course materials."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does CodeRa work in Edge, Brave, Opera, or Firefox?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes on Chromium browsers via the Chrome Web Store (Chrome, Edge, Brave, Opera). Firefox is not supported yet."
         }
       },
       {
@@ -995,6 +1012,11 @@
 </head>
 
 <body>
+  <script>
+    if (/\/index\.html$/i.test(location.pathname)) {
+      location.replace(location.pathname.replace(/index\.html$/i, '') + location.search + location.hash);
+    }
+  </script>
 
   <!-- NAV -->
   <nav>
@@ -1090,25 +1112,16 @@
         <div class="demo-url">CodeRa — 30 second demo</div>
       </div>
       <div class="video-embed">
-        <video autoplay muted loop playsinline controls width="100%" height="100%"
-          src="./video-codera.mp4"
+        <video autoplay muted loop playsinline controls preload="metadata" width="100%" height="100%"
+          src="./video-codera.mp4?v=20261008"
           title="CodeRa demo — copy code from YouTube and Udemy videos"
-          poster="./og.jpg"></video>
+          poster="./og.jpg?v=20261008">
+          Your browser does not support HTML5 video.
+          <a href="./video-codera.mp4">Download the CodeRa demo (MP4)</a>.
+        </video>
       </div>
     </div>
   </section>
-
-  <!-- ═══════ WAITLIST (moved up, right after the hero/demo) ═══════ -->
-  <div class="waitlist-section" id="early-access">
-    <h2>Stay in the loop</h2>
-    <p class="waitlist-sub">Be first to know when paid plans launch, early members get special pricing.</p>
-    <form class="waitlist-form" id="wf">
-      <input type="email" id="we" placeholder="your@email.com" required autocomplete="email">
-      <input type="text" name="_honey" style="display:none" tabindex="-1">
-      <button type="submit" id="wb">Join waitlist</button>
-    </form>
-    <p class="waitlist-msg" id="wm"></p>
-  </div>
 
   <!-- ═══════ HOW IT WORKS ═══════ -->
   <section class="how-section" id="how">
@@ -1169,10 +1182,10 @@
     <h2>Built for the whole learning loop</h2>
     <p class="section-sub">Capture once, keep the snippet, ask follow-ups, export to your notes — without reopening the popup every time.</p>
     <div class="features-grid">
-      <article class="feature-item">
-        <div class="feature-tag">1-click capture</div>
-        <h3>Hotkey + floating button</h3>
-        <p>Press <strong>Alt+C</strong> or tap the floating CodeRa button on the player. Frame capture without opening the popup.</p>
+      <article class="feature-item" style="grid-column:1/-1;border-color:var(--cyan-border);">
+        <div class="feature-tag">lectures · flagship</div>
+        <h3>Collect whole lesson → ready project</h3>
+        <p>Start collection and keep watching — CodeRa grabs frames as you play (and when you scrub), with no blinking and no forced rewind. Finish to get a timestamped timeline plus assembled files like <code>index.html</code>, <code>styles.css</code>, <code>script.js</code>. This is the main difference vs one-off OCR tools.</p>
       </article>
       <article class="feature-item">
         <div class="feature-tag">local library</div>
@@ -1182,7 +1195,12 @@
       <article class="feature-item">
         <div class="feature-tag">exports</div>
         <h3>Notion, Obsidian, Anki, GitLab</h3>
-        <p>Export a snippet as Obsidian Markdown, Notion-ready Markdown, Anki cards, or push straight to GitLab Snippets.</p>
+        <p>Export a snippet as Obsidian Markdown, Notion-ready Markdown, Anki cards, or push straight to GitLab Snippets — only when you choose.</p>
+      </article>
+      <article class="feature-item">
+        <div class="feature-tag">1-click capture</div>
+        <h3>Hotkey + floating button</h3>
+        <p>Press <strong>Alt+C</strong> or tap the floating CodeRa button on the player. Frame capture without opening the popup.</p>
       </article>
       <article class="feature-item">
         <div class="feature-tag">trust</div>
@@ -1200,19 +1218,15 @@
         <p>Convert a captured snippet to JavaScript, Python, Go, Java, Rust, or TypeScript in one click.</p>
       </article>
       <article class="feature-item">
+        <div class="feature-tag">editor</div>
+        <h3>VS Code / Cursor companion</h3>
+        <p>Copy a CodeRa-marked snippet, then in VS Code/Cursor run <strong>CodeRa: Insert Snippet</strong>. Details:
+          <a href="vscode-companion.html" style="color:var(--cyan);">companion setup</a>.</p>
+      </article>
+      <article class="feature-item">
         <div class="feature-tag">anywhere</div>
         <h3>Not only course videos</h3>
         <p>Select Area works on Zoom/Meet shares, PDFs, slides, Twitch, Slack/Discord screenshots — any code on screen.</p>
-      </article>
-      <article class="feature-item">
-        <div class="feature-tag">editor</div>
-        <h3>VS Code / Cursor bridge</h3>
-        <p>One click copies a CodeRa-marked snippet. In VS Code/Cursor run <strong>CodeRa: Insert Snippet</strong> (companion extension) to drop it into the open file.</p>
-      </article>
-      <article class="feature-item">
-        <div class="feature-tag">lectures</div>
-        <h3>Collect whole lesson</h3>
-        <p>Start collection and keep watching — CodeRa grabs frames as you play (and when you scrub), with no blinking and no forced rewind. Finish to get a timestamped timeline plus assembled files like <code>index.html</code>, <code>styles.css</code>, <code>script.js</code>.</p>
       </article>
       <article class="feature-item">
         <div class="feature-tag">UX</div>
@@ -1250,8 +1264,17 @@
           <td class="bad">Often focused on in-editor or image OCR — not built to capture a live video frame on YouTube/Udemy</td>
           <td class="good">One-click video frame capture + Claude Vision for formatted code</td>
         </tr>
+        <tr>
+          <td class="tool">Selectext / Video-to-Text</td>
+          <td class="bad">Copy text from video; often need an account; no whole-lesson → project pack</td>
+          <td class="good">Lesson collect, local library, exports, syntax check — <a href="codera-vs-selectext.html" style="color:var(--cyan);">full compare</a></td>
+        </tr>
       </tbody>
     </table>
+    <p style="margin-top:16px;font-size:14px;color:var(--muted);max-width:720px;">
+      Need fully offline OCR? See <a href="offline-alternatives.html" style="color:var(--cyan);">privacy-first / offline alternatives</a>
+      (honest trade-offs: local privacy vs CodeRa’s cloud vision accuracy and lesson workflow).
+    </p>
   </section>
 
   <!-- ═══════ FAQ ═══════ -->
@@ -1282,13 +1305,48 @@
         </div>
       </details>
       <details class="faq">
+        <summary>Is copying code from paid courses legal?</summary>
+        <div class="faq-body">You are responsible for complying with each platform’s terms and copyright law.
+          CodeRa is a personal productivity tool for capturing what is already on your screen. Use extracts for your own
+          learning; do not redistribute course materials. See <a href="terms.html" style="color:var(--cyan);">Terms</a>.</div>
+      </details>
+      <details class="faq">
+        <summary>What are the free-plan limits?</summary>
+        <div class="faq-body">During early access, core features are unlocked without a CodeRa account. Fair-use /
+          API limits may apply (especially on shared early-access keys or future paid tiers). We’ll publish concrete
+          quotas when paid plans launch.</div>
+      </details>
+      <details class="faq">
+        <summary>Does it work in Edge, Brave, Opera? What about Firefox?</summary>
+        <div class="faq-body">Yes on Chromium browsers via the Chrome Web Store (Chrome, Edge, Brave, Opera).
+          Firefox is not supported yet.</div>
+      </details>
+      <details class="faq">
+        <summary>How accurate is the extraction?</summary>
+        <div class="faq-body">Accuracy depends on resolution, contrast, fonts, and motion blur. Code mode aims to
+          preserve indentation; bracket checks catch some OCR mistakes. DRM-protected or blacked-out frames cannot be
+          read. We’re preparing a public benchmark vs Lens and others.</div>
+      </details>
+      <details class="faq">
         <summary>Who built CodeRa?</summary>
         <div class="faq-body">Built by <a href="https://www.linkedin.com/in/anton-zaharenko/" target="_blank"
             rel="noopener" style="color:var(--cyan);">Anton Zakharenka</a>, a developer who got tired of retyping code
-          from tutorials. Not developed by Anthropic.</div>
+          from tutorials. Not developed by Anthropic. <a href="about.html" style="color:var(--cyan);">About</a>.</div>
       </details>
     </div>
   </section>
+
+  <!-- ═══════ WAITLIST (below product, before final install CTA) ═══════ -->
+  <div class="waitlist-section" id="early-access">
+    <h2>Stay in the loop</h2>
+    <p class="waitlist-sub">Product updates and early pricing when paid plans launch — no spam.</p>
+    <form class="waitlist-form" id="wf">
+      <input type="email" id="we" placeholder="your@email.com" required autocomplete="email">
+      <input type="text" name="_honey" style="display:none" tabindex="-1">
+      <button type="submit" id="wb">Join waitlist</button>
+    </form>
+    <p class="waitlist-msg" id="wm"></p>
+  </div>
 
   <!-- ═══════ FINAL CTA ═══════ -->
   <div class="final-cta" id="install">
@@ -1313,10 +1371,14 @@
       <a href="how-to-copy-code-from-udemy.html">Udemy guide</a>
       <a href="extract-code-from-screenshot.html">Screenshot → code</a>
       <a href="codera-vs-google-lens.html">vs Google Lens</a>
+      <a href="codera-vs-selectext.html">vs Selectext</a>
+      <a href="offline-alternatives.html">Offline alts</a>
+      <a href="vscode-companion.html">VS Code companion</a>
       <a href="ru/">Русский</a>
       <a href="about.html">About</a>
       <a href="changelog.html">Changelog</a>
       <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
       <a href="mailto:anton.zaharenko@gmail.com">Contact</a>
       <a href="https://www.linkedin.com/in/anton-zaharenko/" target="_blank" rel="noopener">Anton Zakharenka</a>
     </div>

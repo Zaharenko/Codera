@@ -3,15 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>How to Copy Code from a YouTube Video (2026) | CodeRa</title>
-  <meta name="description" content="Copy code from a YouTube coding tutorial in one click. CodeRa extracts formatted code from the video frame, keeps indentation, free Chrome extension, no sign-up.">
+  <title>How to Copy Code from a YouTube Video (3 Methods)</title>
+  <meta name="description" content="Copy code from a YouTube coding tutorial: manually, with Lens/OCR, with ChatGPT, or in 1 click with CodeRa. Steps, pros/cons, FAQ. Updated Oct 2026.">
   <link rel="canonical" href="https://codera.click/how-to-copy-code-from-youtube.html">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://codera.click/how-to-copy-code-from-youtube.html">
-  <meta property="og:title" content="How to copy code from a YouTube video | CodeRa">
-  <meta property="og:description" content="One-click way to extract formatted code from YouTube tutorials without retyping.">
+  <meta property="og:title" content="How to Copy Code from a YouTube Video (3 Methods)">
+  <meta property="og:description" content="Manual, OCR, chatbot, or CodeRa — honest ways to extract formatted code from YouTube tutorials.">
   <meta property="og:image" content="https://codera.click/og.jpg">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="author" content="Anton Zakharenka">
   <link rel="icon" href="./icon48.png" type="image/png">
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
@@ -19,88 +20,108 @@
     *{box-sizing:border-box;margin:0;padding:0}
     body{background:var(--bg);color:var(--text);font-family:'Space Grotesk',sans-serif;line-height:1.65}
     a{color:var(--cyan)}
-    nav{display:flex;justify-content:space-between;align-items:center;padding:14px 24px;border-bottom:1px solid var(--border);position:sticky;top:0;background:rgba(11,15,20,.9);backdrop-filter:blur(10px)}
+    nav{display:flex;justify-content:space-between;align-items:center;padding:14px 24px;border-bottom:1px solid var(--border);position:sticky;top:0;background:rgba(11,15,20,.9);backdrop-filter:blur(10px);z-index:5}
     .logo{display:flex;gap:8px;align-items:center;color:var(--text);text-decoration:none;font-weight:700}
     .logo img{width:28px;height:28px;border-radius:6px}
-    .btn{background:var(--cyan);color:#0b0f14;padding:8px 16px;border-radius:8px;text-decoration:none;font-weight:600;font-size:14px}
+    .btn{background:var(--cyan);color:#0b0f14;padding:8px 16px;border-radius:8px;text-decoration:none;font-weight:600;font-size:14px;display:inline-block}
     .wrap{max-width:740px;margin:0 auto;padding:40px 20px 80px}
     .tag{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--cyan);margin-bottom:10px}
+    .crumbs{font-size:13px;color:var(--muted);margin-bottom:16px}
     h1{font-size:clamp(1.8rem,4vw,2.4rem);line-height:1.15;margin-bottom:12px}
     h2{font-size:1.3rem;margin:32px 0 12px}
+    h3{font-size:1.05rem;margin:20px 0 8px;color:var(--text)}
     p,li{color:var(--muted);margin-bottom:12px}
     strong{color:var(--text)}
     ul,ol{padding-left:1.25rem;margin-bottom:16px}
     .lead{font-size:1.05rem;color:var(--text);margin-bottom:20px}
     .updated{font-size:13px;color:var(--muted);margin-bottom:28px}
     .cta{margin:32px 0;padding:20px;border:1px solid var(--border);border-radius:12px;background:var(--surface)}
+    table{width:100%;border-collapse:collapse;margin:16px 0 24px;font-size:14px}
+    th,td{border:1px solid var(--border);padding:10px 12px;text-align:left;vertical-align:top}
+    th{background:var(--surface);color:var(--text)}
     footer{margin-top:48px;padding-top:20px;border-top:1px solid var(--border);font-size:13px;color:var(--muted)}
   </style>
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "Can you copy code from a YouTube video?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes. With CodeRa, a free Chrome extension, you capture the current YouTube frame and extract formatted code in one click while the video keeps playing."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Does CodeRa pause the YouTube video?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "No. Frame capture and Alt+C grab the current frame without requiring you to stop the lesson for retyping."
-        }
-      }
-    ]
-  }
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://codera.click/"},{"@type":"ListItem","position":2,"name":"How to copy code from YouTube","item":"https://codera.click/how-to-copy-code-from-youtube.html"}]}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Article","headline":"How to Copy Code from a YouTube Video (3 Methods)","datePublished":"2026-10-07","dateModified":"2026-10-08","author":{"@type":"Person","name":"Anton Zakharenka","url":"https://www.linkedin.com/in/anton-zaharenko/"},"mainEntityOfPage":"https://codera.click/how-to-copy-code-from-youtube.html"}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+    {"@type":"Question","name":"Can you copy code from a YouTube video?","acceptedAnswer":{"@type":"Answer","text":"Yes. You can retype manually, use OCR/Lens, upload a screenshot to a chatbot, or use CodeRa to capture the frame and extract formatted code in one click."}},
+    {"@type":"Question","name":"Does CodeRa pause the YouTube video?","acceptedAnswer":{"@type":"Answer","text":"No. Frame capture and Alt+C grab the current frame without forcing you to stop the lesson for retyping."}}
+  ]}
   </script>
 </head>
 <body>
   <nav>
-    <a class="logo" href="./"><img src="./icon48.png" alt="CodeRa">CodeRa</a>
+    <a class="logo" href="/"><img src="./icon48.png" alt="CodeRa – Chrome extension for extracting code from video">CodeRa</a>
     <a class="btn" href="https://chromewebstore.google.com/detail/codera/achdkjdakdpnihgjhdgmodgamefkffid">Add to Chrome</a>
   </nav>
   <article class="wrap">
+    <p class="crumbs"><a href="/">Home</a> · Guides · YouTube</p>
     <p class="tag">// guides · YouTube</p>
-    <h1>How to copy code from a YouTube video</h1>
-    <p class="updated">Last updated: October 2026 · CodeRa – Chrome extension for extracting code from video</p>
-    <p class="lead"><strong>Yes — you can copy code from a YouTube coding tutorial without retyping.</strong> Install <a href="https://chromewebstore.google.com/detail/codera/achdkjdakdpnihgjhdgmodgamefkffid">CodeRa</a>, open the video, and capture the frame with Alt+C or the floating button. CodeRa uses AI vision to return formatted source you can paste into your editor.</p>
-
-    <h2>Why retyping from YouTube is painful</h2>
-    <p>Tutorials show code on screen, but YouTube has no “copy code” button. Pausing, zooming, and typing by hand breaks indentation and wastes time — especially on longer lessons.</p>
-
-    <h2>Steps with CodeRa</h2>
-    <ol>
-      <li>Install CodeRa from the <a href="https://chromewebstore.google.com/detail/codera/achdkjdakdpnihgjhdgmodgamefkffid">Chrome Web Store</a> (free, no account).</li>
-      <li>Open any coding tutorial on YouTube.</li>
-      <li>Press <strong>Alt+C</strong> or click the floating <strong>CodeRa</strong> button on the player.</li>
-      <li>Choose <strong>Extract as code</strong> (or plain text / understand).</li>
-      <li>Paste into your IDE — indentation and structure are preserved when extraction succeeds.</li>
-    </ol>
-
-    <h2>Collect a whole YouTube lesson</h2>
-    <p>For multi-file tutorials, start <strong>Lesson</strong> collection and keep watching. CodeRa samples frames as you play (and when you scrub), then you can assemble a timeline plus HTML/CSS/JS-style files — without forced rewinding or a second window.</p>
+    <h1>How to Copy Code from a YouTube Video (3 Methods)</h1>
+    <p class="updated">Last updated: October 8, 2026 · Author: <a href="https://www.linkedin.com/in/anton-zaharenko/" rel="noopener" target="_blank">Anton Zakharenka</a></p>
+    <p class="lead"><strong>Yes — you can copy code from a YouTube coding tutorial without retyping every character.</strong> Below are three practical methods (plus a chatbot path), with honest pros and cons. The fastest browser path is CodeRa: capture the current frame and extract formatted code in one click.</p>
 
     <div class="cta">
-      <p><strong style="color:var(--text)">Try it on your next tutorial</strong></p>
-      <p>CodeRa works on YouTube, Udemy, Coursera, and other players. Free during early access.</p>
+      <p><strong style="color:var(--text)">Skip to the 1-click method</strong></p>
+      <p><a class="btn" href="https://chromewebstore.google.com/detail/codera/achdkjdakdpnihgjhdgmodgamefkffid">Install CodeRa (free)</a></p>
+    </div>
+
+    <h2>Method comparison</h2>
+    <table>
+      <thead><tr><th>Method</th><th>Pros</th><th>Cons</th></tr></thead>
+      <tbody>
+        <tr><td>Manual retype</td><td>No tools; private</td><td>Slow; typos; broken indentation</td></tr>
+        <tr><td>Google Lens / system OCR</td><td>Free; on many devices</td><td>Often destroys tabs/spaces; multi-step from desktop video</td></tr>
+        <tr><td>ChatGPT / Claude upload</td><td>Can fix formatting with a good prompt</td><td>5+ steps; tab switching</td></tr>
+        <tr><td>CodeRa</td><td>1 click in Chrome; code mode; lesson collect</td><td>Frames go to Anthropic API (<a href="/privacy.html">Privacy</a>)</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Method 1 — Retype by hand</h2>
+    <p>Pause, zoom, type. Works offline and never leaves your machine. Fine for three lines; painful for a 20-minute React lesson.</p>
+
+    <h2>Method 2 — OCR / Google Lens</h2>
+    <ol>
+      <li>Screenshot the frame (or open Lens on a phone photo).</li>
+      <li>Copy recognized text.</li>
+      <li>Fix indentation and misread symbols (<code>{ } =&gt; ;</code>).</li>
+    </ol>
+    <p>See also: <a href="/codera-vs-google-lens.html">CodeRa vs Google Lens</a>.</p>
+
+    <h2>Method 3 — CodeRa (in-browser)</h2>
+    <ol>
+      <li>Install <a href="https://chromewebstore.google.com/detail/codera/achdkjdakdpnihgjhdgmodgamefkffid">CodeRa</a> from the Chrome Web Store.</li>
+      <li>Open the YouTube tutorial.</li>
+      <li>Press <strong>Alt+C</strong> or the floating CodeRa button.</li>
+      <li>Choose <strong>Extract as code</strong> (or plain text / understand).</li>
+      <li>Paste into your IDE.</li>
+    </ol>
+    <h3>Collect a whole YouTube lesson</h3>
+    <p>Start <strong>Lesson</strong> collection and keep watching. CodeRa samples frames as you play, then you can assemble a timeline plus HTML/CSS/JS-style files — without forced rewinding.</p>
+
+    <h2>Bonus — Upload to ChatGPT / Claude</h2>
+    <p>Screenshot → save → open chat → upload → write a prompt → copy. Accurate if you prompt well, but slow compared with an in-page capture tool.</p>
+
+    <h2>FAQ</h2>
+    <p><strong>Can you copy code from a YouTube video?</strong><br>Yes — manually, via OCR, via chatbot, or with CodeRa reading the on-screen frame (not the transcript).</p>
+    <p><strong>Is this the same as YouTube captions?</strong><br>No. Captions are speech. Code tools read pixels of the editor on screen.</p>
+    <p><strong>Platforms / copyright?</strong><br>You must follow YouTube and any course ToS. Personal learning extracts ≠ redistributing the course. See <a href="/terms.html">Terms</a>.</p>
+
+    <div class="cta">
       <p><a class="btn" href="https://chromewebstore.google.com/detail/codera/achdkjdakdpnihgjhdgmodgamefkffid">Add CodeRa to Chrome</a></p>
     </div>
 
-    <h2>FAQ</h2>
-    <p><strong>Can you copy code from a YouTube video?</strong><br>Yes, with a vision-based tool like CodeRa that reads the on-screen frame instead of the YouTube transcript.</p>
-    <p><strong>Is this the same as YouTube captions?</strong><br>No. Captions are speech. CodeRa reads the pixels of the code editor on screen.</p>
-
     <footer>
-      <a href="./">Home</a> ·
-      <a href="./how-to-copy-code-from-udemy.html">Udemy guide</a> ·
-      <a href="./extract-code-from-screenshot.html">Screenshot guide</a> ·
-      <a href="./privacy.html">Privacy</a><br><br>
+      <a href="/">Home</a> ·
+      <a href="/how-to-copy-code-from-udemy.html">Udemy guide</a> ·
+      <a href="/extract-code-from-screenshot.html">Screenshot → code</a> ·
+      <a href="/codera-vs-selectext.html">vs Selectext</a> ·
+      <a href="/privacy.html">Privacy</a><br><br>
       © 2026 CodeRa · Built by Anton Zakharenka
     </footer>
   </article>

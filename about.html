@@ -3,19 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About CodeRa — Chrome extension for extracting code from video</title>
-  <meta name="description" content="CodeRa is a free Chrome extension by Anton Zakharenka that extracts formatted code from YouTube, Udemy, Coursera videos and screenshots using AI vision.">
+  <title>About CodeRa &amp; Anton Zakharenka</title>
+  <meta name="description" content="About CodeRa: free Chrome extension by Anton Zakharenka that extracts formatted code from YouTube, Udemy and screenshots. Contact and links.">
   <link rel="canonical" href="https://codera.click/about.html">
-  <meta property="og:type" content="website">
+  <meta property="og:type" content="profile">
   <meta property="og:url" content="https://codera.click/about.html">
-  <meta property="og:title" content="About CodeRa — extract code from video">
-  <meta property="og:description" content="Free Chrome extension that extracts formatted code from YouTube, Udemy and screenshots.">
+  <meta property="og:title" content="About CodeRa — Anton Zakharenka">
+  <meta property="og:description" content="Why CodeRa exists and who builds it.">
   <meta property="og:image" content="https://codera.click/og.jpg">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="./icon48.png" type="image/png">
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    :root { --cyan:#22d3ee; --bg:#0b0f14; --text:#f1f5f9; --muted:#94a3b8; --border:rgba(255,255,255,.08); }
+    :root{--cyan:#22d3ee;--bg:#0b0f14;--text:#f1f5f9;--muted:#94a3b8;--border:rgba(255,255,255,.08);--surface:#141b24}
     *{box-sizing:border-box;margin:0;padding:0}
     body{background:var(--bg);color:var(--text);font-family:'Space Grotesk',sans-serif;line-height:1.6;padding:40px 20px 80px}
     .wrap{max-width:720px;margin:0 auto}
@@ -26,32 +26,92 @@
     ul{padding-left:1.2rem}
     .tag{font-size:12px;color:var(--cyan);letter-spacing:.04em}
     .updated{font-size:13px;color:var(--muted);margin-bottom:24px}
+    .card{display:flex;gap:16px;align-items:center;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:16px;margin:20px 0}
+    .card img{width:72px;height:72px;border-radius:12px}
+    .btn{display:inline-block;background:var(--cyan);color:#0b0f14;padding:8px 16px;border-radius:8px;text-decoration:none;font-weight:600;font-size:14px;margin-top:8px}
     footer{margin-top:48px;padding-top:20px;border-top:1px solid var(--border);font-size:13px;color:var(--muted)}
   </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "CodeRa",
+    "url": "https://codera.click/",
+    "logo": "https://codera.click/icon48.png",
+    "founder": {
+      "@type": "Person",
+      "name": "Anton Zakharenka",
+      "url": "https://www.linkedin.com/in/anton-zaharenko/",
+      "sameAs": [
+        "https://www.linkedin.com/in/anton-zaharenko/",
+        "https://github.com/Zaharenko"
+      ]
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "email": "anton.zaharenko@gmail.com",
+      "contactType": "customer support"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Anton Zakharenka",
+    "url": "https://codera.click/about.html",
+    "jobTitle": "Independent developer",
+    "sameAs": [
+      "https://www.linkedin.com/in/anton-zaharenko/",
+      "https://github.com/Zaharenko"
+    ],
+    "email": "anton.zaharenko@gmail.com"
+  }
+  </script>
 </head>
 <body>
   <div class="wrap">
     <p class="tag">// about</p>
     <h1>About CodeRa</h1>
-    <p class="updated">Last updated: October 2026 · CodeRa – Chrome extension for extracting code from video</p>
-    <p><strong style="color:var(--text)">CodeRa</strong> is a free Chrome extension that extracts formatted code from YouTube, Udemy, Coursera videos and screenshots using AI vision, preserving indentation.</p>
-    <h2>Who built it</h2>
-    <p>Built by <a href="https://www.linkedin.com/in/anton-zaharenko/" rel="noopener" target="_blank">Anton Zakharenka</a> — a developer tired of retyping tutorial code. Not affiliated with Anthropic.</p>
-    <h2>What it does</h2>
+    <p class="updated">Last updated: October 8, 2026 · CodeRa – Chrome extension for extracting code from video</p>
+
+    <div class="card">
+      <img src="./icon48.png" alt="CodeRa logo">
+      <div>
+        <p style="color:var(--text);margin:0 0 6px;font-weight:600;">Anton Zakharenka</p>
+        <p style="margin:0;font-size:14px;">Independent developer · builder of CodeRa</p>
+        <p style="margin:8px 0 0;font-size:14px;">
+          <a href="https://www.linkedin.com/in/anton-zaharenko/" target="_blank" rel="noopener">LinkedIn</a> ·
+          <a href="https://github.com/Zaharenko" target="_blank" rel="noopener">GitHub</a> ·
+          <a href="mailto:anton.zaharenko@gmail.com">Email</a>
+        </p>
+      </div>
+    </div>
+
+    <h2>Why it exists</h2>
+    <p>I kept pausing tutorials, squinting at code, and retyping it into the editor — with broken indentation and wasted time. <strong style="color:var(--text)">CodeRa</strong> is the tool I wanted: capture the frame, get formatted code, keep a local library, and optionally collect a whole lesson into a project pack.</p>
+
+    <h2>What CodeRa does</h2>
     <ul>
       <li>Capture a video frame (Alt+C or floating button) without leaving the lesson</li>
       <li>Extract as code, plain text, or get an explanation</li>
       <li>Collect a whole lesson while you watch, then export timeline + HTML/CSS/JS</li>
-      <li>Keep snippets in a local library; export to Obsidian, Anki, Notion, or GitLab Snippets</li>
+      <li>Local snippet library; optional exports to Obsidian, Anki, Notion, GitLab Snippets</li>
+      <li>VS Code / Cursor insert bridge — <a href="/vscode-companion.html">companion page</a></li>
     </ul>
-    <h2>Links</h2>
-    <p>
-      <a href="https://chromewebstore.google.com/detail/codera/achdkjdakdpnihgjhdgmodgamefkffid">Chrome Web Store</a> ·
-      <a href="./">Home</a> ·
-      <a href="./privacy.html">Privacy</a> ·
-      <a href="./changelog.html">Changelog</a>
+
+    <h2>Independence</h2>
+    <p>CodeRa is not affiliated with Anthropic. AI extraction uses Anthropic’s API under their policy — details in <a href="/privacy.html">Privacy</a> and <a href="/terms.html">Terms</a>.</p>
+
+    <p><a class="btn" href="https://chromewebstore.google.com/detail/codera/achdkjdakdpnihgjhdgmodgamefkffid">Add to Chrome — Free</a></p>
+
+    <p style="margin-top:28px;">
+      <a href="/">Home</a> ·
+      <a href="/changelog.html">Changelog</a> ·
+      <a href="/ru/">Русский</a>
     </p>
-    <footer>© 2026 CodeRa · Built by Anton Zakharenka</footer>
+    <footer>© 2026 CodeRa · Built by Anton Zakharenka<br>
+      Note: LinkedIn/GitHub URL slug uses “Zaharenko”; display name on this site is Zakharenka — same person.</footer>
   </div>
 </body>
 </html>
